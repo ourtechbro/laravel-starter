@@ -83,26 +83,26 @@ return [
                     'title' => 'Contacts',
                     'icon_class' => 'fe fe-book fe-16',
                     'items' => [
-                        'contact_list' => ['title' => 'Contact List', 'slug' => 'contact-list'],
-                        'contact_grid' => ['title' => 'Contact Grid', 'slug' => 'contact-grid'],
-                        'new_contact' => ['title' => 'New Contact', 'slug' => 'new-contact']
+                        'contact-list' => ['title' => 'Contact List'],
+                        'contact-grid' => ['title' => 'Contact Grid'],
+                        'new-contact' => ['title' => 'New Contact']
                     ]
                 ],
                 'profile' => [
                     'title' => 'Profile',
                     'icon_class' => 'fe fe-user fe-16',
                     'items' => [
-                        'contact_list' => ['title' => 'Contact List', 'slug' => 'contact-list'],
-                        'contact_grid' => ['title' => 'Contact Grid', 'slug' => 'contact-grid'],
-                        'new_contact' => ['title' => 'New Contact', 'slug' => 'new-contact']
+                        'contact-list' => ['title' => 'Contact List'],
+                        'contact-grid' => ['title' => 'Contact Grid'],
+                        'new-contact' => ['title' => 'New Contact']
                     ]
                 ],
                 'file-manager' => [
                     'title' => 'File Manager',
                     'icon_class' => 'fe fe-folder fe-16',
                     'items' => [
-                        'files_list' => ['title' => 'Files List', 'slug' => 'files-list'],
-                        'files_grid' => ['title' => 'Files Grid', 'slug' => 'files-grid'],
+                        'files-list' => ['title' => 'Files List'],
+                        'files-grid' => ['title' => 'Files Grid'],
                     ]
                 ],
                 'help-desk' => [
