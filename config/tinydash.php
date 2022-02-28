@@ -92,9 +92,10 @@ return [
                     'title' => 'Profile',
                     'icon_class' => 'fe fe-user fe-16',
                     'items' => [
-                        'contact-list' => ['title' => 'Contact List'],
-                        'contact-grid' => ['title' => 'Contact Grid'],
-                        'new-contact' => ['title' => 'New Contact']
+                        'overview' => ['title' => 'Overview'],
+                        'settings' => ['title' => 'Settings'],
+                        'security' => ['title' => 'Security'],
+                        'notifications' => ['title' => 'Notification Settings']
                     ]
                 ],
                 'file-manager' => [
