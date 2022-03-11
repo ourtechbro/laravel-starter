@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@include('layouts._head')
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+<body class="vertical  light  ">
+<div class="wrapper">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @include('layouts._topnav')
 
-        @livewireStyles
+    @include('layouts._sidebar')
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <main role="main" class="main-content">
+        <div class="container-fluid">
+            @yield('content')
+        </div> <!-- .container-fluid -->
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+        <x-modals.notifications/>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+        <x-modals.shortcuts/>
+    </main> <!-- main -->
+</div> <!-- .wrapper -->
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+@livewireScripts
 
-        @stack('modals')
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/simplebar.min.js') }}"></script>
+<script src="{{ asset('js/daterangepicker.js') }}"></script>
+<script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
+<script src="{{ asset('js/tinycolor-min.js') }}"></script>
+<script src="{{ asset('js/config.js') }}"></script>
+<script src="{{ asset('js/apps.js') }}"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
 
-        @livewireScripts
-    </body>
+    function gtag()
+    {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-56159088-1');
+</script>
+
+@yield('scripts')
+
+@stack('scripts')
+
+</body>
 </html>
