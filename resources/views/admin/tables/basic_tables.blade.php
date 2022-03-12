@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-    Home
+    Basic Tables
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Home</h3>
+            <h3 class="card-title">Home test</h3>
         </div>
 
         <div class="card-body">
