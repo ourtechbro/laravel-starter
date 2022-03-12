@@ -45,7 +45,7 @@ return [
                     'items' => [
                         'basic_elements' => ['title' => 'Basic Elements', 'slug' => 'basic-elements'],
                         'advanced_elements' => ['title' => 'Advanced Elements', 'slug' => 'advanced-elements'],
-                        'validation' => ['title' => 'Basic Elements', 'slug' => 'validation'],
+                        'validation' => ['title' => 'Validation', 'slug' => 'validation'],
                         'wizard' => ['title' => 'Wizard', 'slug' => 'wizard'],
                         'layouts' => ['title' => 'Layouts', 'slug' => 'layouts'],
                         'file_upload' => ['title' => 'File Upload', 'slug' => 'file-upload']

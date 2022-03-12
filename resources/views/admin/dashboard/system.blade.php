@@ -515,8 +515,9 @@
 <script src="{{ asset('js/datamaps.custom.js') }}"></script>
 <script src="{{ asset('js/Chart.min.js') }}"></script>
 
-<script src="{{ asset('js/gauge.min.js') }}"></script>
+
 <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
 <script src="{{ asset('js/apexcharts.min.js') }}"></script>
 <script src="{{ asset('js/apexcharts.custom.js') }}"></script>
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
 @endsection

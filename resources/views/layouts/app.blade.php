@@ -31,6 +31,9 @@
 <script src="{{ asset('js/daterangepicker.js') }}"></script>
 <script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
 <script src="{{ asset('js/tinycolor-min.js') }}"></script>
+<script src="{{ asset('js/gauge.min.js') }}"></script>
+<script src="{{ asset('js/jquery.steps.min.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/config.js') }}"></script>
 <script src="{{ asset('js/apps.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -401,6 +401,7 @@
     <script src="{{ asset('js/datamaps-zoomto.js') }}"></script>
     <script src="{{ asset('js/datamaps.custom.js') }}"></script>
     <script src="{{ asset('js/Chart.min.js') }}"></script>
+
     <script>
         /* defind global options */
         Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
