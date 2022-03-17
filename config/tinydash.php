@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Group Title empty to show seperate section but as root menu
+ */
+
 return [
     'menu' => [
         'dashboard' => [
@@ -16,6 +20,23 @@ return [
                         'system' => ['title' => 'System', 'slug' => 'system']
                     ]
                 ]
+            ]
+        ],
+        'administrator' => [
+            'group_title' => 'Administrator',
+            'items' => [
+                'users' => [
+                    'title' => 'Users',
+                    'icon_class' => 'fe fe-home fe-16'
+                ],
+//                'roles' => [
+//                    'title' => 'Roles',
+//                    'icon_class' => 'fe fe-home fe-16',
+//                    'items' => [
+//                        'default' => ['title' => 'Default', 'slug' => 'default'],
+//                        'analytics' => ['title' => 'Analytics', 'slug' => 'analytics'],
+//                    ]
+//                ],
             ]
         ],
         'components' => [
