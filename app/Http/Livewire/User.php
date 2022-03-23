@@ -8,12 +8,16 @@ use App\Models\User as UserModel;
 class User extends Component
 {
     public $data, $name, $email, $password, $selected_id;
-    public $updateMode = false;
 
     public function render()
     {
         $this->data = UserModel::all();
         return view('admin.administrator.livewire.user');
+    }
+
+    public function cancel()
+    {
+        $this->resetInput();
     }
 
     private function resetInput()
@@ -37,14 +41,15 @@ class User extends Component
         ]);
 
         $this->resetInput();
+        $this->dispatchBrowserEvent('closeModal');
     }
     public function edit($id)
     {
+        $this->hydrate();
         $record = UserModel::findOrFail($id);
         $this->selected_id = $id;
         $this->name = $record->name;
         $this->email = $record->email;
-        $this->updateMode = true;
     }
 
     public function update()
@@ -61,8 +66,9 @@ class User extends Component
                 'email' => $this->email
             ]);
             $this->resetInput();
-            $this->updateMode = false;
         }
+
+        $this->dispatchBrowserEvent('closeModal');
     }
     public function destroy($id)
     {
@@ -70,5 +76,11 @@ class User extends Component
             $record = UserModel::where('id', $id);
             $record->delete();
         }
+    }
+
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
 }
