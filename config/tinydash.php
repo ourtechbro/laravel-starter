@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Group Title empty to show seperate section but as root menu
+ * Group Title empty to show separate section but as root menu
  */
 
 return [
@@ -30,14 +30,16 @@ return [
                     'title' => 'Users',
                     'icon_class' => 'fe fe-home fe-16'
                 ],
-//                'roles' => [
-//                    'title' => 'Roles',
-//                    'icon_class' => 'fe fe-home fe-16',
-//                    'items' => [
-//                        'default' => ['title' => 'Default', 'slug' => 'default'],
-//                        'analytics' => ['title' => 'Analytics', 'slug' => 'analytics'],
-//                    ]
-//                ],
+                'roles' => [
+                    'permission' => 'read roles',
+                    'title' => 'Roles',
+                    'icon_class' => 'fe fe-home fe-16',
+                ],
+                'permissions' => [
+                    'permission' => 'read permissions',
+                    'title' => 'Manage Permissions',
+                    'icon_class' => 'fe fe-home fe-16',
+                ],
             ]
         ],
         'components' => [

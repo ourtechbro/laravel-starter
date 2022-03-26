@@ -25,12 +25,23 @@
                     @foreach($module['items'] as $key => $item)
 
                     @if(!isset($item['items']))
-                     <li class="nav-item w-100">
-                      <a class="nav-link" href="{{ route($key) }}">
-                        <i class="fe fe-calendar fe-16"></i>
-                        <span class="ml-3 item-text">{{ $item['title'] }}</span>
-                      </a>
-                    </li>
+                        @if(isset($item['permission']))
+                            @can($item['permission'])
+                             <li class="nav-item w-100">
+                                  <a class="nav-link" href="{{ route($key) }}">
+                                <i class="fe fe-calendar fe-16"></i>
+                                <span class="ml-3 item-text">{{ $item['title'] }}</span>
+                                  </a>
+                            </li>
+                            @endcan
+                        @else
+                            <li class="nav-item w-100">
+                                <a class="nav-link" href="{{ route($key) }}">
+                                    <i class="fe fe-calendar fe-16"></i>
+                                    <span class="ml-3 item-text">{{ $item['title'] }}</span>
+                                </a>
+                            </li>
+                        @endif
                     @else
                      <li class="nav-item dropdown">
                         <a href="{{ isset($item['items']) ? '#' . $key : route($key) }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">

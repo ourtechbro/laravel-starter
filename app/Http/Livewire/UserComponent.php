@@ -3,16 +3,20 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User as UserModel;
+use App\Models\User;
+use Livewire\WithPagination;
 
-class User extends Component
+class UserComponent extends Component
 {
+    use WithPagination;
+
     public $data, $name, $email, $password, $selected_id;
 
     public function render()
     {
-        $this->data = UserModel::all();
-        return view('admin.administrator.livewire.user');
+        return view('admin.livewire.users.index', [
+            'list' => User::with('roles')->paginate(20)
+        ]);
     }
 
     public function cancel()
@@ -35,7 +39,7 @@ class User extends Component
             'password' => 'required|min:6'
         ]);
 
-        UserModel::create([
+        User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password)
@@ -47,7 +51,7 @@ class User extends Component
     public function edit($id)
     {
         $this->hydrate();
-        $record = UserModel::findOrFail($id);
+        $record = User::findOrFail($id);
         $this->selected_id = $id;
         $this->name = $record->name;
         $this->email = $record->email;
@@ -58,10 +62,10 @@ class User extends Component
         $this->validate([
             'selected_id' => 'required|numeric',
             'name' => 'required|min:5',
-            'email' => 'required|email:rfc,dns'
+            'email' => 'required|email'
         ]);
         if ($this->selected_id) {
-            $record = UserModel::find($this->selected_id);
+            $record = User::find($this->selected_id);
             $record->update([
                 'name' => $this->name,
                 'email' => $this->email
@@ -74,7 +78,7 @@ class User extends Component
     public function destroy($id)
     {
         if ($id) {
-            $record = UserModel::where('id', $id);
+            $record = User::where('id', $id);
             $record->delete();
         }
     }
@@ -83,5 +87,10 @@ class User extends Component
     {
         $this->resetErrorBag();
         $this->resetValidation();
+    }
+
+    public function paginationView()
+    {
+        return 'admin.pagination';
     }
 }

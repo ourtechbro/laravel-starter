@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        @livewire('user')
+        @livewire('user-component')
     </div>
 @endsection
 @section('scripts')

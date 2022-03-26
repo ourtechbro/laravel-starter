@@ -146,9 +146,13 @@ Route::middleware(['auth'])->group(function () {
                 return view('admin.administrator.users');
             })->name('users');
 
-//            Route::get('/roles/{type}', function ($type) {
-//                return view('admin.administrator.roles.' . str_replace('-','_',$type));
-//            })->name('roles')->where('type', tinydash_modules('administrator', 'roles'));
+            Route::get('/roles', function () {
+                return view('admin.administrator.roles');
+            })->name('roles');
+
+            Route::get('/permissions', function () {
+                return view('admin.administrator.permissions');
+            })->name('permissions');
         }
     );
 });
