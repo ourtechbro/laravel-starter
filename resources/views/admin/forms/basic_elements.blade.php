@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Basci Elements
+    Basic Elements
 @endsection
 
 @section('content')

@@ -68,38 +68,47 @@ Route::middleware(['auth'])->group(function () {
     );
 
     Route::group(
-        ['prefix' => 'contacts'],
+        ['prefix' => 'apps'],
         function () {
-            Route::get('/{type}', function ($type) {
-                return view('admin.contacts.' . str_replace('-','_',$type));
-            })->name('contacts')->where('type', tinydash_modules('apps', 'contacts'));
-        }
-    );
+            Route::get('/calender', function () {
+                return view('admin.calendar');
+            })->name('calender');
 
-    Route::group(
-        ['prefix' => 'profile'],
-        function () {
-            Route::get('/{type}', function ($type) {
-                return view('admin.profile.' . str_replace('-','_',$type));
-            })->name('profile')->where('type', tinydash_modules('apps', 'profile'));
-        }
-    );
+            Route::group(
+                ['prefix' => 'contacts'],
+                function () {
+                    Route::get('/{type}', function ($type) {
+                        return view('admin.contacts.' . str_replace('-','_',$type));
+                    })->name('contacts')->where('type', tinydash_modules('apps', 'contacts'));
+                }
+            );
 
-    Route::group(
-        ['prefix' => 'file-manager'],
-        function () {
-            Route::get('/{type}', function ($type) {
-                return view('admin.file-manager.' .str_replace('-','_',$type));
-            })->name('file-manager')->where('type', tinydash_modules('apps', 'file-manager'));
-        }
-    );
+            Route::group(
+                ['prefix' => 'profile'],
+                function () {
+                    Route::get('/{type}', function ($type) {
+                        return view('admin.profile.' . str_replace('-','_',$type));
+                    })->name('profile')->where('type', tinydash_modules('apps', 'profile'));
+                }
+            );
 
-    Route::group(
-        ['prefix' => 'help-desk'],
-        function () {
-            Route::get('/{type}', function ($type) {
-                return view('admin.help_desk.' . str_replace('-','_',$type));
-            })->name('help-desk')->where('type', tinydash_modules('apps', 'help-desk'));
+            Route::group(
+                ['prefix' => 'file-manager'],
+                function () {
+                    Route::get('/{type}', function ($type) {
+                        return view('admin.file-manager.' .str_replace('-','_',$type));
+                    })->name('file-manager')->where('type', tinydash_modules('apps', 'file-manager'));
+                }
+            );
+
+            Route::group(
+                ['prefix' => 'help-desk'],
+                function () {
+                    Route::get('/{type}', function ($type) {
+                        return view('admin.help_desk.' . str_replace('-','_',$type));
+                    })->name('help-desk')->where('type', tinydash_modules('apps', 'help-desk'));
+                }
+            );
         }
     );
 
@@ -130,5 +139,20 @@ Route::middleware(['auth'])->group(function () {
         }
     );
 
+    Route::group(
+        ['prefix' => 'administrator'],
+        function () {
+            Route::get('/users', function() {
+                return view('admin.administrator.users');
+            })->name('users');
 
+            Route::get('/roles', function () {
+                return view('admin.administrator.roles');
+            })->name('roles');
+
+            Route::get('/permissions', function () {
+                return view('admin.administrator.permissions');
+            })->name('permissions');
+        }
+    );
 });

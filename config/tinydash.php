@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Group Title empty to show separate section but as root menu
+ */
+
 return [
     'menu' => [
         'dashboard' => [
@@ -18,6 +22,26 @@ return [
                 ]
             ]
         ],
+        'administrator' => [
+            'group_title' => 'Administrator',
+            'items' => [
+                'users' => [
+                    'permission' => 'read users',
+                    'title' => 'Users',
+                    'icon_class' => 'fe fe-home fe-16'
+                ],
+                'roles' => [
+                    'permission' => 'read roles',
+                    'title' => 'Roles',
+                    'icon_class' => 'fe fe-home fe-16',
+                ],
+                'permissions' => [
+                    'permission' => 'read permissions',
+                    'title' => 'Manage Permissions',
+                    'icon_class' => 'fe fe-home fe-16',
+                ],
+            ]
+        ],
         'components' => [
             'group_title' => 'Components',
             'items' => [
@@ -25,7 +49,7 @@ return [
                     'title' => 'UI elements',
                     'icon_class' => 'fe fe-box fe-16',
                     'items' => [
-                        'colors' => ['title' => 'Colors', 'slug' => 'colors'],
+                        'colors' => ['title' => 'Colors', 'slug' => 'colors', 'permission' => 'view theme'],
                         'typography' => ['title' => 'Typography', 'slug' => 'typography'],
                         'icons' => ['title' => 'Icons', 'slug' => 'icons'],
                         'buttons' => ['title' => 'Buttons', 'slug' => 'buttons'],
