@@ -31,7 +31,8 @@ class User extends Component
     {
         $this->validate([
             'name' => 'required|min:5',
-            'email' => 'required|email:rfc,dns'
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required|min:6'
         ]);
 
         UserModel::create([

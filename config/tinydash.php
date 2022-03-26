@@ -26,6 +26,7 @@ return [
             'group_title' => 'Administrator',
             'items' => [
                 'users' => [
+                    'permission' => 'read users',
                     'title' => 'Users',
                     'icon_class' => 'fe fe-home fe-16'
                 ],
@@ -46,7 +47,7 @@ return [
                     'title' => 'UI elements',
                     'icon_class' => 'fe fe-box fe-16',
                     'items' => [
-                        'colors' => ['title' => 'Colors', 'slug' => 'colors'],
+                        'colors' => ['title' => 'Colors', 'slug' => 'colors', 'permission' => 'view theme'],
                         'typography' => ['title' => 'Typography', 'slug' => 'typography'],
                         'icons' => ['title' => 'Icons', 'slug' => 'icons'],
                         'buttons' => ['title' => 'Buttons', 'slug' => 'buttons'],

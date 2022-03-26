@@ -42,9 +42,17 @@
                         @endif
                         <ul class="collapse list-unstyled pl-4 w-100" id="{{ $key }}">
                             @foreach($item['items'] as $menuKey => $menu)
-                            <li class="nav-item active">
-                                <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
-                            </li>
+                                @if(isset($menu['permission']))
+                                    @can($menu['permission'])
+                                    <li class="nav-item active">
+                                        <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
+                                    </li>
+                                    @endcan
+                                @else
+                                    <li class="nav-item active">
+                                        <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </li>
