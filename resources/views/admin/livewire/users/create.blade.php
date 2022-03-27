@@ -25,6 +25,15 @@
                         <input type="password" class="form-control input-sm" placeholder="********" wire:model="password">
                         @error('password') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12"  wire:ignore>
+                            <select class="form-control" id="select2Create">
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -34,3 +43,23 @@
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#select2Create').select2({
+                theme: 'bootstrap4',
+                multiple: true,
+                width: 'resolve',
+                placeholder: 'Select a role',
+                allowClear: true,
+            }).on('change', function (e) {
+                livewire.emit('rolesChanged', $("#select2Create").val())
+            })
+
+            window.addEventListener('clearSelect', (e) => {
+                $('#select2Create').val([]);
+                $('#select2Create').trigger('change');
+            });
+        });
+    </script>
+@endpush

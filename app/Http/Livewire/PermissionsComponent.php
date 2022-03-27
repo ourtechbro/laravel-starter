@@ -3,9 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Module;
-use Brian2694\Toastr\Toastr;
 use Livewire\Component;
-use App\Models\User;
 use Spatie\Permission\Models\Role;
 
 class PermissionsComponent extends Component
@@ -44,11 +42,6 @@ class PermissionsComponent extends Component
         $modules = Module::with('permissions')->get();
 
         $this->modules = $modules;
-    }
-
-    private function resetInput()
-    {
-
     }
 
     public function update()

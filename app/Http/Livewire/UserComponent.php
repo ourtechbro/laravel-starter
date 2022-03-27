@@ -5,17 +5,24 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 
 class UserComponent extends Component
 {
     use WithPagination;
 
     public $data, $name, $email, $password, $selected_id;
+    public array $selectedRoles = [];
+
+    protected $listeners = [
+        'rolesChanged',
+    ];
 
     public function render()
     {
         return view('admin.livewire.users.index', [
-            'list' => User::with('roles')->paginate(20)
+            'list' => User::with('roles')->latest()->paginate(20),
+            'roles' => Role::get()
         ]);
     }
 
@@ -29,21 +36,35 @@ class UserComponent extends Component
         $this->name = null;
         $this->email = null;
         $this->password = null;
+        $this->selectedRoles = [];
+
+        $this->dispatchBrowserEvent('clearSelect');
+    }
+
+    public function rolesChanged($roles)
+    {
+        if (!$roles) {
+            return;
+        }
+
+        $this->selectedRoles = $roles;
     }
 
     public function store()
     {
         $this->validate([
             'name' => 'required|min:5',
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password)
         ]);
+
+        $user->syncRoles($this->selectedRoles);
 
         $this->resetInput();
         $this->dispatchBrowserEvent('closeModal');
@@ -51,10 +72,13 @@ class UserComponent extends Component
     public function edit($id)
     {
         $this->hydrate();
-        $record = User::findOrFail($id);
+        $record = User::with('roles')->findOrFail($id);
         $this->selected_id = $id;
         $this->name = $record->name;
         $this->email = $record->email;
+        $this->selectedRoles = optional($record->roles)->pluck('id')->toArray();
+
+        $this->dispatchBrowserEvent('showPreviousRoles', ['roles' => $this->selectedRoles]);
     }
 
     public function update()
@@ -70,6 +94,9 @@ class UserComponent extends Component
                 'name' => $this->name,
                 'email' => $this->email
             ]);
+
+            $record->syncRoles($this->selectedRoles);
+
             $this->resetInput();
         }
 
