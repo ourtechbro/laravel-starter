@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
 
          // Call other seeder classes
         $this->call([
-            ACLDataSeeder::class
+            ACLDataSeeder::class,
+            FakeDataSeeder::class
         ]);
     }
 }

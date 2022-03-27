@@ -2,7 +2,7 @@
     <h2 class="page-title">Manage permissions</h2>
     <div class="row">
         <div class="col-md-12 my-4">
-            <div class="card shadow">
+            <div class="card shadow" wire:ignore>
                 <div class="card-body">
                     <p class="mb-2"><strong>Select Role</strong></p>
                     <div class="form-row">
@@ -57,13 +57,11 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
-        window.initSelectRole=()=>{
-            $('.select2').select2({
-                theme: 'bootstrap4',
-                placeholder: 'Select a role',
-                allowClear: true
-            });
-        }
+        $('.select2').select2({
+            theme: 'bootstrap4',
+            placeholder: 'Select a role',
+            allowClear: true
+        });
 
         $('#select2').on('change', function (e) {
             livewire.emit('selectedRole', e.target.value)
