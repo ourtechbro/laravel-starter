@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -231,7 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

@@ -44,6 +44,14 @@
                 @endif
                 <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('Log in') }}</button>
                 <a class="btn btn-lg btn-primary btn-block" href="{{ route('register') }}">{{ __('Sign up') }}</a>
+
+                <div class="flex items-center justify-end mt-4">
+                    <a class="btn" href="{{ url('auth/facebook') }}"
+                       style="background: #3B5499; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                        Login with Facebook
+                    </a>
+                </div>
+
                 <p class="mt-5 mb-3 text-muted">© {{ date('Y') }}</p>
             </form>
         </div>
