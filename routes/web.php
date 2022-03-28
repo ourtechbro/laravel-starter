@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SocialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
 
 require __DIR__.'/auth.php';
 
@@ -165,3 +170,7 @@ Route::middleware(['auth'])->group(function () {
         }
     );
 });
+
+// Social login routes
+Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
+Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
