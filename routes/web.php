@@ -14,6 +14,10 @@ use App\Http\Controllers\SocialController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
+
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
