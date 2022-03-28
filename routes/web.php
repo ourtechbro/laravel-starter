@@ -155,4 +155,13 @@ Route::middleware(['auth'])->group(function () {
             })->name('permissions');
         }
     );
+    Route::group(
+        ['profile' => 'administrator'],
+        function () {
+            Route::get('/update', function() {
+                return view('admin.users.profile-update');
+            })->name('profile.update');
+
+        }
+    );
 });
