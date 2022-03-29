@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="row justify-content-center">
+
         @livewire('user.profile-component')
 
     </div>
@@ -17,4 +18,16 @@
             $("#updateModal").modal('hide');
         })
     </script>
+        <script>
+            Livewire.on('uploadFile', () => {
+                let inputField = document.getElementById('Image')
+                let file = inputField.files[0]
+
+                let reader = new FileReader();
+                reader.onloadend = () =>{
+                    Livewire.emit('image', reader.result)
+                }
+                reader.readAsDataURL(file);
+            })
+        </script>
 @endsection
