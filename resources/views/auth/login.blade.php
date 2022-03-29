@@ -51,6 +51,12 @@
                         Login with Facebook
                     </a>
                 </div>
+                <div class="flex items-center justify-end mt-4">
+                    <a class="btn" href="{{ url('auth/google') }}"
+                       style="background: #EA4638; color: #FFFFFF; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                        Login with Google
+                    </a>
+                </div>
 
                 <p class="mt-5 mb-3 text-muted">© {{ date('Y') }}</p>
             </form>

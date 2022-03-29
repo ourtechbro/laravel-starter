@@ -9,7 +9,6 @@ class SocialController extends Controller
 {
     public function facebookRedirect()
     {
-//        dd(Socialite::driver('facebook')->redirect());
         return Socialite::driver('facebook')->redirect();
     }
 
@@ -23,6 +22,7 @@ class SocialController extends Controller
                 Auth::login($isUser);
                 return redirect()->route('dashboard');
             }else{
+                //TODO:: validity check for duplicate email
                 $createUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
@@ -35,8 +35,42 @@ class SocialController extends Controller
             }
 
         } catch (Exception $exception) {
-            dd($exception->getMessage());
             logger($exception->getMessage());
+        }
+    }
+
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+            $finduser = User::where('google_id', $user->id)->first();
+
+            if($finduser){
+                Auth::login($finduser);
+
+                return redirect()->route('dashboard');
+            }else{
+                //TODO:: validity check for duplicate email
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id'=> $user->id,
+                    'password' => bcrypt($user->id . rand())
+                ]);
+
+                Auth::login($newUser);
+                return redirect()->route('dashboard');
+            }
+
+        } catch (Exception $e) {
+            logger($e->getMessage());
         }
     }
 }
