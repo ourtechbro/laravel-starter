@@ -161,7 +161,7 @@ Route::middleware(['auth'])->group(function () {
         }
     );
     Route::group(
-        ['profile' => 'administrator'],
+        ['prefix' => 'profile'],
         function () {
             Route::get('/update', function() {
                 return view('admin.users.profile-update');
