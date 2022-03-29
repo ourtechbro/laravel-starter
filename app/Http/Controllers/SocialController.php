@@ -7,70 +7,55 @@ use Illuminate\Support\Facades\Auth;
 
 class SocialController extends Controller
 {
-    public function facebookRedirect()
+    public function redirect($platform)
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($platform)->redirect();
     }
 
-    public function loginWithFacebook()
+    public function login($platform)
     {
+        switch ($platform) {
+            case 'facebook':
+                $key = 'fb_id';
+                break;
+            case 'google':
+                $key = 'google_id';
+                break;
+            case 'twitter':
+                $key = 'twitter_id';
+                break;
+            case 'github':
+                $key = 'github_id';
+                break;
+        }
         try {
-            $user = Socialite::driver('facebook')->user();
-            $isUser = User::where('fb_id', $user->id)->first();
+            $user = Socialite::driver($platform)->user();
+            $appUser = User::where($key, $user->id)->first();
 
-            if($isUser){
-                Auth::login($isUser);
+            if($appUser){
+                Auth::login($appUser);
                 return redirect()->route('dashboard');
             }else{
-                //TODO:: validity check for duplicate email
-                $createUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'fb_id' => $user->id,
-                    'password' => bcrypt($user->id . rand())
-                ]);
+                $appUser = User::where('email', $user->email)->first();
+                if ($appUser) {
+                    $appUser->update([
+                        $key => $user->id
+                    ]);
+                } else {
+                    $appUser = User::create([
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        $key => $user->id,
+                        'password' => bcrypt($user->id . rand())
+                    ]);
+                }
 
-                Auth::login($createUser);
+                Auth::login($appUser);
                 return redirect()->route('dashboard');
             }
 
         } catch (Exception $exception) {
             logger($exception->getMessage());
-        }
-    }
-
-
-    public function redirectToGoogle()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-
-    public function handleGoogleCallback()
-    {
-        try {
-            $user = Socialite::driver('google')->user();
-            $finduser = User::where('google_id', $user->id)->first();
-
-            if($finduser){
-                Auth::login($finduser);
-
-                return redirect()->route('dashboard');
-            }else{
-                //TODO:: validity check for duplicate email
-                $newUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'google_id'=> $user->id,
-                    'password' => bcrypt($user->id . rand())
-                ]);
-
-                Auth::login($newUser);
-                return redirect()->route('dashboard');
-            }
-
-        } catch (Exception $e) {
-            logger($e->getMessage());
         }
     }
 }
