@@ -163,5 +163,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Social login routes
-Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
-Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+Route::get('auth/{platform}', [SocialController::class, 'redirect'])
+    ->where('platform', 'facebook|google|twitter|github');
+
+Route::get('auth/{platform}/callback', [SocialController::class, 'login'])
+    ->where('platform', 'facebook|google|twitter|github');

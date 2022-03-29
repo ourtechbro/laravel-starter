@@ -7,35 +7,54 @@ use Illuminate\Support\Facades\Auth;
 
 class SocialController extends Controller
 {
-    public function facebookRedirect()
+    public function redirect($platform)
     {
-//        dd(Socialite::driver('facebook')->redirect());
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($platform)->redirect();
     }
 
-    public function loginWithFacebook()
+    public function login($platform)
     {
+        switch ($platform) {
+            case 'facebook':
+                $key = 'fb_id';
+                break;
+            case 'google':
+                $key = 'google_id';
+                break;
+            case 'twitter':
+                $key = 'twitter_id';
+                break;
+            case 'github':
+                $key = 'github_id';
+                break;
+        }
         try {
-            $user = Socialite::driver('facebook')->user();
-            $isUser = User::where('fb_id', $user->id)->first();
+            $user = Socialite::driver($platform)->user();
+            $appUser = User::where($key, $user->id)->first();
 
-            if($isUser){
-                Auth::login($isUser);
+            if($appUser){
+                Auth::login($appUser);
                 return redirect()->route('dashboard');
             }else{
-                $createUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'fb_id' => $user->id,
-                    'password' => bcrypt($user->id . rand())
-                ]);
+                $appUser = User::where('email', $user->email)->first();
+                if ($appUser) {
+                    $appUser->update([
+                        $key => $user->id
+                    ]);
+                } else {
+                    $appUser = User::create([
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        $key => $user->id,
+                        'password' => bcrypt($user->id . rand())
+                    ]);
+                }
 
-                Auth::login($createUser);
+                Auth::login($appUser);
                 return redirect()->route('dashboard');
             }
 
         } catch (Exception $exception) {
-            dd($exception->getMessage());
             logger($exception->getMessage());
         }
     }
