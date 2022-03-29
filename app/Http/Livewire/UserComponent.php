@@ -79,6 +79,7 @@ class UserComponent extends Component
 
         $this->resetInput();
         $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User created successfully!']);
     }
     public function edit($id)
     {
@@ -112,6 +113,7 @@ class UserComponent extends Component
         }
 
         $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User updated successfully!']);
     }
     public function destroy($id)
     {
@@ -119,6 +121,8 @@ class UserComponent extends Component
             $record = User::where('id', $id);
             $record->delete();
         }
+
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User deleted successfully!']);
     }
 
     public function hydrate()
