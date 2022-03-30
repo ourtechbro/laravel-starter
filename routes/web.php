@@ -49,9 +49,9 @@ Route::middleware(['auth'])->group(function () {
                 return view('admin.settings.general');
             })->name('settings.general');
 
-            Route::get('/language', function () {
-                return view('admin.settings.language');
-            })->name('settings.language');
+//            Route::get('/language', function () {
+//                return view('admin.settings.language');
+//            })->name('settings.language');
         }
     );
 });
