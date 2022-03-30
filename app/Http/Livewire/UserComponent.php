@@ -13,6 +13,8 @@ class UserComponent extends Component
 
     public $data, $name, $email, $password, $selected_id;
     public array $selectedRoles = [];
+    public $per_page = 10;
+    public $query = '';
 
     protected $listeners = [
         'rolesChanged',
@@ -20,8 +22,17 @@ class UserComponent extends Component
 
     public function render()
     {
+        $users = User::with('roles');
+
+        if ($this->query) {
+            $users->where(function($query) {
+                $query->where('name','LIKE','%'. $this->query .'%')
+                    ->orWhere('email','LIKE','%'. $this->query .'%');
+            });
+        }
+
         return view('admin.livewire.users.index', [
-            'list' => User::with('roles')->latest()->paginate(20),
+            'list' => $users->latest()->paginate($this->per_page),
             'roles' => Role::get()
         ]);
     }
@@ -68,6 +79,7 @@ class UserComponent extends Component
 
         $this->resetInput();
         $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User created successfully!']);
     }
     public function edit($id)
     {
@@ -101,6 +113,7 @@ class UserComponent extends Component
         }
 
         $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User updated successfully!']);
     }
     public function destroy($id)
     {
@@ -108,6 +121,8 @@ class UserComponent extends Component
             $record = User::where('id', $id);
             $record->delete();
         }
+
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User deleted successfully!']);
     }
 
     public function hydrate()

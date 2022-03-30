@@ -34,4 +34,19 @@ return [
         'client_secret' =>  env('FB_APP_SECRET'),
         'redirect' =>  env('FB_REDIRECT'),
     ],
+    'google' => [
+        'client_id' => env('GOOGLE_APP_ID'),
+        'client_secret' =>  env('GOOGLE_APP_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT','http://localhost:8000/auth/google/callback')
+    ],
+    'github' => [
+        'client_id' => env('GITHUB_ID'),
+        'client_secret' => env('GITHUB_SECRET'),
+        'redirect' => env('GITHUB_URL','http://localhost:8000/auth/callback/github'),
+    ],
+    'twitter' => [
+        'client_id' => env('TWITTER_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => env('TWITTER_URL','http://localhost:8000/auth/callback/twitter'),
+    ],
 ];

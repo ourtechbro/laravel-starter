@@ -9,3 +9,4 @@ you can easily get https connection in local by using
 - goto facebook login > settings   
 - add Valid OAuth Redirect URIs > example: ```https://laravel-starter.test/auth/facebook/callback```
 
+To know more: https://www.positronx.io/laravel-socialite-login-with-facebook-tutorial-with-example/
