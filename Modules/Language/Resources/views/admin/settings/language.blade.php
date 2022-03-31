@@ -8,6 +8,9 @@
         a.status-1{
             font-weight: bold;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 @endsection
 @section('content')
