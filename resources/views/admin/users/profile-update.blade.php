@@ -22,12 +22,21 @@
             Livewire.on('uploadFile', () => {
                 let inputField = document.getElementById('Image')
                 let file = inputField.files[0]
-
-                let reader = new FileReader();
-                reader.onloadend = () =>{
-                    Livewire.emit('image', reader.result)
+                // console.log(file);
+                let fileType = file.type;
+                console.log(fileType);
+                let ex = fileType.split('/');
+                if(ex[1].toLowerCase() == 'png' || ex[1].toLowerCase() == 'jpeg' || ex[1].toLowerCase() == 'jpg'){
+                    let reader = new FileReader();
+                    reader.onloadend = () =>{
+                        Livewire.emit('image', reader.result)
+                    }
+                    reader.readAsDataURL(file);
+                }else{
+                    document.getElementById('errMsg').innerText = "Please Enter a Valid Image"
                 }
-                reader.readAsDataURL(file);
+
+
             })
         </script>
 @endsection

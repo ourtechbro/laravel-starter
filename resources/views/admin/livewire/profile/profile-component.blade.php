@@ -5,11 +5,6 @@
       <div class="card shadow mb-4">
         <div class="card-header">
           <strong class="card-title">Form controls</strong>
-          @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
         </div>
         <div class="card-body">
             <form wire:submit.prevent="updateProfile">
@@ -29,6 +24,7 @@
                         <div class="form-group">
                             <label for="exampleInputbody">Profile Photo</label>
                             <input type="file" class="form-control" wire:change="$emit('uploadFile')" id="Image">
+                            <span class="text-danger" id="errMsg"></span>
                             @error('photo') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>

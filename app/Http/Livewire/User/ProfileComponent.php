@@ -38,11 +38,11 @@ class ProfileComponent extends Component
 
     public function updateProfile()
     {
-        $validatedProfile = $this->validate([
+        $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['confirmed'],
-            // 'photo' => ['mimes:jpg,png,jpeg,gif,svg','max:2048'],
+            // 'photo' => ['image','max:2048'],
         ]);
 
         $user = User::find($this->user_id);
@@ -64,11 +64,8 @@ class ProfileComponent extends Component
         $user->email = $this->email;
         $user->save();
 
-
         $this->resetInput();
-        session()->flash('message', 'User Updated Successfully.');
-
-        // return redirect()->route('profile.update');
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User profile updated successfully!']);
     }
 
     public function render()
