@@ -151,7 +151,10 @@
             </div>
         </div>
     </form>
-    <form class="form-find" method="POST" action="<?php echo action('\Modules\Language\Http\Controllers\LanguagesController@postFind') ?>" data-remote="true" role="form" data-confirm="Are you sure you want to scan you app folder? All found translation keys will be added to the database.">
+    <form class="form-find" method="POST" action="<?php echo action('\Modules\Language\Http\Controllers\LanguagesController@postFind') ?>"
+          data-remote="true"
+          role="form"
+          data-confirm="Are you sure you want to scan you app folder? All found translation keys will be added to the database.">
         <div class="form-group">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <button type="submit" class="btn btn-info" data-disable-with="Searching.." >Find translations in files</button>
@@ -278,7 +281,7 @@
         <p>
             Current supported locales:
         </p>
-        <form  class="form-remove-locale" method="POST" role="form" action="<?php echo action('\Modules\Language\Http\Controllers\LanguagesController@postRemoveLocale') ?>" data-confirm="Are you sure to remove this locale and all of data?">
+        <form  class="form-remove-locale" method="POST" role="form" action="<?php echo action('\Modules\Language\Http\Controllers\LanguagesController@removeLocale') ?>" data-confirm="Are you sure to remove this locale and all of data?">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <ul class="list-locales">
                 <?php foreach($locales as $locale): ?>
