@@ -17,20 +17,15 @@ $config = array_merge(config('translation-manager.route'), ['namespace' => 'Modu
 Route::group($config, function($router)
 {
     $router->get('view/{groupKey?}', 'LanguagesController@getView')->where('groupKey', '.*');
-    $router->get('/{groupKey?}', 'LanguagesController@getIndex')->where('groupKey', '.*');
+    $router->get('/{groupKey?}', 'LanguagesController@getIndex')->where('groupKey', '.*')->name('settings.language');
     $router->post('/add/{groupKey}', 'LanguagesController@postAdd')->where('groupKey', '.*');
-    $router->post('/edit/{groupKey}', 'LanguagesController@postEdit')->where('groupKey', '.*');
+    $router->post('/update', 'LanguagesController@update')->where('groupKey', '.*')->name('lang.update');
     $router->post('/groups/add', 'LanguagesController@postAddGroup');
     $router->post('/delete/{groupKey}/{translationKey}', 'LanguagesController@postDelete')->where('groupKey', '.*');
     $router->post('/import', 'LanguagesController@postImport');
     $router->post('/find', 'LanguagesController@postFind');
-    $router->post('/locales/add', 'LanguagesController@postAddLocale');
-    $router->post('/locales/remove', 'LanguagesController@postRemoveLocale');
+    $router->post('/locales/add', 'LanguagesController@postAddLocale')->name('locale.store');
+    $router->post('/locales/remove', 'LanguagesController@removeLocale')->name('locale.delete');
     $router->post('/publish/{groupKey}', 'LanguagesController@postPublish')->where('groupKey', '.*');
     $router->post('/translate-missing', 'LanguagesController@postTranslateMissing');
 });
-
-
-Route::get('test', function () {
-    return view('ls-language::admin.settings.language');
-})->name('settings.language');

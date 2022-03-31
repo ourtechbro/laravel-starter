@@ -50,7 +50,6 @@ class LanguagesController extends BaseController
             ->with('group', $group)
             ->with('numTranslations', $numTranslations)
             ->with('numChanged', $numChanged)
-            ->with('editUrl', $group ? action('\Modules\Language\Http\Controllers\LanguagesController@postEdit', [$group]) : null)
             ->with('deleteEnabled', $this->manager->getConfig('delete_enabled'));
     }
 
@@ -87,21 +86,24 @@ class LanguagesController extends BaseController
         return redirect()->back();
     }
 
-    public function postEdit($group = null)
+    public function update(Request $request)
     {
-        if(!in_array($group, $this->manager->getConfig('exclude_groups'))) {
-            $name = request()->get('name');
-            $value = request()->get('value');
+        if(!in_array($request->group, $this->manager->getConfig('exclude_groups'))) {
+            foreach ($request->name as $nameKey => $name) {
+                $value = $request->value[$nameKey];
 
-            list($locale, $key) = explode('|', $name, 2);
-            $translation = Translation::firstOrNew([
-                'locale' => $locale,
-                'group' => $group,
-                'key' => $key,
-            ]);
-            $translation->value = (string) $value ?: null;
-            $translation->status = Translation::STATUS_CHANGED;
-            $translation->save();
+                list($locale, $key) = explode('|', $name, 2);
+
+                $translation = Translation::firstOrNew([
+                    'locale' => $locale,
+                    'group' => $request->group,
+                    'key' => $key,
+                ]);
+                $translation->value = (string) $value ?: null;
+                $translation->status = Translation::STATUS_CHANGED;
+                $translation->save();
+            }
+
             return array('status' => 'ok');
         }
     }
@@ -166,11 +168,13 @@ class LanguagesController extends BaseController
         return redirect()->back();
     }
 
-    public function postRemoveLocale(Request $request)
+    public function removeLocale(Request $request)
     {
-        foreach ($request->input('remove-locale', []) as $locale => $val) {
-            $this->manager->removeLocale($locale);
-        }
+        $request->validate([
+            'locale' => 'required'
+        ]);
+
+        $this->manager->removeLocale($request->locale);
         return redirect()->back();
     }
 

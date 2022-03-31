@@ -11,7 +11,7 @@ return [
     |
     */
     'route'          => [
-        'prefix'     => 'translations',
+        'prefix'     => 'language',
         'middleware' => ['web', 'auth'],
     ],
 
@@ -20,7 +20,7 @@ return [
      *
      * @type boolean
      */
-    'delete_enabled' => true,
+    'delete_enabled' => false,
 
     /**
      * Exclude specific groups from Laravel Translation Manager.

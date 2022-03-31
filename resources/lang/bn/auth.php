@@ -1,5 +1,6 @@
 <?php
 
 return array (
-  'failed' => 'sdasdasdasd',
+  'failed' => 'adasd',
+  'password' => 'Password',
 );
