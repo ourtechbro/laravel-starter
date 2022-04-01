@@ -160,6 +160,15 @@ Route::middleware(['auth'])->group(function () {
             })->name('permissions');
         }
     );
+    Route::group(
+        ['prefix' => 'profile'],
+        function () {
+            Route::get('/update', function() {
+                return view('admin.users.profile-update');
+            })->name('profile.update');
+
+        }
+    );
 });
 
 // Social login routes
