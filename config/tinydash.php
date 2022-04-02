@@ -2,6 +2,9 @@
 
 /*
  * Group Title empty to show separate section but as root menu
+ * Items key = route name
+ * Permission = permission to access. empty for public
+ * Icon: from https://feathericons.com/
  */
 
 return [
@@ -33,12 +36,27 @@ return [
                 'roles' => [
                     'permission' => 'read roles',
                     'title' => 'Roles',
-                    'icon_class' => 'fe fe-unlock',
+                    'icon_class' => 'fe fe-user-check',
                 ],
                 'permissions' => [
                     'permission' => 'read permissions',
                     'title' => 'Permissions',
                     'icon_class' => 'fe fe-key',
+                ],
+            ]
+        ],
+        'settings' => [
+            'group_title' => 'Settings',
+            'items' => [
+                'settings.general' => [
+//                    'permission' => 'manage settings',
+                    'title' => 'General',
+                    'icon_class' => 'fe fe-settings'
+                ],
+                'settings.language' => [
+//                    'permission' => 'manage settings',
+                    'title' => 'Language',
+                    'icon_class' => 'fe fe-file-text'
                 ],
             ]
         ],

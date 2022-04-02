@@ -24,50 +24,50 @@
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     @foreach($module['items'] as $key => $item)
 
-                    @if(!isset($item['items']))
-                        @if(isset($item['permission']))
-                            @can($item['permission'])
-                             <li class="nav-item w-100">
-                                  <a class="nav-link" href="{{ route($key) }}">
-                                <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                <span class="ml-3 item-text">{{ $item['title'] }}</span>
-                                  </a>
-                            </li>
-                            @endcan
-                        @else
-                            <li class="nav-item w-100">
-                                <a class="nav-link" href="{{ route($key) }}">
+                        @if(!isset($item['items']))
+                            @if(isset($item['permission']))
+                                @can($item['permission'])
+                                 <li class="nav-item w-100">
+                                      <a class="nav-link" href="{{ route($key) }}">
                                     <i class="{{ $item['icon_class'] }} fe-16"></i>
                                     <span class="ml-3 item-text">{{ $item['title'] }}</span>
-                                </a>
-                            </li>
+                                      </a>
+                                </li>
+                                @endcan
+                            @else
+                                <li class="nav-item w-100">
+                                    <a class="nav-link" href="{{ route($key) }}">
+                                        <i class="{{ $item['icon_class'] }} fe-16"></i>
+                                        <span class="ml-3 item-text">{{ $item['title'] }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                        @else
+                         <li class="nav-item dropdown">
+                            <a href="{{ isset($item['items']) ? '#' . $key : route($key) }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                                <i class="{{ $item['icon_class'] }} fe-16"></i>
+                                <span class="ml-3 item-text">{{ $item['title'] }}</span><span class="sr-only">(current)</span>
+                            </a>
+                            @if(!isset($item['items']))
+                                @continue
+                            @endif
+                            <ul class="collapse list-unstyled pl-4 w-100" id="{{ $key }}">
+                                @foreach($item['items'] as $menuKey => $menu)
+                                    @if(isset($menu['permission']))
+                                        @can($menu['permission'])
+                                        <li class="nav-item active">
+                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
+                                        </li>
+                                        @endcan
+                                    @else
+                                        <li class="nav-item active">
+                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
                         @endif
-                    @else
-                     <li class="nav-item dropdown">
-                        <a href="{{ isset($item['items']) ? '#' . $key : route($key) }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="{{ $item['icon_class'] }} fe-16"></i>
-                            <span class="ml-3 item-text">{{ $item['title'] }}</span><span class="sr-only">(current)</span>
-                        </a>
-                        @if(!isset($item['items']))
-                            @continue
-                        @endif
-                        <ul class="collapse list-unstyled pl-4 w-100" id="{{ $key }}">
-                            @foreach($item['items'] as $menuKey => $menu)
-                                @if(isset($menu['permission']))
-                                    @can($menu['permission'])
-                                    <li class="nav-item active">
-                                        <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
-                                    </li>
-                                    @endcan
-                                @else
-                                    <li class="nav-item active">
-                                        <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </li>
-                    @endif
 
                     @endforeach
                 </ul>

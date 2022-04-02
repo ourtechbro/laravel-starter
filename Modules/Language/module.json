@@ -1,0 +1,14 @@
+{
+    "name": "Language",
+    "alias": "language",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Language\\Providers\\ManagerServiceProvider",
+        "Modules\\Language\\Providers\\LanguageServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
