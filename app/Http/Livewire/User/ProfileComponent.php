@@ -15,7 +15,7 @@ class ProfileComponent extends Component
 {
     use WithFileUploads;
 
-    public $user_id, $name, $email, $photo, $password, $password_confirmation;
+    public $name, $email, $photo, $password, $password_confirmation;
 
     protected $listeners = [
         'image' => 'showProfilePhoto'
@@ -38,10 +38,10 @@ class ProfileComponent extends Component
     public function update()
     {
         $this->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['confirmed'],
-            'photo' => 'image|max:1024', // 1MB Max
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'nullable|confirmed',
+            'photo' => 'nullable|image|max:4096'
         ]);
 
         $user = auth()->user();
@@ -86,12 +86,12 @@ class ProfileComponent extends Component
 
     public function render()
     {
-        $user = user::find(auth()->user()->id);
+        $user = auth()->user();
         $this->name = $user->name;
         $this->email = $user->email;
 
         return view('admin.livewire.profile.profile-component', [
-            'user' => $user
+            'user' => auth()->user()
         ]);
     }
 
