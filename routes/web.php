@@ -42,18 +42,25 @@ Route::middleware(['auth'])->group(function () {
         }
     );
 
+
     Route::group(
         ['prefix' => 'settings'],
         function () {
             Route::get('/general', function() {
                 return view('admin.settings.general');
             })->name('settings.general');
-
-//            Route::get('/language', function () {
-//                return view('admin.settings.language');
-//            })->name('settings.language');
         }
     );
+
+    Route::group(
+        ['prefix' => 'profile'],
+        function () {
+            Route::get('/update', function() {
+                return view('admin.users.profile-update');
+            })->name('profile.update');
+        }
+    );
+
 });
 
 // Social login routes

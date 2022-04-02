@@ -2,5 +2,5 @@
 
 return array (
   'failed' => 'adasd',
-  'password' => 'Password',
+  'password' => 'Password 2',
 );
