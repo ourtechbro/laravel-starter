@@ -4,23 +4,22 @@ namespace App\Http\Livewire\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Component;
-use Illuminate\Validation\Rules;
 use Livewire\WithFileUploads;
-use Image;
+use Intervention\Image\Facades\Image;
 
 
 class ProfileComponent extends Component
 {
     use WithFileUploads;
 
-    public $user_id;
-    public $name;
-    public $email;
-    public $photo;
-    public $password;
-    public $password_confirmation;
-    protected $listeners = ['image' => 'showProfilePhoto'];
+    public $user_id, $name, $email, $photo, $password, $password_confirmation;
+
+    protected $listeners = [
+        'image' => 'showProfilePhoto'
+    ];
 
     public function showProfilePhoto($profilePhoto)
     {
@@ -36,24 +35,19 @@ class ProfileComponent extends Component
         $this->photo = null;
     }
 
-    public function updateProfile()
+    public function update()
     {
         $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['confirmed'],
-            // 'photo' => ['image','max:2048'],
+            'photo' => 'image|max:1024', // 1MB Max
         ]);
 
-        $user = User::find($this->user_id);
+        $user = auth()->user();
 
-        if(!is_null($this->photo)){
-            $x = explode(';',$this->photo);
-            $xx = explode('/',$x[0]);
-            $img_extension = end($xx);
-            $image_name = strtolower($this->name).".".$img_extension;
-            Image::make($this->photo)->resize(150,150)->save(public_path('uploads/users/') . $image_name);
-            $user->profile_photo_path = $image_name;
+        if($this->photo){
+            $user->profile_photo_path = $this->storeImage($user->profile_photo_path);
         }
 
         if(!is_null($this->password)){
@@ -68,14 +62,37 @@ class ProfileComponent extends Component
         $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User profile updated successfully!']);
     }
 
+    private function storeImage($name = null)
+    {
+        if (!$this->photo) {
+            return null;
+        }
+
+        if (!$name) {
+            $name = Str::random() . '.jpg';
+        }
+
+        $img = Image::make($this->photo)->resize(245, 245,
+            function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->resizeCanvas(245, 245)
+            ->encode('jpg');
+
+        Storage::disk('public')->put($name, $img);
+
+        return $name;
+    }
+
     public function render()
     {
         $user = user::find(auth()->user()->id);
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->user_id = $user->id;
-        // $this->photo = $user->profile_photo_path;
-        return view('admin.livewire.profile.profile-component');
+
+        return view('admin.livewire.profile.profile-component', [
+            'user' => $user
+        ]);
     }
 
 }
