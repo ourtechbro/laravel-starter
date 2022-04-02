@@ -11,7 +11,7 @@ return [
             'items' => [
                 'dashboard' => [
                     'title' => 'Dashboard',
-                    'icon_class' => 'fe fe-home fe-16',
+                    'icon_class' => 'fe fe-home',
                     'items' => [
                         'default' => ['title' => 'Default', 'slug' => 'default'],
                         'analytics' => ['title' => 'Analytics', 'slug' => 'analytics'],
@@ -28,17 +28,17 @@ return [
                 'users' => [
                     'permission' => 'read users',
                     'title' => 'Users',
-                    'icon_class' => 'fe fe-home fe-16'
+                    'icon_class' => 'fe fe-users'
                 ],
                 'roles' => [
                     'permission' => 'read roles',
                     'title' => 'Roles',
-                    'icon_class' => 'fe fe-home fe-16',
+                    'icon_class' => 'fe fe-unlock',
                 ],
                 'permissions' => [
                     'permission' => 'read permissions',
-                    'title' => 'Manage Permissions',
-                    'icon_class' => 'fe fe-home fe-16',
+                    'title' => 'Permissions',
+                    'icon_class' => 'fe fe-key',
                 ],
             ]
         ],
@@ -47,7 +47,7 @@ return [
             'items' => [
                 'ui-elements' => [
                     'title' => 'UI elements',
-                    'icon_class' => 'fe fe-box fe-16',
+                    'icon_class' => 'fe fe-box',
                     'items' => [
                         'colors' => ['title' => 'Colors', 'slug' => 'colors', 'permission' => 'view theme'],
                         'typography' => ['title' => 'Typography', 'slug' => 'typography'],
@@ -61,11 +61,11 @@ return [
                 ],
                 'widgets' => [
                     'title' => 'Widgets',
-                    'icon_class' => 'fe fe-layers fe-16'
+                    'icon_class' => 'fe fe-layers'
                 ],
                 'forms' => [
                     'title' => 'Forms',
-                    'icon_class' => 'fe fe-credit-card fe-16',
+                    'icon_class' => 'fe fe-credit-card',
                     'items' => [
                         'basic_elements' => ['title' => 'Basic Elements', 'slug' => 'basic-elements'],
                         'advanced_elements' => ['title' => 'Advanced Elements', 'slug' => 'advanced-elements'],
@@ -77,7 +77,7 @@ return [
                 ],
                 'tables' => [
                     'title' => 'Tables',
-                    'icon_class' => 'fe fe-grid fe-16',
+                    'icon_class' => 'fe fe-grid',
                     'items' => [
                         'basic_tables' => ['title' => 'Basic Tables', 'slug' => 'basic-tables'],
                         'advanced_tables' => ['title' => 'Advanced Tables', 'slug' => 'advanced-tables'],
@@ -86,7 +86,7 @@ return [
                 ],
                 'charts' => [
                     'title' => 'Charts',
-                    'icon_class' => 'fe fe-pie-chart fe-16',
+                    'icon_class' => 'fe fe-pie-chart',
                     'items' => [
                         'inline_chart' => ['title' => 'Inline Chart', 'slug' => 'inline-chart'],
                         'chartjs' => ['title' => 'ChartJS', 'slug' => 'chartjs'],
@@ -101,11 +101,11 @@ return [
             'items' => [
                 'calender' => [
                     'title' => 'Calender',
-                    'icon_class' => 'fe fe-calendar fe-16'
+                    'icon_class' => 'fe fe-calendar'
                 ],
                 'contacts' => [
                     'title' => 'Contacts',
-                    'icon_class' => 'fe fe-book fe-16',
+                    'icon_class' => 'fe fe-book',
                     'items' => [
                         'contact-list' => ['title' => 'Contact List'],
                         'contact-grid' => ['title' => 'Contact Grid'],
@@ -114,7 +114,7 @@ return [
                 ],
                 'profile' => [
                     'title' => 'Profile',
-                    'icon_class' => 'fe fe-user fe-16',
+                    'icon_class' => 'fe fe-user',
                     'items' => [
                         'overview' => ['title' => 'Overview'],
                         'settings' => ['title' => 'Settings'],
@@ -124,7 +124,7 @@ return [
                 ],
                 'file-manager' => [
                     'title' => 'File Manager',
-                    'icon_class' => 'fe fe-folder fe-16',
+                    'icon_class' => 'fe fe-folder',
                     'items' => [
                         'files-list' => ['title' => 'Files List'],
                         'files-grid' => ['title' => 'Files Grid'],
@@ -132,7 +132,7 @@ return [
                 ],
                 'help-desk' => [
                     'title' => 'Help Desk',
-                    'icon_class' => 'fe fe-compass fe-16',
+                    'icon_class' => 'fe fe-compass',
                     'items' => [
                         'home' => ['title' => 'Home', 'slug' => 'home'],
                         'tickets' => ['title' => 'Tickets', 'slug' => 'tickets'],
@@ -147,7 +147,7 @@ return [
             'items' => [
                 'pages' => [
                     'title' => 'Pages',
-                    'icon_class' => 'fe fe-file fe-16',
+                    'icon_class' => 'fe fe-file',
                     'items' => [
                         'orders' => ['title' => 'Orders', 'slug' => 'orders'],
                         'timeline' => ['title' => 'Timeline', 'slug' => 'timeline'],
@@ -159,7 +159,7 @@ return [
                 ],
                 'authentication' => [
                     'title' => 'Authentication',
-                    'icon_class' => 'fe fe-shield fe-16',
+                    'icon_class' => 'fe fe-shield',
                     'items' => [
                         'login_1' => ['title' => 'Login 1', 'slug' => 'login-1'],
                         'login_2' => ['title' => 'Login 2', 'slug' => 'login-2'],
@@ -170,7 +170,7 @@ return [
                 ],
                 'layout' => [
                     'title' => 'Layout',
-                    'icon_class' => 'fe fe-layout fe-16',
+                    'icon_class' => 'fe fe-layout',
                     'items' => [
                         'default' => ['title' => 'Default', 'slug' => 'default'],
                         'top_navigation' => ['title' => 'Top Navigation', 'slug' => 'top-navigation'],
