@@ -1615,3 +1615,17 @@
     </div> <!-- .col-12 -->
   </div> <!-- .row -->
 @endsection
+@section('scripts')
+  <script src='{{ asset('js/jquery.dataTables.min.js') }}'></script>
+  <script src='{{ asset('js/dataTables.bootstrap4.min.js') }}'></script>
+  <script>
+    $('#dataTable-1').DataTable(
+    {
+      autoWidth: true,
+      "lengthMenu": [
+        [16, 32, 64, -1],
+        [16, 32, 64, "All"]
+      ]
+    });
+  </script>
+@endsection

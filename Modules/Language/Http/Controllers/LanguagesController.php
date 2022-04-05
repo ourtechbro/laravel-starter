@@ -75,6 +75,7 @@ class LanguagesController extends BaseController
 
     public function postAdd($group = null)
     {
+        
         $keys = explode("\n", request()->get('keys'));
 
         foreach($keys as $key){

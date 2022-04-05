@@ -7,6 +7,17 @@
     </form>
     <ul class="nav">
         <li class="nav-item">
+        <select class="form-control select2" id="simple-select2">
+            <option value="">Select Language</option>
+            <option value="AK">Alaska</option>
+            <option value="HI">Hawaii</option>
+            <option value="CA">California</option>
+            <option value="NV" disabled="disabled">Nevada (disabled)</option>
+            <option value="OR">Oregon</option>
+            <option value="WA">Washington</option>
+        </select>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
                 <i class="fe fe-sun fe-16"></i>
             </a>
@@ -16,7 +27,7 @@
                 <span class="fe fe-grid fe-16"></span>
             </a>
         </li>
-        <li class="nav-item nav-notif">
+        <li class="nav-item">
             <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
                 <span class="fe fe-bell fe-16"></span>
                 <span class="dot dot-md bg-success"></span>
