@@ -69,12 +69,6 @@
   </div> <!-- .row -->
 @endsection
 @section('scripts')
-<script src='{{ asset('js/jquery.mask.min.js') }}'></script>
-<script src="{{ asset('js/select2.min.js') }}"></script>
-<script src="{{ asset('js/jquery.steps.min.js') }}"></script>
-<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('js/jquery.timepicker.js') }}"></script>
-<script src="{{ asset('js/dropzone.min.js') }}"></script>
 <script src="{{ asset('js/uppy.min.js') }}"></script>
 <script src="{{ asset('js/quill.min.js') }}"></script>
 <script>
