@@ -16,6 +16,10 @@ class LogActivityListener
      */
     public function handle($event)
     {
+        if (!setting('activity_log_enable')) {
+            return;
+        }
+
         $agent = new Agent();
 
         activity()

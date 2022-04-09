@@ -3,25 +3,31 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Akaunting\Setting\Facade as Setting;
 
 class SettingsComponent extends Component
 {
-    public $enableActivity = true;
+    public $platforms = [
+        ['id' => 'facebook', 'title' => 'Facebook'],
+        ['id' => 'google', 'title' => 'Google'],
+        ['id' => 'github', 'title' => 'GitHub'],
+        ['id' => 'twitter', 'title' => 'Twitter'],
+    ];
+
+    public $settings = [];
 
     public function render()
     {
-        return view('admin.livewire.settings');
+        return view('admin.livewire.settings.settings');
     }
 
     public function mount()
     {
-        $this->enableActivity = setting('activity_log_enable');
+        $this->settings = setting()->all();
     }
 
-    public function updatedEnableActivity($value)
+    public function updateSettings()
     {
-        setting(['activity_log_enable' => $value])->save();
+        setting($this->settings)->save();
 
         $this->successMessage();
     }

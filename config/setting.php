@@ -22,7 +22,7 @@ return [
     |
     */
     'cache' => [
-        'enabled'       => false,
+        'enabled'       => true,
         'key'           => 'setting',
         'ttl'           => 3600,
         'auto_clear'    => true,

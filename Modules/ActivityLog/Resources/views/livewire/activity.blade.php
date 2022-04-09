@@ -1,6 +1,12 @@
 <div class="card shadow">
     <div class="card-body">
-        <h5 class="mb-0">Recent Activity</h5>
+        <h5 class="mb-0">{{ __('Recent Activity') }}
+        @if(setting('activity_log_enable'))
+            <span class="badge badge-success">{{ __('Active') }}</span>
+        @else
+            <span class="badge badge-secondary">{{ __('Disabled') }}</span>
+        @endif
+        </h5>
         <p>Last activities with users.</p>
         <table class="table border bg-white table-sm">
             <thead>
