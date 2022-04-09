@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('title')
-    Settings
+    {{ __('Settings') }}
 @endsection
 
 @section('content')
     <div class="row justify-content-center">
-        @livewire('settings-component')
+        <div class="col-12 col-lg-10 col-xl-8">
+            <h2 class="h3 mb-4 page-title">{{ __('Settings') }}</h2>
+            @livewire('settings-component')
+        </div>
     </div> <!-- .row -->
 @endsection

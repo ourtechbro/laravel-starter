@@ -2,8 +2,9 @@
 
 namespace Modules\ActivityLog\Listeners;
 
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+
+use Illuminate\Support\Facades\Request;
+use Jenssegers\Agent\Agent;
 
 class LogActivityListener
 {
@@ -15,9 +16,17 @@ class LogActivityListener
      */
     public function handle($event)
     {
+        $agent = new Agent();
+
         activity()
             ->causedBy($event->data['userModel'])
             ->event($event->data['event'])
+            ->withProperties([
+                'ip' => Request::ip(),
+                'browser' => $agent->browser(),
+                'os' => $agent->platform(),
+                'device' => $agent->device(),
+            ])
             ->log($event->data['log']);
     }
 }

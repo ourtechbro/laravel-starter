@@ -2,8 +2,10 @@
 
 namespace Modules\ActivityLog\Providers;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Spatie\Activitylog\Models\Activity;
 
 class ActivityLogServiceProvider extends ServiceProvider
 {

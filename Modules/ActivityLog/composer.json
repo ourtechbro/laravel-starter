@@ -21,6 +21,7 @@
         }
     },
     "require": {
-        "spatie/laravel-activitylog": "^4.5"
+        "spatie/laravel-activitylog": "^4.5",
+        "jenssegers/agent": "^2.6"
     }
 }
