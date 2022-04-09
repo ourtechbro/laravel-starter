@@ -1,0 +1,14 @@
+{
+    "name": "ActivityLog",
+    "alias": "activitylog",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ActivityLog\\Providers\\ActivityLogServiceProvider",
+        "Modules\\ActivityLog\\Providers\\EventServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

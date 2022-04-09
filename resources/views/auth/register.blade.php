@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="wrapper vh-100">
-        <div class="row align-items-center h-100">
+        <div class="align-items-center h-100">
             <form class="col-lg-6 col-md-8 col-10 mx-auto" method="POST" action="{{ route('register') }}">
                 @if (session('status'))
                     <div class="alert alert-success alert-dismissible">

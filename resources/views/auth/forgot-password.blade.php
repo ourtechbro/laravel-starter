@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="wrapper vh-100">
-        <div class="row align-items-center h-100">
+        <div class="align-items-center h-100">
             <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" method="POST" action="{{ route('password.email') }}">
                 @if (session('status'))
                     <div class="alert alert-success alert-dismissible">

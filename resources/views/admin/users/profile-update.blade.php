@@ -35,8 +35,6 @@
                 }else{
                     document.getElementById('errMsg').innerText = "Please Enter a Valid Image"
                 }
-
-
             })
         </script>
 @endsection

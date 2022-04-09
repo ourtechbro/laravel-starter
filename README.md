@@ -34,7 +34,10 @@ Licence on theme source: https://themewagon.com/license/
 - Language Switcher
 - Localization enable across the project
 - Advance user access control ([ACL](https://bit.ly/3iG0F8J))
+- [Modular system](https://docs.laravelmodules.com/v9/introduction) 
+- [Activity Log](https://spatie.be/docs/laravel-activitylog/v4/introduction)
 - Built with [Laravel Livewire](https://laravel-livewire.com/)
+- [Modular system livewire support](https://github.com/mhmiton/laravel-modules-livewire)
 - Each features tested with [PHPUnit](https://laravel.com/docs/9.x/testing)
 - RSS Feed
 
