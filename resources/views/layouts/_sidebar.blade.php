@@ -23,11 +23,13 @@
             @endif
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     @foreach($module['items'] as $key => $item)
-
+                        @if(!Route::has($key))
+                            @continue
+                        @endif
                         @if(!isset($item['items']))
                             @if(isset($item['permission']))
                                 @can($item['permission'])
-                                 <li class="nav-item w-100">
+                                 <li class="nav-item w-100 @if(url()->current() == route($key)) active @endif">
                                       <a class="nav-link" href="{{ route($key) }}">
                                     <i class="{{ $item['icon_class'] }} fe-16"></i>
                                     <span class="ml-3 item-text">{{ $item['title'] }}</span>
@@ -35,7 +37,7 @@
                                 </li>
                                 @endcan
                             @else
-                                <li class="nav-item w-100">
+                                <li class="nav-item w-100 @if(url()->current() == route($key)) active @endif">
                                     <a class="nav-link" href="{{ route($key) }}">
                                         <i class="{{ $item['icon_class'] }} fe-16"></i>
                                         <span class="ml-3 item-text">{{ $item['title'] }}</span>
@@ -55,12 +57,12 @@
                                 @foreach($item['items'] as $menuKey => $menu)
                                     @if(isset($menu['permission']))
                                         @can($menu['permission'])
-                                        <li class="nav-item active">
+                                        <li class="nav-item @if(request()->is(route($key, ['type' => $menuKey]))) active @endif">
                                             <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
                                         </li>
                                         @endcan
                                     @else
-                                        <li class="nav-item active">
+                                        <li class="nav-item @if(request()->is(route($key, ['type' => $menuKey]))) active @endif">
                                             <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
                                         </li>
                                     @endif
