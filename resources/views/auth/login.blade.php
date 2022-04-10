@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="wrapper vh-100">
         <div class="align-items-center h-100">
-            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center"  method="POST" action="{{ route('login') }}">
+            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center"  method="POST" action="{{ route('login') }}" style="top: 100px">
                 @if (session('status'))
                     <div class="alert alert-success alert-dismissible">
                         {{ session('status') }}
