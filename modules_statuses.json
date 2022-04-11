@@ -1,4 +1,5 @@
 {
     "Language": true,
-    "ActivityLog": true
+    "ActivityLog": true,
+    "Chat": true
 }
