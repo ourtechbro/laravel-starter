@@ -1,0 +1,9 @@
+vendor
+/node_modules
+/.idea
+/.vscode
+*.zip
+.DS_Store
+.DS_Store?
+._*
+

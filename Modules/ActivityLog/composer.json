@@ -1,0 +1,27 @@
+{
+    "name": "nwidart/activitylog",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ActivityLog\\": ""
+        }
+    },
+    "require": {
+        "spatie/laravel-activitylog": "^4.5",
+        "jenssegers/agent": "^2.6"
+    }
+}

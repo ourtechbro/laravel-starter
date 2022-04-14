@@ -46,9 +46,9 @@ Route::middleware(['auth'])->group(function () {
     Route::group(
         ['prefix' => 'settings'],
         function () {
-            Route::get('/general', function() {
-                return view('admin.settings.general');
-            })->name('settings.general');
+            Route::get('/', function() {
+                return view('admin.settings.settings');
+            })->name('settings.settings');
         }
     );
 

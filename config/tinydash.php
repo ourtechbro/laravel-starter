@@ -48,9 +48,9 @@ return [
         'settings' => [
             'group_title' => 'Settings',
             'items' => [
-                'settings.general' => [
+                'settings.settings' => [
 //                    'permission' => 'manage settings',
-                    'title' => 'General',
+                    'title' => 'Settings',
                     'icon_class' => 'fe fe-settings'
                 ],
                 'settings.language' => [
