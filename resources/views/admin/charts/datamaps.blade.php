@@ -48,14 +48,5 @@
     <script src="{{ asset('js/datamaps.all.min.js') }}"></script>
     <script src="{{ asset('js/datamaps-zoomto.js') }}"></script>
     <script src="{{ asset('js/datamaps.custom.js') }}"></script>
-
-    <script>
-        /* defind global options */
-        Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
-        Chart.defaults.global.defaultFontColor = colors.mutedColor;
-    </script>
-    <script src="{{ asset('js/gauge.min.js') }}"></script>
-    <script src="{{ asset('js/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('js/apexcharts.custom.js') }}"></script>
 @endsection
 

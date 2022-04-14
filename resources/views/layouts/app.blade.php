@@ -35,7 +35,6 @@
 <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
 <script src="{{ asset('js/jquery.steps.min.js') }}"></script>
 <script src="{{ asset('js/config.js') }}"></script>
-<script src="{{ asset('js/Chart.min.js') }}"></script>
 <script src="{{ asset('js/apps.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
