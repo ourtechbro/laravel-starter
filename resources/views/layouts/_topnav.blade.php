@@ -7,15 +7,13 @@
     </form>
     <ul class="nav">
         <li class="nav-item">
-        <select class="form-control select2" id="simple-select2">
-            <option value="">Select Language</option>
-            <option value="AK">Alaska</option>
-            <option value="HI">Hawaii</option>
-            <option value="CA">California</option>
-            <option value="NV" disabled="disabled">Nevada (disabled)</option>
-            <option value="OR">Oregon</option>
-            <option value="WA">Washington</option>
-        </select>
+            <form action="{{ route('settings.language') }}" method="get">
+                <select class="form-control select2" id="simple-select2" name="lang" id="myselect" onchange="this.form.submit()">
+                    <option value="">Select Language</option>
+                    <option value="bn">BN</option>
+                    <option value="en">EN</option>
+                </select>
+            </form>
         </li>
         <li class="nav-item">
             <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
