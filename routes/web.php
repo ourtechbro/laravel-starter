@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SocialController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 
@@ -55,14 +56,14 @@ Route::middleware(['auth'])->group(function () {
                 return view('admin.settings.settings');
             })->name('settings.settings');
 
-            Route::get('settings/language/',function($lang){
-                if($lang == 'bn')
-                {
-                    // return $lang;
-                    App::setlocale($lang);
-                }
+            Route::get('settings/language/',function(Request $request){
+                // return $request->all();
+                App::setLocale($request->lang);
+                session()->put('locale', $request->lang);
+          
+                return redirect()->back();
 
-            })->name('settings.language');
+            })->name('changeLang');
 
         }
     );

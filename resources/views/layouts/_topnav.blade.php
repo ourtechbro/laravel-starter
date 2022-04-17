@@ -6,14 +6,16 @@
         <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
     </form>
     <ul class="nav">
+        <li>
+            {{ session()->get('locale') }}
+            <h1>{{ __('pagination.next') }}</h1>
+
+        </li>
         <li class="nav-item">
-            <form action="{{ route('settings.language') }}" method="get">
-                <select class="form-control select2" id="simple-select2" name="lang" id="myselect" onchange="this.form.submit()">
-                    <option value="">Select Language</option>
-                    <option value="bn">BN</option>
-                    <option value="en">EN</option>
-                </select>
-            </form>
+            <select class="form-control changeLang" id="changeLang">
+                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+                <option value="bn" {{ session()->get('locale') == 'bn' ? 'selected' : '' }}>BN</option>
+            </select>
         </li>
         <li class="nav-item">
             <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
@@ -49,3 +51,16 @@
         </li>
     </ul>
 </nav>
+<script type="text/javascript">
+  
+    var url = "{{ route('changeLang') }}";
+  
+    // $(".changeLang").change(function(){
+    //     window.location.href = url + "?lang="+ $(this).val();
+    // });
+    document.getElementById('changeLang').addEventListener('change',function(e){
+        //   console.log(e);
+          window.location.href = url + "?lang="+ $(this).val();
+    })
+  
+</script>
