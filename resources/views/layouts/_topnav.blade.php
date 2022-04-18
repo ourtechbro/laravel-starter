@@ -6,15 +6,13 @@
         <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
     </form>
     <ul class="nav">
-        <li>
-            {{ session()->get('locale') }}
-            <h1>{{ __('pagination.next') }}</h1>
-
-        </li>
         <li class="nav-item">
-            <select class="form-control changeLang" id="changeLang">
-                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
-                <option value="bn" {{ session()->get('locale') == 'bn' ? 'selected' : '' }}>BN</option>
+            <select class="nav-link my-2 form-control" id="changeLang">
+                @foreach(get_locales() as $available_locale)
+                <option value="{{ $available_locale }}" {{ session()->get('locale') == $available_locale ? 'selected' : '' }}>
+                    {{ strtoupper($available_locale) }}
+                </option>
+                @endforeach
             </select>
         </li>
         <li class="nav-item">
@@ -52,15 +50,9 @@
     </ul>
 </nav>
 <script type="text/javascript">
-  
-    var url = "{{ route('changeLang') }}";
-  
-    // $(".changeLang").change(function(){
-    //     window.location.href = url + "?lang="+ $(this).val();
-    // });
+    let url = "{{ route('changeLang') }}";
+
     document.getElementById('changeLang').addEventListener('change',function(e){
-        //   console.log(e);
           window.location.href = url + "?lang="+ $(this).val();
     })
-  
 </script>
