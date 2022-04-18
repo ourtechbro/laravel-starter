@@ -46,7 +46,7 @@
                    </div>
 
                      {{-- ---------------- [ Search Tab ] ---------------- --}}
-                   <div class="messenger-tab search-tab app-scroll"app-scroll" data-view="search">
+                   <div class="messenger-tab search-tab app-scroll" data-view="search">
                         {{-- items --}}
                         <p class="messenger-title">Search</p>
                         <div class="search-records">
