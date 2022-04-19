@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SocialController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +21,8 @@ use App\Http\Controllers\SocialController;
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
+
+
 
 // Auth routes
 require __DIR__.'/auth.php';
@@ -49,6 +55,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', function() {
                 return view('admin.settings.settings');
             })->name('settings.settings');
+
+            Route::get('settings/language/',function(Request $request){
+                // return $request->all();
+                App::setLocale($request->lang);
+                session()->put('locale', $request->lang);
+          
+                return redirect()->back();
+
+            })->name('changeLang');
+
         }
     );
 
