@@ -2,7 +2,7 @@
     @include('admin.livewire.users.update')
     @include('admin.livewire.users.create')
 
-    <h2 class="page-title">User List</h2>
+    <h2 class="page-title">{{ __('User List') }}</h2>
     <div class="row">
 
         <!-- Bordered table -->
@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group row">
-                                <input type="text" placeholder="Type to search" class="form-control" wire:model.debounce.500ms="query">
+                                <input type="text" placeholder="{{ __('Type to search') }}" class="form-control" wire:model.debounce.500ms="query">
                             </div>
                         </div>
                         <div class="col-md-4 text-right">
@@ -39,12 +39,12 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Roles</th>
-                            <th>Created At</th>
-                            <th>Action</th>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('Roles') }}</th>
+                            <th>{{ __('Created At') }}</th>
+                            <th>{{ __('Action') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,11 +61,11 @@
                                 <td>{{$row->created_at}}</td>
                                 <td>
                                     <button wire:click="edit({{$row->id}})" data-toggle="modal"
-                                            data-target="#updateModal" class="btn btn-sm btn-outline-danger py-0">Edit
+                                            data-target="#updateModal" class="btn btn-sm btn-outline-danger py-0">{{ __('Edit') }}
                                     </button>
                                     |
                                     <button wire:click="destroy({{$row->id}})"
-                                            class="btn btn-sm btn-outline-danger py-0">Delete
+                                            class="btn btn-sm btn-outline-danger py-0">{{ __('Delete') }}
                                     </button>
                                 </td>
                             </tr>

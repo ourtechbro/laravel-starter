@@ -9,14 +9,14 @@
     </ul>
     <div class="tab-content" id="settingsTabContent" wire:ignore.self>
         <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab" wire:ignore.self>
-            <h5 class="mb-0 mt-5">Security Settings</h5>
-            <p>These settings are helps you keep your account secure.</p>
+            <h5 class="mb-0 mt-5">{{ __('Security Settings') }}</h5>
+            <p>{{ __('These settings are helps you keep your account secure.') }}</p>
             <div class="list-group mb-5 shadow">
-                @if(\Module::has('ActivityLog'))
+                @if(module_enabled('ActivityLog'))
                     @include('activitylog::activity-settings-switch')
                 @endif
             </div> <!-- .list-group -->
-            @if(\Module::has('ActivityLog'))
+            @if(module_enabled('ActivityLog'))
                 @livewire('activitylog::activity')
             @endif
         </div>
@@ -27,7 +27,7 @@
                     <p>{{ __('Use switch to disable logins') }}</p>
                 </div>
                 <div class="col" style="text-align: right">
-                    <button class="btn btn-primary btn-sm" wire:click.prevent="updateSettings">Save</button>
+                    <button class="btn btn-primary btn-sm" wire:click.prevent="updateSettings">{{ __('Save') }}</button>
                 </div>
             </div>
 

@@ -15,13 +15,7 @@
               </svg>
             </a>
         </div>
-        @php
-        $menus = config('tinydash.menu');
-        if (\Nwidart\Modules\Facades\Module::has('Tinydash')) {
-            $menus = array_merge($menus, config('tinydash.theme_menu'));
-        }
-        @endphp
-        @foreach($menus as $module)
+        @foreach(get_menus() as $module)
             @php
                 $moduleAlias = isset($module['alias']) ? $module['alias'] . '::sidebar.' : 'sidebar.';
             @endphp

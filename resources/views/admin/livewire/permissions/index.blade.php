@@ -1,14 +1,14 @@
 <div class="col-12">
-    <h2 class="page-title">Manage permissions</h2>
+    <h2 class="page-title">{{ __('Manage permissions') }}</h2>
     <div class="row">
         <div class="col-md-12 my-4">
             <div class="card shadow" wire:ignore>
                 <div class="card-body">
-                    <p class="mb-2"><strong>Select Role</strong></p>
+                    <p class="mb-2"><strong>{{ __('Select Role') }}</strong></p>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <select class="form-control select2" id="select2">
-                                <option value="" selected disabled>Select role</option>
+                                <option value="" selected disabled>{{ __('Select Role') }}</option>
                                 @foreach($roles as $role)
                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                                 @endforeach
@@ -47,7 +47,7 @@
             @if(auth()->user()->can('update permissions') && $currentRoleId)
             <div class="card shadow">
                 <div class="card-body">
-                    <button class="btn btn-primary" type="submit" wire:click.prevent="update">Update</button>
+                    <button class="btn btn-primary" type="submit" wire:click.prevent="update">{{ __('Update') }}</button>
                 </div>
             </div>
             @endif
@@ -59,7 +59,7 @@
     $(document).ready(function() {
         $('.select2').select2({
             theme: 'bootstrap4',
-            placeholder: 'Select a role',
+            placeholder: "{{ __('Select a role') }}",
             allowClear: true
         });
 
