@@ -1,6 +1,9 @@
 <?php
 
 use App\Events\ActivityLoggerEvent;
+use Illuminate\Support\Facades\Cache;
+use Nwidart\Modules\Facades\Module;
+use Modules\Language\Entities\Translation;
 
 //https://spatie.be/docs/laravel-activitylog/v4/basic-usage/logging-activity
 if (! function_exists('activity_log')) {
@@ -15,12 +18,13 @@ if (! function_exists('activity_log')) {
 
 if (! function_exists('get_locales')) {
     function get_locales() {
-        return \Illuminate\Support\Facades\Cache::remember('locales.cache', 3600, function () {
-            if(\Module::has('ActivityLog')) {
-                return \Modules\Language\Entities\Translation::groupBy('locale')->pluck('locale')->toArray();
-            } else {
-                return config('app.locales');
+        Cache::forget('locales.cache');
+        return Cache::remember('locales.cache', 1, function () {
+            $locales = config('app.locales');
+            if(Module::has('ActivityLog')) {
+                return array_unique(array_merge(Translation::groupBy('locale')->pluck('locale')->toArray(), $locales));
             }
+            return $locales;
         });
     }
 }

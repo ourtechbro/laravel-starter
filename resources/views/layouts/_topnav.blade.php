@@ -8,11 +8,20 @@
     <ul class="nav">
         <li class="nav-item">
             <select class="nav-link my-2 form-control" id="changeLang">
-                @foreach(get_locales() as $available_locale)
-                <option value="{{ $available_locale }}" {{ session()->get('locale') == $available_locale ? 'selected' : '' }}>
-                    {{ strtoupper($available_locale) }}
-                </option>
-                @endforeach
+                @php
+                $locales = get_locales();
+                @endphp
+                @if($locales)
+                    @foreach($locales as $available_locale)
+                    <option value="{{ $available_locale }}" {{ session()->get('locale') == $available_locale ? 'selected' : '' }}>
+                        {{ strtoupper($available_locale) }}
+                    </option>
+                    @endforeach
+                @else
+                    <option value="{{ app()->getLocale() }}" selected>
+                        {{ strtoupper(app()->getLocale()) }}
+                    </option>
+                @endif
             </select>
         </li>
         <li class="nav-item">

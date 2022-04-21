@@ -316,17 +316,17 @@
                           <ul class="avatars-list mb-2">
                             <li>
                               <a href="#!" class="avatar avatar-sm">
-                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-1.jpg') }}">
                               </a>
                             </li>
                             <li>
                               <a href="#!" class="avatar avatar-sm">
-                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                               </a>
                             </li>
                             <li>
                               <a href="#!" class="avatar avatar-sm">
-                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-3.jpg') }}">
                               </a>
                             </li>
                           </ul>

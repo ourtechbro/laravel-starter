@@ -44,14 +44,10 @@ Route::middleware(['auth'])->group(function () {
         }
     );
 
-    Route::group(
-        ['prefix' => 'charts'],
-        function () {
-            Route::get('/{type}', function ($type) {
-                return view('tinydash::admin.charts.' . str_replace('-','_',$type));
-            })->name('charts')->where('type','inline_chart|chartjs|apex_charts|datamaps');
-        }
-    );
+
+        Route::get('/charts/{type}', function ($type) {
+            return view('tinydash::admin.charts.' . str_replace('-','_',$type));
+        })->name('charts')->where('type','inline_chart|chartjs|apex_charts|datamaps');
 
     Route::group(
         ['prefix' => 'apps'],
@@ -65,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
                 function () {
                     Route::get('/{type}', function ($type) {
                         return view('tinydash::admin.contacts.' . str_replace('-','_',$type));
-                    })->name('contacts');
+                    })->name('contacts')->where('type', 'contact-list|contact-grid|new-contact');
                 }
             );
 
@@ -74,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
                 function () {
                     Route::get('/{type}', function ($type) {
                         return view('tinydash::admin.profile.' . str_replace('-','_',$type));
-                    })->name('profile');
+                    })->name('profile')->where('type', 'overview|settings|security|notifications');
                 }
             );
 
@@ -83,7 +79,7 @@ Route::middleware(['auth'])->group(function () {
                 function () {
                     Route::get('/{type}', function ($type) {
                         return view('tinydash::admin.file-manager.' .str_replace('-','_',$type));
-                    })->name('file-manager');
+                    })->name('file-manager')->where('type', 'files-list|files-grid');
                 }
             );
 
@@ -92,7 +88,7 @@ Route::middleware(['auth'])->group(function () {
                 function () {
                     Route::get('/{type}', function ($type) {
                         return view('tinydash::admin.help_desk.' . str_replace('-','_',$type));
-                    })->name('help-desk');
+                    })->name('help-desk')->where('type', 'home|tickets|ticket_detail|faq');
                 }
             );
         }
@@ -103,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
         function () {
             Route::get('/{type}', function ($type) {
                 return view('tinydash::admin.pages.' . str_replace('-','_',$type));
-            })->name('pages');
+            })->name('pages')->where('type','orders|timeline|invoice|page_404|page_500|blank');
         }
     );
 
@@ -112,7 +108,7 @@ Route::middleware(['auth'])->group(function () {
         function () {
             Route::get('/{type}', function ($type) {
                 return view('tinydash::admin.authentication.' . str_replace('-','_',$type));
-            })->name('authentication');
+            })->name('authentication')->where('type', 'auth_login_1|auth_login_2|auth_register|auth_reset_password|auth_confirm_password');
         }
     );
 
@@ -121,7 +117,7 @@ Route::middleware(['auth'])->group(function () {
         function () {
             Route::get('/{type}', function ($type) {
                 return view('tinydash::admin.layout.' . str_replace('-','_',$type));
-            })->name('layout');
+            })->name('layout')->where('type', 'default|top_navigation|boxed');
         }
     );
 });

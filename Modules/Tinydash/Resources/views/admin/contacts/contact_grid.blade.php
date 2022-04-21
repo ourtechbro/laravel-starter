@@ -22,7 +22,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-4.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -59,7 +59,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-1.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -96,7 +96,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-5.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-5.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -133,7 +133,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -170,7 +170,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-4.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -207,7 +207,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-1.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -244,7 +244,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-5.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-5.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">
@@ -281,7 +281,7 @@
             <div class="card-body text-center">
               <div class="avatar avatar-lg mt-4">
                 <a href="">
-                  <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                  <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </a>
               </div>
               <div class="card-text my-2">

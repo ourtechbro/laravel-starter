@@ -527,16 +527,16 @@
             </ul>
             <div class="tab-content" id="file-tabs">
               <div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="tab-detail">
-                <img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded">
+                <img src="{{ asset('assets/products/p4.jpg') }}" alt="..." class="img-fluid rounded">
                 <ul class="avatars-list my-4 mx-0">
                   <li>
                     <a href="#!" class="avatar avatar-sm">
-                      <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-2.jpg">
+                      <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-2.jpg') }}">
                     </a>
                   </li>
                   <li>
                     <a href="#!" class="avatar avatar-sm">
-                      <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                      <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                     </a>
                   </li>
                 </ul>
@@ -569,17 +569,17 @@
                       <ul class="avatars-list mb-2">
                         <li>
                           <a href="#!" class="avatar avatar-sm">
-                            <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                            <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-1.jpg') }}">
                           </a>
                         </li>
                         <li>
                           <a href="#!" class="avatar avatar-sm">
-                            <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                            <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                           </a>
                         </li>
                         <li>
                           <a href="#!" class="avatar avatar-sm">
-                            <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                            <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-3.jpg') }}">
                           </a>
                         </li>
                       </ul>

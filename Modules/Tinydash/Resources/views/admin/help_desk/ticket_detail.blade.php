@@ -84,7 +84,7 @@
               <div class="row align-items-center mb-4">
                 <div class="col-auto">
                   <div class="avatar avatar-sm mb-3 mx-4">
-                    <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                    <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                   </div>
                 </div>
                 <div class="col">
@@ -93,7 +93,7 @@
                   <div class="card mb-3 bg-light w-50">
                     <div class="row no-gutters align-items-center">
                       <div class="col-md-2 text-center">
-                        <img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded m-1">
+                        <img src="{{ asset('assets/products/p1.jpg') }}" alt="..." class="img-fluid rounded m-1">
                       </div>
                       <div class="col-md-10">
                         <div class="card-body py-0">
@@ -114,7 +114,7 @@
               <div class="row align-items-center mb-4">
                 <div class="col-auto">
                   <div class="avatar avatar-sm mb-3 mx-4">
-                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                    <img src="{{ asset('assets/avatars/face-4.jpg') }}" alt="..." class="avatar-img rounded-circle">
                   </div>
                 </div>
                 <div class="col">
@@ -167,5 +167,5 @@
         </div> <!-- .col-md -->
       </div> <!-- .col-md -->
     </div>
-  </div> <!-- .col-12 -->  
+  </div> <!-- .col-12 -->
 @endsection

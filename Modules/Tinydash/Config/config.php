@@ -148,11 +148,11 @@ return [
                     'title' => 'Authentication',
                     'icon_class' => 'fe fe-shield',
                     'items' => [
-                        'login_1' => ['title' => 'Login 1', 'slug' => 'login-1'],
-                        'login_2' => ['title' => 'Login 2', 'slug' => 'login-2'],
-                        'register' => ['title' => 'Register', 'slug' => 'register'],
-                        'reset_password' => ['title' => 'Reset Password', 'slug' => 'reset-password'],
-                        'confirm_password' => ['title' => 'Confirm Password', 'slug' => 'confirm-password']
+                        'auth_login_1' => ['title' => 'Login 1', 'slug' => 'auth-login-1'],
+                        'auth_login_2' => ['title' => 'Login 2', 'slug' => 'auth-login-2'],
+                        'auth_register' => ['title' => 'Register', 'slug' => 'auth-register'],
+                        'auth_reset_password' => ['title' => 'Reset Password', 'slug' => 'auth-reset-password'],
+                        'auth_confirm_password' => ['title' => 'Confirm Password', 'slug' => 'auth-confirm-password']
                     ]
                 ],
                 'layout' => [

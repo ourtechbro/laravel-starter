@@ -739,7 +739,7 @@
                                     <div class="row">
                                         <div class="col-auto">
                                             <div class="avatar avatar-sm mt-2">
-                                                <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <img src="{{ asset('assets/avatars/face-1.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -753,7 +753,7 @@
                                     <div class="row">
                                         <div class="col-auto">
                                             <div class="avatar avatar-sm mt-2">
-                                                <img src="./assets/avatars/face-2.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <img src="{{ asset('assets/avatars/face-2.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -767,7 +767,7 @@
                                     <div class="row">
                                         <div class="col-auto">
                                             <div class="avatar avatar-sm mt-2">
-                                                <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -793,7 +793,7 @@
                                 <div class="list-group-item">
                                     <div class="row align-items-center">
                                         <div class="col-3 col-md-2">
-                                            <img src="./assets/products/p1.jpg" alt="..." class="thumbnail-sm">
+                                            <img src="{{ asset('assets/products/p1.jpg') }}" alt="..." class="thumbnail-sm">
                                         </div>
                                         <div class="col">
                                             <strong>Fusion Backpack</strong>
@@ -810,7 +810,7 @@
                                 <div class="list-group-item">
                                     <div class="row align-items-center">
                                         <div class="col-3 col-md-2">
-                                            <img src="./assets/products/p2.jpg" alt="..." class="thumbnail-sm">
+                                            <img src="{{ asset('assets/products/p2.jpg') }}" alt="..." class="thumbnail-sm">
                                         </div>
                                         <div class="col">
                                             <strong>Luma hoodies</strong>
@@ -827,7 +827,7 @@
                                 <div class="list-group-item">
                                     <div class="row align-items-center">
                                         <div class="col-3 col-md-2">
-                                            <img src="./assets/products/p3.jpg" alt="..." class="thumbnail-sm">
+                                            <img src="{{ asset('assets/products/p3.jpg') }}" alt="..." class="thumbnail-sm">
                                         </div>
                                         <div class="col">
                                             <strong>Luma shorts</strong>
@@ -844,7 +844,7 @@
                                 <div class="list-group-item">
                                     <div class="row align-items-center">
                                         <div class="col-3 col-md-2">
-                                            <img src="./assets/products/p4.jpg" alt="..." class="thumbnail-sm">
+                                            <img src="{{ asset('assets/products/p4.jpg') }}" alt="..." class="thumbnail-sm">
                                         </div>
                                         <div class="col">
                                             <strong>Brown Trousers</strong>
@@ -952,17 +952,17 @@
                                     <ul class="avatars-list mb-2">
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-1.jpg') }}">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-3.jpg') }}">
                                             </a>
                                         </li>
                                     </ul>
@@ -1205,7 +1205,7 @@
                             <div class="row align-items-center">
                                 <div class="col-4 col-md-2 text-center">
                                     <a href="profile-posts.html" class="avatar avatar-md">
-                                        <img src="./assets/avatars/face-2.jpg" alt="..." class="avatar-img rounded-circle">
+                                        <img src="{{ asset('assets/avatars/face-2.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                     </a>
                                 </div>
                                 <div class="col">
@@ -1221,7 +1221,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-body text-center">
                             <a href="#!" class="avatar avatar-lg">
-                                <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                <img src="{{ asset('assets/avatars/face-4.jpg') }}" alt="..." class="avatar-img rounded-circle">
                             </a>
                             <div class="card-text my-2">
                                 <strong class="card-title my-0">Bass Wendy </strong>
@@ -1250,7 +1250,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-auto">
                                             <a href="profile-posts.html" class="avatar avatar-sm">
-                                                <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                             </a>
                                         </div>
                                         <div class="col">
@@ -1266,7 +1266,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-auto">
                                             <a href="profile-posts.html" class="avatar avatar-sm">
-                                                <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <img src="{{ asset('assets/avatars/face-1.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                             </a>
                                         </div>
                                         <div class="col">
@@ -1282,7 +1282,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-auto">
                                             <a href="profile-posts.html" class="avatar avatar-sm">
-                                                <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <img src="{{ asset('assets/avatars/face-4.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                             </a>
                                         </div>
                                         <div class="col">
@@ -1302,7 +1302,7 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <a href="profile-posts.html" class="avatar avatar-md">
-                                        <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                                        <img src="{{ asset('assets/avatars/face-1.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                     </a>
                                 </div>
                                 <div class="col ml-n2">
@@ -1340,7 +1340,7 @@
                             <div class="row align-items-center">
                                 <div class="col-md-3 text-center mb-5">
                                     <a href="#!" class="avatar avatar-xl">
-                                        <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                                        <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                     </a>
                                 </div>
                                 <div class="col">
@@ -1396,12 +1396,12 @@
                                     <ul class="avatars-list m-0">
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-2.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-2.jpg') }}">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                                             </a>
                                         </li>
                                     </ul>
@@ -1427,17 +1427,17 @@
                                     <ul class="avatars-list m-0">
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-1.jpg') }}">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-3.jpg') }}">
                                             </a>
                                         </li>
                                     </ul>
@@ -1463,12 +1463,12 @@
                                     <ul class="avatars-list m-0">
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-3.jpg') }}">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#!" class="avatar avatar-sm">
-                                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-2.jpg">
+                                                <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-2.jpg') }}">
                                             </a>
                                         </li>
                                     </ul>

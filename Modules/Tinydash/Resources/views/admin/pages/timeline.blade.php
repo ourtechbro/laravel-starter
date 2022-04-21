@@ -24,10 +24,10 @@
           <div class="pl-5">
             <div class="mb-3"><strong>@Hester Nissim</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
             <div class="row mb-3">
-              <div class="col-1"><img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded"></div>
-              <div class="col-1"><img src="./assets/products/p2.jpg" alt="..." class="img-fluid rounded"></div>
-              <div class="col-1"><img src="./assets/products/p3.jpg" alt="..." class="img-fluid rounded"></div>
-              <div class="col-1"><img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p1.jpg') }}" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p2.jpg') }}" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p3.jpg') }}" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p4.jpg') }}" alt="..." class="img-fluid rounded"></div>
             </div>
             <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
             </p>
@@ -51,17 +51,17 @@
             <ul class="avatars-list mb-3">
               <li>
                 <a href="#!" class="avatar avatar-sm">
-                  <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                  <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-1.jpg') }}">
                 </a>
               </li>
               <li>
                 <a href="#!" class="avatar avatar-sm">
-                  <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                  <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-4.jpg') }}">
                 </a>
               </li>
               <li>
                 <a href="#!" class="avatar avatar-sm">
-                  <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                  <img alt="..." class="avatar-img rounded-circle" src="{{ asset('assets/avatars/face-3.jpg') }}">
                 </a>
               </li>
             </ul>
@@ -84,9 +84,9 @@
           <div class="pl-5">
             <div class="mb-3"><strong>@Lillith Joseph</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
             <div class="row mb-3">
-              <div class="col-1"><img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded"></div>
-              <div class="col-1"><img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded"></div>
-              <div class="col-1"><img src="./assets/products/p2.jpg" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p4.jpg') }}" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p1.jpg') }}" alt="..." class="img-fluid rounded"></div>
+              <div class="col-1"><img src="{{ asset('assets/products/p2.jpg') }}" alt="..." class="img-fluid rounded"></div>
             </div>
             <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
             </p>

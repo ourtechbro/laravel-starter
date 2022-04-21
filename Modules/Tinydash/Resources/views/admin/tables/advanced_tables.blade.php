@@ -63,7 +63,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>
@@ -99,7 +99,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-1.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>
@@ -135,7 +135,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-2.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>
@@ -171,7 +171,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-4.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>
@@ -207,7 +207,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-5.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-5.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>
@@ -243,7 +243,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-6.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-6.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>
@@ -279,7 +279,7 @@
                     </td>
                     <td>
                       <div class="avatar avatar-md">
-                        <img src="./assets/avatars/face-7.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('assets/avatars/face-7.jpg') }}" alt="..." class="avatar-img rounded-circle">
                       </div>
                     </td>
                     <td>

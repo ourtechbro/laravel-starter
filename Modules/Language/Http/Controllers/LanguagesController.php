@@ -4,6 +4,7 @@ namespace Modules\Language\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Cache;
 use Modules\Language\Entities\Translation;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -43,7 +44,6 @@ class LanguagesController extends BaseController
         }
 
         return view('ls-language::admin.settings.language')
-//        return view('ls-language::index')
             ->with('translations', $translations)
             ->with('locales', $locales)
             ->with('groups', $groups)
