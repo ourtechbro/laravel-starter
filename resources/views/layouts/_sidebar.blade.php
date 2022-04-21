@@ -15,10 +15,19 @@
               </svg>
             </a>
         </div>
-        @foreach(config('tinydash.menu') as $module)
+        @php
+        $menus = config('tinydash.menu');
+        if (\Nwidart\Modules\Facades\Module::has('Tinydash')) {
+            $menus = array_merge($menus, config('tinydash.theme_menu'));
+        }
+        @endphp
+        @foreach($menus as $module)
+            @php
+                $moduleAlias = isset($module['alias']) ? $module['alias'] . '::sidebar.' : 'sidebar.';
+            @endphp
             @if($module['group_title'])
                 <p class="text-muted nav-heading mt-4 mb-1">
-                    <span>{{ $module['group_title'] }}</span>
+                    <span>{{ __($moduleAlias . $module['group_title']) }}</span>
                 </p>
             @endif
                 <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -31,8 +40,10 @@
                                 @can($item['permission'])
                                  <li class="nav-item w-100 @if(url()->current() == route($key)) active @endif">
                                       <a class="nav-link" href="{{ route($key) }}">
-                                    <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                    <span class="ml-3 item-text">{{ $item['title'] }}</span>
+                                        <i class="{{ $item['icon_class'] }} fe-16"></i>
+                                        <span class="ml-3 item-text">
+                                            {{ __( $moduleAlias . $item['title'] ) }}
+                                        </span>
                                       </a>
                                 </li>
                                 @endcan
@@ -40,7 +51,9 @@
                                 <li class="nav-item w-100 @if(url()->current() == route($key)) active @endif">
                                     <a class="nav-link" href="{{ route($key) }}">
                                         <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                        <span class="ml-3 item-text">{{ $item['title'] }}</span>
+                                        <span class="ml-3 item-text">
+                                            {{ __($moduleAlias . $item['title']) }}
+                                        </span>
                                     </a>
                                 </li>
                             @endif
@@ -48,7 +61,7 @@
                          <li class="nav-item dropdown">
                             <a href="{{ isset($item['items']) ? '#' . $key : route($key) }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                                 <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                <span class="ml-3 item-text">{{ $item['title'] }}</span><span class="sr-only">(current)</span>
+                                <span class="ml-3 item-text">{{ __($moduleAlias . $item['title']) }}</span><span class="sr-only">(current)</span>
                             </a>
                             @if(!isset($item['items']))
                                 @continue
@@ -58,12 +71,12 @@
                                     @if(isset($menu['permission']))
                                         @can($menu['permission'])
                                         <li class="nav-item @if(request()->is(route($key, ['type' => $menuKey]))) active @endif">
-                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
+                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ __($moduleAlias . $menu['title']) }}</span></a>
                                         </li>
                                         @endcan
                                     @else
                                         <li class="nav-item @if(request()->is(route($key, ['type' => $menuKey]))) active @endif">
-                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ $menu['title'] }}</span></a>
+                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ __($moduleAlias . $menu['title']) }}</span></a>
                                         </li>
                                     @endif
                                 @endforeach

@@ -28,9 +28,18 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 
 // All static theme pages
-require __DIR__.'/theme.php';
 
 Route::middleware(['auth'])->group(function () {
+    Route::group(
+        ['prefix' => 'dashboard'],
+        function () {
+            Route::get('/', function () {
+                return view('admin.dashboard.default' );
+            })->name('dashboard');
+        }
+    );
+
+
     Route::group(
         ['prefix' => 'administrator'],
         function () {
@@ -57,12 +66,10 @@ Route::middleware(['auth'])->group(function () {
             })->name('settings.settings');
 
             Route::get('settings/language/',function(Request $request){
-                // return $request->all();
                 App::setLocale($request->lang);
                 session()->put('locale', $request->lang);
-          
-                return redirect()->back();
 
+                return redirect()->back();
             })->name('changeLang');
 
         }

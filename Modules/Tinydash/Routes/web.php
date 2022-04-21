@@ -8,9 +8,8 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'dashboard'],
         function () {
             Route::get('/{type?}', function ($type = 'default') {
-
-                return view('admin.dashboard.' . str_replace('-','_',$type));
-            })->name('dashboard')->where('type', tinydash_modules('dashboard','dashboard'));
+                return view('tinydash::admin.dashboard.' . str_replace('-','_',$type));
+            })->name('dashboard')->where('type', 'default|analytics|ecommerce|saas|system');
         }
     );
 
@@ -18,22 +17,21 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'ui-elements'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.ui-elements.' . str_replace('-','_',$type));
-            })->name('ui-elements')->where('type', tinydash_modules('components', 'ui-elements'));
+                return view('tinydash::admin.ui-elements.' . str_replace('-','_',$type));
+            })->name('ui-elements')->where('type', 'colors|typography|icons|buttons|notifications|modals|tabs_and_accordion|progress');
         }
     );
 
-
     Route::get('/widgets', function () {
-        return view('admin.widgets');
+        return view('tinydash::admin.widgets');
     })->name('widgets');
 
     Route::group(
         ['prefix' => 'forms'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.forms.' . str_replace('-','_',$type));
-            })->name('forms')->where('type', tinydash_modules('components', 'forms'));
+                return view('tinydash::admin.forms.' . str_replace('-','_',$type));
+            })->name('forms')->where('type', 'basic_elements|advanced_elements|validation|wizard|layouts|file_upload');
         }
     );
 
@@ -41,8 +39,8 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'tables'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.tables.' . str_replace('-','_',$type));
-            })->name('tables')->where('type', tinydash_modules('components', 'tables'));
+                return view('tinydash::admin.tables.' . str_replace('-','_',$type));
+            })->name('tables')->where('type', 'basic_tables|advanced_tables|data_tables');
         }
     );
 
@@ -50,8 +48,8 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'charts'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.charts.' . str_replace('-','_',$type));
-            })->name('charts')->where('type', tinydash_modules('components', 'charts'));
+                return view('tinydash::admin.charts.' . str_replace('-','_',$type));
+            })->name('charts')->where('type','inline_chart|chartjs|apex_charts|datamaps');
         }
     );
 
@@ -59,15 +57,15 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'apps'],
         function () {
             Route::get('/calender', function () {
-                return view('admin.calendar');
+                return view('tinydash::admin.calendar');
             })->name('calender');
 
             Route::group(
                 ['prefix' => 'contacts'],
                 function () {
                     Route::get('/{type}', function ($type) {
-                        return view('admin.contacts.' . str_replace('-','_',$type));
-                    })->name('contacts')->where('type', tinydash_modules('apps', 'contacts'));
+                        return view('tinydash::admin.contacts.' . str_replace('-','_',$type));
+                    })->name('contacts');
                 }
             );
 
@@ -75,8 +73,8 @@ Route::middleware(['auth'])->group(function () {
                 ['prefix' => 'profile'],
                 function () {
                     Route::get('/{type}', function ($type) {
-                        return view('admin.profile.' . str_replace('-','_',$type));
-                    })->name('profile')->where('type', tinydash_modules('apps', 'profile'));
+                        return view('tinydash::admin.profile.' . str_replace('-','_',$type));
+                    })->name('profile');
                 }
             );
 
@@ -84,8 +82,8 @@ Route::middleware(['auth'])->group(function () {
                 ['prefix' => 'file-manager'],
                 function () {
                     Route::get('/{type}', function ($type) {
-                        return view('admin.file-manager.' .str_replace('-','_',$type));
-                    })->name('file-manager')->where('type', tinydash_modules('apps', 'file-manager'));
+                        return view('tinydash::admin.file-manager.' .str_replace('-','_',$type));
+                    })->name('file-manager');
                 }
             );
 
@@ -93,8 +91,8 @@ Route::middleware(['auth'])->group(function () {
                 ['prefix' => 'help-desk'],
                 function () {
                     Route::get('/{type}', function ($type) {
-                        return view('admin.help_desk.' . str_replace('-','_',$type));
-                    })->name('help-desk')->where('type', tinydash_modules('apps', 'help-desk'));
+                        return view('tinydash::admin.help_desk.' . str_replace('-','_',$type));
+                    })->name('help-desk');
                 }
             );
         }
@@ -104,8 +102,8 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'pages'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.pages.' . str_replace('-','_',$type));
-            })->name('pages')->where('type', tinydash_modules('extra', 'pages'));
+                return view('tinydash::admin.pages.' . str_replace('-','_',$type));
+            })->name('pages');
         }
     );
 
@@ -113,8 +111,8 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'authentication'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.authentication.' . str_replace('-','_',$type));
-            })->name('authentication')->where('type', tinydash_modules('extra', 'authentication'));
+                return view('tinydash::admin.authentication.' . str_replace('-','_',$type));
+            })->name('authentication');
         }
     );
 
@@ -122,8 +120,8 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'layout'],
         function () {
             Route::get('/{type}', function ($type) {
-                return view('admin.layout.' . str_replace('-','_',$type));
-            })->name('layout')->where('type', tinydash_modules('extra', 'layout'));
+                return view('tinydash::admin.layout.' . str_replace('-','_',$type));
+            })->name('layout');
         }
     );
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Language\Providers;
+namespace Modules\Tinydash\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $moduleNamespace = 'Modules\Language\Http\Controllers';
+    protected $moduleNamespace = 'Modules\Tinydash\Http\Controllers';
 
     /**
      * Called before routes are registered.
@@ -47,6 +47,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Language', '/Routes/web.php'));
+            ->group(module_path('Tinydash', '/Routes/web.php'));
     }
 }
