@@ -12,6 +12,10 @@ class SettingsComponent extends Component
         ['id' => 'github', 'title' => 'GitHub'],
         ['id' => 'twitter', 'title' => 'Twitter'],
     ];
+    public $general = [
+        ['id' => 'pusher', 'title' => 'Pusher'],
+        ['id' => 'mail', 'title' => 'MAIL'],
+    ];
 
     public $settings = [];
 
@@ -24,7 +28,7 @@ class SettingsComponent extends Component
     {
         $this->settings = setting()->all();
     }
-
+    
     public function updateSettings()
     {
         setting($this->settings)->save();
