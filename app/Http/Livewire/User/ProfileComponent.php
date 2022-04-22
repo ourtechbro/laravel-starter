@@ -79,7 +79,7 @@ class ProfileComponent extends Component
             ->resizeCanvas(245, 245)
             ->encode('jpg');
 
-        Storage::disk('public')->put($name, $img);
+        Storage::disk(config('jetstream.profile_photo_disk'))->put($name, $img);
 
         return $name;
     }

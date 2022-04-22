@@ -38,9 +38,9 @@
                             @error('confirmation_password') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         @if ($photo)
-                            <img src="{{$photo->temporaryUrl()}}" height="250px">
-                        @elseif($user->profile_photo_path)
-                            <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($user->profile_photo_path) }}" alt="" title="" />
+                            <img src="{{ $photo->temporaryUrl() }}" height="250px">
+                        @elseif($user->profile_photo_url)
+                            <img src="{{ $user->profile_photo_url }}" alt="" title="" />
                         @endif
                     </div>
                 </div>
