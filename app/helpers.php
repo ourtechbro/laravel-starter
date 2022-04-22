@@ -2,6 +2,7 @@
 
 use App\Events\ActivityLoggerEvent;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 use Nwidart\Modules\Facades\Module;
 use Modules\Language\Entities\Translation;
 
@@ -55,5 +56,30 @@ if (! function_exists('get_menus')) {
 
             return $menus;
         });
+    }
+}
+
+if (! function_exists('get_user_profile_photo')) {
+    function get_user_profile_photo($user) {
+        return $user->profile_photo_path
+            ? Storage::disk(profilePhotoDisk())->url($user->profile_photo_path)
+            : defaultProfilePhotoUrl($user->name);
+    }
+}
+
+if (! function_exists('profilePhotoDisk')) {
+    function profilePhotoDisk()
+    {
+        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('jetstream.profile_photo_disk', 'public');
+    }
+}
+
+if (! function_exists('defaultProfilePhotoUrl')) {
+    function defaultProfilePhotoUrl($name) {
+        $name = trim(collect(explode(' ', $name))->map(function ($segment) {
+            return mb_substr($segment, 0, 1);
+        })->join(' '));
+
+        return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
     }
 }

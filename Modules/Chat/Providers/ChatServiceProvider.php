@@ -4,6 +4,7 @@ namespace Modules\Chat\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Chat\LSMessenger;
 
 class ChatServiceProvider extends ServiceProvider
 {
@@ -38,6 +39,9 @@ class ChatServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        app()->bind('LSMessenger', function () {
+            return new LSMessenger();
+        });
     }
 
     /**
