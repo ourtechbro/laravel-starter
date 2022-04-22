@@ -7,12 +7,13 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
 use App\Models\ChMessage as Message;
 use App\Models\ChFavorite as Favorite;
-use Chatify\Facades\ChatifyMessenger as Chatify;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Str;
+use Modules\Chat\LSMessengerFacade as LSMessenger;
+
 class MessagesController extends Controller
 {
     protected $perPage = 30;
@@ -35,7 +36,7 @@ class MessagesController extends Controller
         ]);
         // check if user authorized
         if (Auth::check()) {
-            return Chatify::pusherAuth(
+            return LSMessenger::pusherAuth(
                 $request['channel_name'],
                 $request['socket_id'],
                 $authData
@@ -76,13 +77,13 @@ class MessagesController extends Controller
     public function idFetchData(Request $request)
     {
         // Favorite
-        $favorite = Chatify::inFavorite($request['id']);
+        $favorite = LSMessenger::inFavorite($request['id']);
 
         // User data
         if ($request['type'] == 'user') {
             $fetch = User::where('id', $request['id'])->first();
             if($fetch){
-                $userAvatar = asset('/storage/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar);
+                $userAvatar = $fetch->profile_photo_url;
             }
         }
 
@@ -130,13 +131,13 @@ class MessagesController extends Controller
         // if there is attachment [file]
         if ($request->hasFile('file')) {
             // allowed extensions
-            $allowed_images = Chatify::getAllowedImages();
-            $allowed_files  = Chatify::getAllowedFiles();
+            $allowed_images = LSMessenger::getAllowedImages();
+            $allowed_files  = LSMessenger::getAllowedFiles();
             $allowed        = array_merge($allowed_images, $allowed_files);
 
             $file = $request->file('file');
             // check file size
-            if ($file->getSize() < Chatify::getMaxUploadSize()) {
+            if ($file->getSize() < LSMessenger::getMaxUploadSize()) {
                 if (in_array($file->getClientOriginalExtension(), $allowed)) {
                     // get attachment name
                     $attachment_title = $file->getClientOriginalName();
@@ -156,7 +157,7 @@ class MessagesController extends Controller
         if (!$error->status) {
             // send to database
             $messageID = mt_rand(9, 999999999) + time();
-            Chatify::newMessage([
+            LSMessenger::newMessage([
                 'id' => $messageID,
                 'type' => $request['type'],
                 'from_id' => Auth::user()->id,
@@ -169,13 +170,13 @@ class MessagesController extends Controller
             ]);
 
             // fetch message to send it with the response
-            $messageData = Chatify::fetchMessage($messageID);
+            $messageData = LSMessenger::fetchMessage($messageID);
 
             // send to user using pusher
-            Chatify::push('private-chatify', 'messaging', [
+            LSMessenger::push('private-chatify', 'messaging', [
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
-                'message' => Chatify::messageCard($messageData, 'default')
+                'message' => LSMessenger::messageCard($messageData, 'default')
             ]);
         }
 
@@ -183,7 +184,7 @@ class MessagesController extends Controller
         return Response::json([
             'status' => '200',
             'error' => $error,
-            'message' => Chatify::messageCard(@$messageData),
+            'message' => LSMessenger::messageCard(@$messageData),
             'tempID' => $request['temporaryMsgId'],
         ]);
     }
@@ -196,7 +197,7 @@ class MessagesController extends Controller
      */
     public function fetch(Request $request)
     {
-        $query = Chatify::fetchMessagesQuery($request['id'])->latest();
+        $query = LSMessenger::fetchMessagesQuery($request['id'])->latest();
         $messages = $query->paginate($request->per_page ?? $this->perPage);
         $totalMessages = $messages->total();
         $lastPage = $messages->lastPage();
@@ -218,8 +219,8 @@ class MessagesController extends Controller
         }
         $allMessages = null;
         foreach ($messages->reverse() as $message) {
-            $allMessages .= Chatify::messageCard(
-                Chatify::fetchMessage($message->id)
+            $allMessages .= LSMessenger::messageCard(
+                LSMessenger::fetchMessage($message->id)
             );
         }
         $response['messages'] = $allMessages;
@@ -235,7 +236,7 @@ class MessagesController extends Controller
     public function seen(Request $request)
     {
         // make as seen
-        $seen = Chatify::makeSeen($request['id']);
+        $seen = LSMessenger::makeSeen($request['id']);
         // send the response
         return Response::json([
             'status' => $seen,
@@ -270,7 +271,7 @@ class MessagesController extends Controller
         if (count($usersList) > 0) {
             $contacts = '';
             foreach ($usersList as $user) {
-                $contacts .= Chatify::getContactItem($user);
+                $contacts .= LSMessenger::getContactItem($user);
             }
         }else{
             $contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
@@ -298,7 +299,7 @@ class MessagesController extends Controller
                 'message' => 'User not found!',
             ], 401);
         }
-        $contactItem = Chatify::getContactItem($user);
+        $contactItem = LSMessenger::getContactItem($user);
 
         // send the response
         return Response::json([
@@ -315,13 +316,13 @@ class MessagesController extends Controller
     public function favorite(Request $request)
     {
         // check action [star/unstar]
-        if (Chatify::inFavorite($request['user_id'])) {
+        if (LSMessenger::inFavorite($request['user_id'])) {
             // UnStar
-            Chatify::makeInFavorite($request['user_id'], 0);
+            LSMessenger::makeInFavorite($request['user_id'], 0);
             $status = 0;
         } else {
             // Star
-            Chatify::makeInFavorite($request['user_id'], 1);
+            LSMessenger::makeInFavorite($request['user_id'], 1);
             $status = 1;
         }
 
@@ -396,7 +397,7 @@ class MessagesController extends Controller
      */
     public function sharedPhotos(Request $request)
     {
-        $shared = Chatify::getSharedPhotos($request['user_id']);
+        $shared = LSMessenger::getSharedPhotos($request['user_id']);
         $sharedPhotos = null;
 
         // shared with its template
@@ -421,7 +422,7 @@ class MessagesController extends Controller
     public function deleteConversation(Request $request)
     {
         // delete
-        $delete = Chatify::deleteConversation($request['id']);
+        $delete = LSMessenger::deleteConversation($request['id']);
 
         // send the response
         return Response::json([
@@ -450,11 +451,11 @@ class MessagesController extends Controller
         // if there is a [file]
         if ($request->hasFile('avatar')) {
             // allowed extensions
-            $allowed_images = Chatify::getAllowedImages();
+            $allowed_images = LSMessenger::getAllowedImages();
 
             $file = $request->file('avatar');
             // check file size
-            if ($file->getSize() < Chatify::getMaxUploadSize()) {
+            if ($file->getSize() < LSMessenger::getMaxUploadSize()) {
                 if (in_array($file->getClientOriginalExtension(), $allowed_images)) {
                     // delete the older one
                     if (Auth::user()->avatar != config('chatify.user_avatar.default')) {
