@@ -28,7 +28,6 @@ if (! function_exists('module_enabled')) {
 
 if (! function_exists('get_locales')) {
     function get_locales() {
-        Cache::forget('locales.cache');
         return Cache::remember('locales.cache', 3600, function () {
             $locales = config('app.locales');
             $locales = array_map('strtolower', $locales);
@@ -44,8 +43,12 @@ if (! function_exists('get_locales')) {
 
 if (! function_exists('get_menus')) {
     function get_menus() {
-        return Cache::remember('menus.cache', 1, function () {
+        return Cache::remember('menus.cache', 3600, function () {
             $menus = config('tinydash.menu');
+            if (module_enabled('Chat')) {
+                $menus = array_merge($menus, config('chat.menu'));
+            }
+
             if (module_enabled('Tinydash')) {
                 $menus = array_merge($menus, config('tinydash.theme_menu'));
             }

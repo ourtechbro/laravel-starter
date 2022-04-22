@@ -50,9 +50,9 @@
                         <tbody>
                         @foreach($list as $row)
                             <tr>
-                                <td>{{$loop->index + 1}}</td>
-                                <td>{{$row->name}}</td>
-                                <td>{{$row->email}}</td>
+                                <td>{{ $row->id }}</td>
+                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->email }}</td>
                                 <td>
                                     @foreach($row->roles as $role)
                                         <span class="badge badge-primary">{{ $role->name }}</span>
