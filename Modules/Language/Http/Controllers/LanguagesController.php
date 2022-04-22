@@ -167,7 +167,7 @@ class LanguagesController extends BaseController
         if (!$newLocale || in_array($newLocale, $locales)) {
             return redirect()->back();
         }
-        $this->manager->addLocale($newLocale);
+        $this->manager->addLocale(strtoupper($newLocale));
         return redirect()->back();
     }
 

@@ -11,7 +11,7 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputPassword1">{{ __('Enter Name') }}</label>
-                        <input type="text" wire:model="name" class="form-control input-sm"  placeholder="{{ __(''Name) }}">
+                        <input type="text" wire:model="name" class="form-control input-sm"  placeholder="{{ __('Name') }}">
                         @error('name') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                 </form>

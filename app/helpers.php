@@ -28,10 +28,14 @@ if (! function_exists('module_enabled')) {
 
 if (! function_exists('get_locales')) {
     function get_locales() {
+        Cache::forget('locales.cache');
         return Cache::remember('locales.cache', 3600, function () {
             $locales = config('app.locales');
+            $locales = array_map('strtolower', $locales);
             if(module_enabled('ActivityLog')) {
-                return array_unique(array_merge(Translation::groupBy('locale')->pluck('locale')->toArray(), $locales));
+                $translations = Translation::groupBy('locale')->pluck('locale')->toArray();
+                $translations = array_map('strtolower', $translations);
+                return array_unique(array_merge($translations, $locales));
             }
             return $locales;
         });
