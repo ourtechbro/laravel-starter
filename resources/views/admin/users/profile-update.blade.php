@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Profile Update
+    {{ __('Profile Update') }}
 @endsection
 
 @section('content')
@@ -33,7 +33,7 @@
                     }
                     reader.readAsDataURL(file);
                 }else{
-                    document.getElementById('errMsg').innerText = "Please Enter a Valid Image"
+                    document.getElementById('errMsg').innerText = "{{ __('Please Enter a Valid Image') }}"
                 }
             })
         </script>

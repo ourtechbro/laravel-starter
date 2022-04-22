@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="varyModalLabel">Update user</h5>
+                <h5 class="modal-title" id="varyModalLabel">{{ __('Update user') }}</h5>
                 <button type="button" class="close" wire:click.prevent="cancel()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

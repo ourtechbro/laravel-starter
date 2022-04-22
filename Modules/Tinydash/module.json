@@ -1,0 +1,13 @@
+{
+    "name": "Tinydash",
+    "alias": "tinydash",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Tinydash\\Providers\\TinydashServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

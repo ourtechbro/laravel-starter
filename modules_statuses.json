@@ -1,5 +1,6 @@
 {
     "Language": true,
     "ActivityLog": true,
-    "Chat": true
+    "Chat": true,
+    "Tinydash": true
 }

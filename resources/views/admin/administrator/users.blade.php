@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Users
+    {{ __('Users') }}
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/select2.css') }}">

@@ -4,6 +4,7 @@ namespace Modules\Language\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Cache;
 use Modules\Language\Entities\Translation;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -43,7 +44,6 @@ class LanguagesController extends BaseController
         }
 
         return view('ls-language::admin.settings.language')
-//        return view('ls-language::index')
             ->with('translations', $translations)
             ->with('locales', $locales)
             ->with('groups', $groups)
@@ -75,6 +75,7 @@ class LanguagesController extends BaseController
 
     public function postAdd($group = null)
     {
+
         $keys = explode("\n", request()->get('keys'));
 
         foreach($keys as $key){
@@ -159,17 +160,21 @@ class LanguagesController extends BaseController
 
     public function postAddLocale(Request $request)
     {
+        Cache::forget('locales.cache');
+
         $locales = $this->manager->getLocales();
         $newLocale = str_replace([], '-', trim($request->input('new-locale')));
         if (!$newLocale || in_array($newLocale, $locales)) {
             return redirect()->back();
         }
-        $this->manager->addLocale($newLocale);
+        $this->manager->addLocale(strtoupper($newLocale));
         return redirect()->back();
     }
 
     public function removeLocale(Request $request)
     {
+        Cache::forget('locales.cache');
+
         $request->validate([
             'locale' => 'required'
         ]);

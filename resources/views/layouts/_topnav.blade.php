@@ -7,6 +7,24 @@
     </form>
     <ul class="nav">
         <li class="nav-item">
+            <select class="nav-link my-2 form-control" id="changeLang">
+                @php
+                $locales = get_locales();
+                @endphp
+                @if($locales)
+                    @foreach($locales as $available_locale)
+                    <option value="{{ $available_locale }}" {{ session()->get('locale') == $available_locale ? 'selected' : '' }}>
+                        {{ strtoupper($available_locale) }}
+                    </option>
+                    @endforeach
+                @else
+                    <option value="{{ app()->getLocale() }}" selected>
+                        {{ strtoupper(app()->getLocale()) }}
+                    </option>
+                @endif
+            </select>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
                 <i class="fe fe-sun fe-16"></i>
             </a>
@@ -16,7 +34,7 @@
                 <span class="fe fe-grid fe-16"></span>
             </a>
         </li>
-        <li class="nav-item nav-notif">
+        <li class="nav-item">
             <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
                 <span class="fe fe-bell fe-16"></span>
                 <span class="dot dot-md bg-success"></span>
@@ -25,7 +43,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url(auth()->user()->profile_photo_path) }}" alt="..." class="avatar-img rounded-circle">
+                <img src="{{ auth()->user()->profile_photo_url }}" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -40,3 +58,10 @@
         </li>
     </ul>
 </nav>
+<script type="text/javascript">
+    let url = "{{ route('changeLang') }}";
+
+    document.getElementById('changeLang').addEventListener('change',function(e){
+          window.location.href = url + "?lang="+ $(this).val();
+    })
+</script>

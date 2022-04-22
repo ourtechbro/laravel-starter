@@ -71,8 +71,9 @@ class ProfileComponent extends Component
             $name = Str::random() . '.jpg';
         }
 
-        $img = Image::make($this->photo)->resize(245, 245,
+        $img = Image::make($this->photo)->orientate()->resize(245, 245,
             function ($constraint) {
+                $constraint->upsize();
                 $constraint->aspectRatio();
             })
             ->resizeCanvas(245, 245)

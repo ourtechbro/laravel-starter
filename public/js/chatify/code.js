@@ -16,7 +16,7 @@ const messagesContainer = $(".messenger-messagingView .m-body"),
   messengerTitleDefault = $(".messenger-headTitle").text(),
   messageInput = $("#message-form .m-send"),
   auth_id = $("meta[name=url]").attr("data-user"),
-  url = $("meta[name=url]").attr("content"),
+  chatify_url = $("meta[name=url]").attr("content"),
   defaultMessengerColor = $("meta[name=messenger-color]").attr("content"),
   access_token = $('meta[name="csrf-token"]').attr("content");
 
@@ -364,7 +364,7 @@ function IDinfo(id, type) {
     getSharedPhotos(id);
     // Get info
     $.ajax({
-      url: url + "/idInfo",
+      url: chatify_url + "/idInfo",
       method: "POST",
       data: { _token: access_token, id, type },
       dataType: "JSON",
@@ -522,7 +522,7 @@ function fetchMessages(id, type, newFetch = false) {
     const messagesElement = messagesContainer.find(".messages");
     setMessagesLoading(true);
     $.ajax({
-      url: url + "/fetchMessages",
+      url: chatify_url + "/fetchMessages",
       method: "POST",
       data: {
         _token: access_token,
@@ -691,7 +691,7 @@ function makeSeen(status) {
     .remove();
   // seen
   $.ajax({
-    url: url + "/makeSeen",
+    url: chatify_url + "/makeSeen",
     method: "POST",
     data: { _token: access_token, id: getMessengerId() },
     dataType: "JSON",
@@ -785,7 +785,7 @@ function getContacts() {
   if (!contactsLoading && !noMoreContacts) {
     setContactsLoading(true);
     $.ajax({
-      url: url + "/getContacts",
+      url: chatify_url + "/getContacts",
       method: "GET",
       data: { _token: access_token, page: contactsPage },
       dataType: "JSON",
@@ -822,7 +822,7 @@ function updateContatctItem(user_id) {
       .find(".listOfContacts")
       .find(".messenger-list-item[data-contact=" + user_id + "]");
     $.ajax({
-      url: url + "/updateContacts",
+      url: chatify_url + "/updateContacts",
       method: "POST",
       data: {
         _token: access_token,
@@ -852,7 +852,7 @@ function updateContatctItem(user_id) {
 function star(user_id) {
   if (getMessengerId() != auth_id) {
     $.ajax({
-      url: url + "/star",
+      url: chatify_url + "/star",
       method: "POST",
       data: { _token: access_token, user_id: user_id },
       dataType: "JSON",
@@ -876,7 +876,7 @@ function star(user_id) {
 function getFavoritesList() {
   $(".messenger-favorites").html(avatarLoading(4));
   $.ajax({
-    url: url + "/favorites",
+    url: chatify_url + "/favorites",
     method: "POST",
     data: { _token: access_token },
     dataType: "JSON",
@@ -903,7 +903,7 @@ function getFavoritesList() {
  */
 function getSharedPhotos(user_id) {
   $.ajax({
-    url: url + "/shared",
+    url: chatify_url + "/shared",
     method: "POST",
     data: { _token: access_token, user_id: user_id },
     dataType: "JSON",
@@ -948,7 +948,7 @@ function messengerSearch(input) {
     }
     setSearchLoading(true);
     $.ajax({
-      url: url + "/search",
+      url: chatify_url + "/search",
       method: "GET",
       data: { _token: access_token, input: input, page: searchPage },
       dataType: "JSON",
@@ -980,7 +980,7 @@ function messengerSearch(input) {
  */
 function deleteConversation(id) {
   $.ajax({
-    url: url + "/deleteConversation",
+    url: chatify_url + "/deleteConversation",
     method: "POST",
     data: { _token: access_token, id: id },
     dataType: "JSON",
@@ -1031,7 +1031,7 @@ function updateSettings() {
     formData.append("dark_mode", dark_mode);
   }
   $.ajax({
-    url: url + "/updateSettings",
+    url: chatify_url + "/updateSettings",
     method: "POST",
     data: formData,
     dataType: "JSON",
@@ -1086,7 +1086,7 @@ function updateSettings() {
  */
 function setActiveStatus(status, user_id) {
   $.ajax({
-    url: url + "/setActiveStatus",
+    url: chatify_url + "/setActiveStatus",
     method: "POST",
     data: { _token: access_token, user_id: user_id, status: status },
     dataType: "JSON",
@@ -1160,7 +1160,7 @@ $(document).ready(function () {
     $(".messenger-list-item").removeClass("m-list-active");
     $(this).addClass("m-list-active");
     const userID = $(this).attr("data-contact");
-    routerPush(document.title, `${url}/${userID}`);
+    routerPush(document.title, `${chatify_url}/${userID}`);
     updateSelectedContact(userID);
   });
 
@@ -1194,7 +1194,7 @@ $(document).ready(function () {
     setMessengerType("user");
     IDinfo(uid, "user");
     updateSelectedContact(uid);
-    routerPush(document.title, `${url}/${uid}`);
+    routerPush(document.title, `${chatify_url}/${uid}`);
   });
 
   // list view buttons

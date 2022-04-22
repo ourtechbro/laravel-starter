@@ -6,7 +6,7 @@
         <strong class="mb-2">{{ $platform['title'] }}</strong><br>
         <div class="custom-control custom-switch">
             <input type="checkbox" wire:model.defer="settings.social.{{ $platform['id'] }}.is_enable" class="custom-control-input" id="{{ $platform['id'] }}" @if($isEnable) checked @endif>
-            <label class="custom-control-label" for="{{ $platform['id'] }}">@if($isEnable) Enable @else Disable @endif</label>
+            <label class="custom-control-label" for="{{ $platform['id'] }}">@if($isEnable) {{ __('Enable') }} @else {{ __('Disable') }} @endif</label>
         </div>
     </div> <!-- .col -->
     <div class="col">

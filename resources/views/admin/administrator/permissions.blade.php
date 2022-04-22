@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Permissions
+    {{ __('Permissions') }}
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
