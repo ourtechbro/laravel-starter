@@ -1,5 +1,5 @@
 {
     "Language": true,
-    "ActivityLog": false,
-    "Tinydash": false
+    "ActivityLog": true,
+    "Tinydash": true
 }
