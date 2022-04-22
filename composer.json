@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.0.2",
         "ext-gd": "*",
+        "ext-exif":"*",
         "akaunting/laravel-setting": "^1.2",
         "fakerphp/faker": "^1.9.1",
         "fruitcake/laravel-cors": "^2.0",
