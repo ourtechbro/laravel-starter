@@ -1,5 +1,5 @@
 <?php
-
+// dd(config()); 
 return [
 
     /*

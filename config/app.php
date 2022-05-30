@@ -172,7 +172,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        App\Providers\MailConfigServiceProvider::class,
         /*
          * Application Service Providers...
          */

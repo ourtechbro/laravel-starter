@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+
 
 
 /*
@@ -34,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'dashboard'],
         function () {
             Route::get('/', function () {
-                return view('admin.dashboard.default' );
+                 return view('admin.dashboard.default' );
             })->name('dashboard');
         }
     );
@@ -92,3 +94,4 @@ Route::get('auth/{platform}', [SocialController::class, 'redirect'])
 
 Route::get('auth/{platform}/callback', [SocialController::class, 'login'])
     ->where('platform', 'facebook|google|twitter|github');
+Route::get('send',[TestController::class, 'send_mail']);

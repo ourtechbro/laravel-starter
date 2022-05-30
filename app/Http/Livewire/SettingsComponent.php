@@ -29,6 +29,18 @@ class SettingsComponent extends Component
         $this->settings = setting()->all();
     }
     
+    public function updateMailSettings()
+    {
+        setting($this->settings)->save();
+
+        $this->successMessage();
+    }
+    public function updatePusherSettings()
+    {
+        setting($this->settings)->save();
+
+        $this->successMessage();
+    }
     public function updateSettings()
     {
         setting($this->settings)->save();

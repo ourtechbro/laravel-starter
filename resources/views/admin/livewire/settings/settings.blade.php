@@ -15,15 +15,14 @@
                     <h5>{{ __('Security Settings') }}</h5>
                     <p>{{ __('These settings are helps you keep your account secure.') }}</p>
                 </div>
-                <div class="col" style="text-align: right">
-                    <button class="btn btn-primary btn-sm" wire:click.prevent="updateSettings">{{ __('Save') }}</button>
-                </div>
             </div>
 
             <div class="list-group mb-5 shadow">
                 @if(module_enabled('ActivityLog'))
                     @include('activitylog::activity-settings-switch')
                 @endif
+            </div> <!-- .list-group -->
+            <div class="list-group mb-5 shadow">
                 @foreach($general as $general)
                 <div class="list-group-item">
                     @include('admin.livewire.settings.partials.general-setting-form', $general)
