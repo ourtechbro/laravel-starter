@@ -1,0 +1,11 @@
+{
+    "name": "SocialAuth",
+    "alias": "socialauth",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SocialAuth\\Providers\\SocialAuthServiceProvider"
+    ],
+    "files": []
+}

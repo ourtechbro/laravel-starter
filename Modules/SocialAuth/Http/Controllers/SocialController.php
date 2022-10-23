@@ -1,10 +1,12 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\SocialAuth\Http\Controllers;
+
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\FacebookProvider;
 use Laravel\Socialite\Two\GithubProvider;
 use Laravel\Socialite\Two\GoogleProvider;
