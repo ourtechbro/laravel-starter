@@ -2,5 +2,6 @@
     "Language": true,
     "ActivityLog": true,
     "Chat": true,
-    "Tinydash": true
+    "Tinydash": true,
+    "SocialAuth": true
 }

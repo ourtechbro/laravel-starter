@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\SocialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
+use Modules\SocialAuth\Http\Controllers\SocialController;
 
 
 /*
@@ -85,10 +84,3 @@ Route::middleware(['auth'])->group(function () {
     );
 
 });
-
-// Social login routes
-Route::get('auth/{platform}', [SocialController::class, 'redirect'])
-    ->where('platform', 'facebook|google|twitter|github');
-
-Route::get('auth/{platform}/callback', [SocialController::class, 'login'])
-    ->where('platform', 'facebook|google|twitter|github');
