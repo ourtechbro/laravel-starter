@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use Modules\SocialAuth\Http\Controllers\SocialController;
 
 
 /*
@@ -33,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
         ['prefix' => 'dashboard'],
         function () {
             Route::get('/', function () {
-                return view('admin.dashboard.default' );
+                return view('admin.dashboard' );
             })->name('dashboard');
         }
     );

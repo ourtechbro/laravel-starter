@@ -8,6 +8,6 @@ class PagesController extends Controller
 {
     public function index($type)
     {
-        return view('admin.dashboard.' . $type);
+        return view('home');
     }
 }
