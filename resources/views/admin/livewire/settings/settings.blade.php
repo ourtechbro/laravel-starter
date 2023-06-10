@@ -15,20 +15,12 @@
                     <h5>{{ __('Security Settings') }}</h5>
                     <p>{{ __('These settings are helps you keep your account secure.') }}</p>
                 </div>
-                <div class="col" style="text-align: right">
-                    <button class="btn btn-primary btn-sm" wire:click.prevent="updateSettings">{{ __('Save') }}</button>
-                </div>
             </div>
 
             <div class="list-group mb-5 shadow">
                 @if(module_enabled('ActivityLog'))
                     @include('activitylog::activity-settings-switch')
                 @endif
-                @foreach($general as $general)
-                <div class="list-group-item">
-                    @include('admin.livewire.settings.partials.general-setting-form', $general)
-                </div>
-                @endforeach
             </div> <!-- .list-group -->
             @if(module_enabled('ActivityLog'))
                 @livewire('activitylog::activity')
@@ -36,21 +28,7 @@
         </div>
         <div class="tab-pane fade" id="service" role="tabpanel" aria-labelledby="service-tab" wire:ignore.self>
             <div class="row">
-                <div class="col">
-                    <h5>{{ __('Social login settings') }}</h5>
-                    <p>{{ __('Use switch to disable logins') }}</p>
-                </div>
-                <div class="col" style="text-align: right">
-                    <button class="btn btn-primary btn-sm" wire:click.prevent="updateSettings">{{ __('Save') }}</button>
-                </div>
-            </div>
 
-            <div class="list-group mb-5 shadow">
-                @foreach($platforms as $platform)
-                    <div class="list-group-item">
-                        @include('admin.livewire.settings.partials.social-config-form', $platform)
-                    </div> <!-- .list-group-item -->
-                @endforeach
             </div>
         </div>
     </div>

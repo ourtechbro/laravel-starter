@@ -24,7 +24,7 @@ return [
         'administrator' => [
             'group_title' => 'Administrator',
             'items' => [
-                'users' => [
+                '' => [
                     'permission' => 'read users',
                     'title' => 'Users',
                     'icon_class' => 'fe fe-users'

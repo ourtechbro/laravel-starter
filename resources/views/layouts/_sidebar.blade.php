@@ -15,71 +15,35 @@
               </svg>
             </a>
         </div>
-        @foreach(get_menus() as $module)
-            @php
-                $moduleAlias = isset($module['alias']) ? $module['alias'] . '::sidebar.' : 'sidebar.';
-            @endphp
-            @if($module['group_title'])
-                <p class="text-muted nav-heading mt-4 mb-1">
-                    <span>{{ __($moduleAlias . $module['group_title']) }}</span>
-                </p>
-            @endif
-                <ul class="navbar-nav flex-fill w-100 mb-2">
-                    @foreach($module['items'] as $key => $item)
-                        @if(!Route::has($key))
-                            @continue
-                        @endif
-                        @if(!isset($item['items']))
-                            @if(isset($item['permission']))
-                                @can($item['permission'])
-                                 <li class="nav-item w-100 @if(url()->current() == route($key)) active @endif">
-                                      <a class="nav-link" href="{{ route($key) }}">
-                                        <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                        <span class="ml-3 item-text">
-                                            {{ __( $moduleAlias . $item['title'] ) }}
-                                        </span>
-                                      </a>
-                                </li>
-                                @endcan
-                            @else
-                                <li class="nav-item w-100 @if(url()->current() == route($key)) active @endif">
-                                    <a class="nav-link" href="{{ route($key) }}">
-                                        <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                        <span class="ml-3 item-text">
-                                            {{ __($moduleAlias . $item['title']) }}
-                                        </span>
-                                    </a>
-                                </li>
-                            @endif
-                        @else
-                         <li class="nav-item dropdown">
-                            <a href="{{ isset($item['items']) ? '#' . $key : route($key) }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                                <i class="{{ $item['icon_class'] }} fe-16"></i>
-                                <span class="ml-3 item-text">{{ __($moduleAlias . $item['title']) }}</span><span class="sr-only">(current)</span>
-                            </a>
-                            @if(!isset($item['items']))
-                                @continue
-                            @endif
-                            <ul class="collapse list-unstyled pl-4 w-100" id="{{ $key }}">
-                                @foreach($item['items'] as $menuKey => $menu)
-                                    @if(isset($menu['permission']))
-                                        @can($menu['permission'])
-                                        <li class="nav-item @if(request()->is(route($key, ['type' => $menuKey]))) active @endif">
-                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ __($moduleAlias . $menu['title']) }}</span></a>
-                                        </li>
-                                        @endcan
-                                    @else
-                                        <li class="nav-item @if(request()->is(route($key, ['type' => $menuKey]))) active @endif">
-                                            <a class="nav-link pl-3" href="{{ route($key, ['type' => $menuKey]) }}"><span class="ml-1 item-text">{{ __($moduleAlias . $menu['title']) }}</span></a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                        @endif
-
-                    @endforeach
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100 @if(url()->current() == route('dashboard')) active @endif">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-home"></i>
+                    <span class="ml-3 item-text">{{ __('Dashboard') }}</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#administrator" data-toggle="collapse" aria-expanded="{{ (request()->is('administrator/*')) ? 'true' : 'false' }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-book fe-16"></i>
+                    <span class="ml-3 item-text">{{ __('Administrator') }}</span>
+                </a>
+                <ul class="collapse {{ (request()->is('administrator/*')) ? 'show' : '' }} list-unstyled pl-4 w-100" id="administrator">
+                    <a class="nav-link pl-3" href="{{ route('users') }}"><span class="ml-1">{{ __('Users') }}</span></a>
+                    <a class="nav-link pl-3" href="{{ route('roles') }}"><span class="ml-1">{{ __('Roles') }}</span></a>
+                    <a class="nav-link pl-3" href="{{ route('permissions') }}"><span class="ml-1">{{ __('Permissions') }}</span></a>
                 </ul>
-        @endforeach
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#settings" data-toggle="collapse" aria-expanded="{{ (request()->is('settings/*')) ? 'true' : 'false' }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-user fe-16"></i>
+                    <span class="ml-3 item-text">{{ __('Settings') }}</span>
+                </a>
+                <ul class="collapse {{ (request()->is('settings*')) ? 'show' : '' }} list-unstyled pl-4 w-100" id="settings">
+                    <a class="nav-link pl-3" href="{{ route('settings.settings') }}"><span class="ml-1">{{ __('Settings') }}</span></a>
+                    <a class="nav-link pl-3" href="{{ route('settings.language') }}"><span class="ml-1">{{ __('Language') }}</span></a>
+                </ul>
+            </li>
+        </ul>
+
     </nav>
 </aside>
