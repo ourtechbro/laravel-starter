@@ -14,10 +14,6 @@
         <div class="container-fluid">
             @yield('content')
         </div> <!-- .container-fluid -->
-
-        <x-modals.notifications/>
-
-        <x-modals.shortcuts/>
     </main> <!-- main -->
 </div> <!-- .wrapper -->
 
