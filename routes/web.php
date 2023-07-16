@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdministratorController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 /*
@@ -20,38 +22,21 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-
-
 // Auth routes
 require __DIR__.'/auth.php';
 
 // All static theme pages
 
 Route::middleware(['auth'])->group(function () {
-    Route::group(
-        ['prefix' => 'dashboard'],
-        function () {
-            Route::get('/', function () {
-                return view('admin.dashboard' );
-            })->name('dashboard');
-        }
-    );
 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::group(
         ['prefix' => 'administrator'],
         function () {
-            Route::get('/users', function() {
-                return view('admin.administrator.users');
-            })->name('users');
-
-            Route::get('/roles', function () {
-                return view('admin.administrator.roles');
-            })->name('roles');
-
-            Route::get('/permissions', function () {
-                return view('admin.administrator.permissions');
-            })->name('permissions');
+            Route::get('/users', [AdministratorController::class, 'users'])->name('users');
+            Route::get('/roles', [AdministratorController::class, 'roles'])->name('roles');
+            Route::get('/permissions', [AdministratorController::class, 'permissions'])->name('permissions');
         }
     );
 
@@ -81,5 +66,4 @@ Route::middleware(['auth'])->group(function () {
             })->name('profile.update');
         }
     );
-
 });

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('layouts._head')
+@include('admin.layouts._head')
 
 <body class="vertical  light  ">
 <div class="wrapper">
 
-    @include('layouts._topnav')
+    @include('admin.layouts._topnav')
 
-    @include('layouts._sidebar')
+    @include('admin.layouts._sidebar')
 
     <main role="main" class="main-content">
         <div class="container-fluid">
@@ -24,11 +24,7 @@
 <script src="{{ asset('js/moment.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/simplebar.min.js') }}"></script>
-<script src="{{ asset('js/daterangepicker.js') }}"></script>
 <script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
-<script src="{{ asset('js/tinycolor-min.js') }}"></script>
-<script src="{{ asset('js/gauge.min.js') }}"></script>
-<script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
 <script src="{{ asset('js/jquery.steps.min.js') }}"></script>
 <script src="{{ asset('js/config.js') }}"></script>
 <script src="{{ asset('js/apps.js') }}"></script>
