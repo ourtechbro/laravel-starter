@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "Laravel 9 Starter",
+    "description": "Laravel 10 Starter",
     "keywords": [
         "framework",
         "laravel"
