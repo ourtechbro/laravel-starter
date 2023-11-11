@@ -43,23 +43,3 @@
         </div>
     </div>
 </div>
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#select2Create').select2({
-                theme: 'bootstrap4',
-                multiple: true,
-                width: 'resolve',
-                placeholder: "{{ __('Select a role') }}",
-                allowClear: true,
-            }).on('change', function (e) {
-                livewire.emit('rolesChanged', $("#select2Create").val())
-            })
-
-            window.addEventListener('clearSelect', (e) => {
-                $('#select2Create').val([]);
-                $('#select2Create').trigger('change');
-            });
-        });
-    </script>
-@endpush

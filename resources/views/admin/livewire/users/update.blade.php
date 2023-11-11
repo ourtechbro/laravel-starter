@@ -38,28 +38,3 @@
         </div>
     </div>
 </div>
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#select2Update').select2({
-                theme: 'bootstrap4',
-                multiple: true,
-                width: 'resolve',
-                placeholder: 'Select a role',
-                allowClear: true,
-            }).on('change', function (e) {
-                livewire.emit('rolesChanged', $("#select2Update").val())
-            })
-
-            window.addEventListener('clearSelect', (e) => {
-                $('#select2Update').val([]);
-                $('#select2Update').trigger('change');
-            });
-
-            window.addEventListener('showPreviousRoles', (e) => {
-                $('#select2Update').val(e.detail.roles);
-                $('#select2Update').trigger('change');
-            });
-        });
-    </script>
-@endpush

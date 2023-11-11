@@ -28,9 +28,9 @@
                     <span class="ml-3 item-text">{{ __('Administrator') }}</span>
                 </a>
                 <ul class="collapse {{ (request()->is('administrator/*')) ? 'show' : '' }} list-unstyled pl-4 w-100" id="administrator">
-                    <a class="nav-link pl-3" href="{{ route('users') }}"><span class="ml-1">{{ __('Users') }}</span></a>
-                    <a class="nav-link pl-3" href="{{ route('roles') }}"><span class="ml-1">{{ __('Roles') }}</span></a>
-                    <a class="nav-link pl-3" href="{{ route('permissions') }}"><span class="ml-1">{{ __('Permissions') }}</span></a>
+                    <a class="nav-link pl-3" wire:navigate href="{{ route('users') }}"><span class="ml-1">{{ __('Users') }}</span></a>
+                    <a class="nav-link pl-3" wire:navigate href="{{ route('roles') }}"><span class="ml-1">{{ __('Roles') }}</span></a>
+                    <a class="nav-link pl-3" wire:navigate href="{{ route('permissions') }}"><span class="ml-1">{{ __('Permissions') }}</span></a>
                 </ul>
             </li>
             <li class="nav-item dropdown">

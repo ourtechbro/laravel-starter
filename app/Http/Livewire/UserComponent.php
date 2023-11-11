@@ -49,7 +49,7 @@ class UserComponent extends Component
         $this->password = null;
         $this->selectedRoles = [];
 
-        $this->dispatchBrowserEvent('clearSelect');
+        $this->dispatch('clearSelect');
     }
 
     public function rolesChanged($roles)
@@ -78,8 +78,8 @@ class UserComponent extends Component
         $user->syncRoles($this->selectedRoles);
 
         $this->resetInput();
-        $this->dispatchBrowserEvent('closeModal');
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User created successfully!']);
+        $this->dispatch('closeModal');
+        $this->dispatch('alert', ['type' => 'success',  'message' => 'User created successfully!']);
     }
     public function edit($id)
     {
@@ -90,7 +90,7 @@ class UserComponent extends Component
         $this->email = $record->email;
         $this->selectedRoles = optional($record->roles)->pluck('id')->toArray();
 
-        $this->dispatchBrowserEvent('showPreviousRoles', ['roles' => $this->selectedRoles]);
+        $this->dispatch('showPreviousRoles', ['roles' => $this->selectedRoles]);
     }
 
     public function update()
@@ -112,8 +112,8 @@ class UserComponent extends Component
             $this->resetInput();
         }
 
-        $this->dispatchBrowserEvent('closeModal');
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User updated successfully!']);
+        $this->dispatch('closeModal');
+        $this->dispatch('alert', ['type' => 'success',  'message' => 'User updated successfully!']);
     }
     public function destroy($id)
     {
@@ -122,7 +122,7 @@ class UserComponent extends Component
             $record->delete();
         }
 
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User deleted successfully!']);
+        $this->dispatch('alert', ['type' => 'success',  'message' => 'User deleted successfully!']);
     }
 
     public function hydrate()

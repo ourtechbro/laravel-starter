@@ -73,9 +73,63 @@
                         </tbody>
                     </table>
 
-                    {{ $list->links() }}
+                    {{-- {{ $list->links() }} --}}
                 </div>
             </div>
         </div> <!-- Bordered table -->
     </div> <!-- end section -->
 </div> <!-- .col-12 -->
+@push('scripts')
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script>
+        window.addEventListener('closeModal', event => {
+            $("#createModal").modal('hide');
+            $("#updateModal").modal('hide');
+        })
+    </script>
+@endpush
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#select2Create').select2({
+                theme: 'bootstrap4',
+                multiple: true,
+                width: 'resolve',
+                placeholder: "{{ __('Select a role') }}",
+                allowClear: true,
+            }).on('change', function (e) {
+                @this.dispatch('rolesChanged', $("#select2Create").val())
+            })
+
+            window.addEventListener('clearSelect', (e) => {
+                $('#select2Create').val([]);
+                $('#select2Create').trigger('change');
+            });
+        });
+    </script>
+@endpush
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#select2Update').select2({
+                theme: 'bootstrap4',
+                multiple: true,
+                width: 'resolve',
+                placeholder: 'Select a role',
+                allowClear: true,
+            }).on('change', function (e) {
+                @this.dispatch('rolesChanged', $("#select2Update").val())
+            })
+
+            window.addEventListener('clearSelect', (e) => {
+                $('#select2Update').val([]);
+                $('#select2Update').trigger('change');
+            });
+
+            window.addEventListener('showPreviousRoles', (e) => {
+                $('#select2Update').val(e.detail.roles);
+                $('#select2Update').trigger('change');
+            });
+        });
+    </script>
+@endpush

@@ -52,7 +52,7 @@ class PermissionsComponent extends Component
 
         Role::findById($this->currentRoleId)->syncPermissions($this->selectedPermissions);
 
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Permissions update successfully!']);
+        $this->dispatch('alert', ['type' => 'success',  'message' => 'Permissions update successfully!']);
     }
 
     public function hydrate()

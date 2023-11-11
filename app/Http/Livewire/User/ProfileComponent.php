@@ -58,7 +58,7 @@ class ProfileComponent extends Component
         $user->save();
 
         $this->resetInput();
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'User profile updated successfully!']);
+        $this->dispatch('alert', ['type' => 'success',  'message' => 'User profile updated successfully!']);
     }
 
     private function storeImage($name = null)
