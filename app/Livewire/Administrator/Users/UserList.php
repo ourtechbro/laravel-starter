@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire\Administrator\Users;
 
 use Livewire\Component;
 use App\Models\User;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Role;
 
-class UserComponent extends Component
+class UserList extends Component
 {
     use WithPagination;
 

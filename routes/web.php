@@ -4,9 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdministratorController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Livewire\RolesComponent;
-use App\Http\Livewire\UserComponent;
+use App\Livewire\RolesComponent;
+use App\Livewire\UserComponent;
+use App\Livewire\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +30,13 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
     Route::group(
         ['prefix' => 'administrator'],
         function () {
-            Route::get('/users', UserComponent::class)->name('users');
+            Route::get('/users', Users::class)->name('users');
+            Route::get('/users/create', UserCreate::class)->name('users');
             Route::get('/roles', RolesComponent::class)->name('roles');
             Route::get('/permissions', [AdministratorController::class, 'permissions'])->name('permissions');
         }

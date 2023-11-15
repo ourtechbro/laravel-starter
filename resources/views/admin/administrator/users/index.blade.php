@@ -1,7 +1,4 @@
 <div class="col-12">
-    @include('admin.livewire.users.update')
-    @include('admin.livewire.users.create')
-
     <h2 class="page-title">{{ __('User List') }}</h2>
     <div class="row">
 
@@ -29,10 +26,10 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-right">
-                            <button type="button" class="btn mb-2 btn-primary" data-toggle="modal"
+                            <a href="{{ route('users.create') }}" type="button" class="btn mb-2 btn-primary" data-toggle="modal"
                                     data-target="#createModal" data-whatever="@mdo">
                                 {{ __('Create new') }}
-                            </button>
+                            </a>
                         </div>
                     </div>
 
