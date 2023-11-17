@@ -26,8 +26,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-right">
-                            <a href="{{ route('users.create') }}" type="button" class="btn mb-2 btn-primary" data-toggle="modal"
-                                    data-target="#createModal" data-whatever="@mdo">
+                            <a wire:navigate href="{{ route('users.create') }}" type="button" class="btn mb-2 btn-primary">
                                 {{ __('Create new') }}
                             </a>
                         </div>
@@ -55,13 +54,12 @@
                                         <span class="badge badge-primary">{{ $role->name }}</span>
                                     @endforeach
                                 </td>
-                                <td>{{$row->created_at}}</td>
+                                <td>{{ $row->created_at }}</td>
                                 <td>
-                                    <button wire:click="edit({{$row->id}})" data-toggle="modal"
-                                            data-target="#updateModal" class="btn btn-sm btn-outline-danger py-0">{{ __('Edit') }}
-                                    </button>
+                                    <a wire:navigate href="{{ route('users.edit', ['id' => $row->id]) }}" class="btn btn-sm btn-outline-danger py-0">{{ __('Edit') }}
+                                    </a>
                                     |
-                                    <button wire:click="destroy({{$row->id}})"
+                                    <button wire:click="destroy({{ $row->id }})"
                                             class="btn btn-sm btn-outline-danger py-0">{{ __('Delete') }}
                                     </button>
                                 </td>
@@ -76,57 +74,3 @@
         </div> <!-- Bordered table -->
     </div> <!-- end section -->
 </div> <!-- .col-12 -->
-@push('scripts')
-    <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script>
-        window.addEventListener('closeModal', event => {
-            $("#createModal").modal('hide');
-            $("#updateModal").modal('hide');
-        })
-    </script>
-@endpush
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#select2Create').select2({
-                theme: 'bootstrap4',
-                multiple: true,
-                width: 'resolve',
-                placeholder: "{{ __('Select a role') }}",
-                allowClear: true,
-            }).on('change', function (e) {
-                @this.dispatch('rolesChanged', $("#select2Create").val())
-            })
-
-            window.addEventListener('clearSelect', (e) => {
-                $('#select2Create').val([]);
-                $('#select2Create').trigger('change');
-            });
-        });
-    </script>
-@endpush
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#select2Update').select2({
-                theme: 'bootstrap4',
-                multiple: true,
-                width: 'resolve',
-                placeholder: 'Select a role',
-                allowClear: true,
-            }).on('change', function (e) {
-                @this.dispatch('rolesChanged', $("#select2Update").val())
-            })
-
-            window.addEventListener('clearSelect', (e) => {
-                $('#select2Update').val([]);
-                $('#select2Update').trigger('change');
-            });
-
-            window.addEventListener('showPreviousRoles', (e) => {
-                $('#select2Update').val(e.detail.roles);
-                $('#select2Update').trigger('change');
-            });
-        });
-    </script>
-@endpush

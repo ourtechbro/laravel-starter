@@ -4,8 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdministratorController;
+use App\Livewire\Administrator\Users\UserCreate;
+use App\Livewire\Administrator\Users\UserEdit;
+use App\Livewire\Administrator\Users\UserList;
 use App\Livewire\RolesComponent;
-use App\Livewire\UserComponent;
 use App\Livewire\Dashboard;
 
 /*
@@ -35,8 +37,11 @@ Route::middleware(['auth'])->group(function () {
     Route::group(
         ['prefix' => 'administrator'],
         function () {
-            Route::get('/users', Users::class)->name('users');
-            Route::get('/users/create', UserCreate::class)->name('users');
+            Route::get('/users', UserList::class)->name('users');
+            Route::get('/users/create', UserCreate::class)->name('users.create');
+            Route::get('/users/{id}/edit', UserEdit::class)->name('users.edit');
+
+
             Route::get('/roles', RolesComponent::class)->name('roles');
             Route::get('/permissions', [AdministratorController::class, 'permissions'])->name('permissions');
         }

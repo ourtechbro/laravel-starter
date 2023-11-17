@@ -31,7 +31,7 @@ class UserList extends Component
             });
         }
 
-        return view('admin.livewire.users.index', [
+        return view('admin.administrator.users.index', [
             'list' => $users->latest()->paginate($this->per_page),
             'roles' => Role::get()
         ]);
@@ -81,40 +81,7 @@ class UserList extends Component
         $this->dispatch('closeModal');
         $this->dispatch('alert', ['type' => 'success',  'message' => 'User created successfully!']);
     }
-    public function edit($id)
-    {
-        $this->hydrate();
-        $record = User::with('roles')->findOrFail($id);
-        $this->selected_id = $id;
-        $this->name = $record->name;
-        $this->email = $record->email;
-        $this->selectedRoles = optional($record->roles)->pluck('id')->toArray();
 
-        $this->dispatch('showPreviousRoles', ['roles' => $this->selectedRoles]);
-    }
-
-    public function update()
-    {
-        $this->validate([
-            'selected_id' => 'required|numeric',
-            'name' => 'required|min:5',
-            'email' => 'required|email'
-        ]);
-        if ($this->selected_id) {
-            $record = User::find($this->selected_id);
-            $record->update([
-                'name' => $this->name,
-                'email' => $this->email
-            ]);
-
-            $record->syncRoles($this->selectedRoles);
-
-            $this->resetInput();
-        }
-
-        $this->dispatch('closeModal');
-        $this->dispatch('alert', ['type' => 'success',  'message' => 'User updated successfully!']);
-    }
     public function destroy($id)
     {
         if ($id) {

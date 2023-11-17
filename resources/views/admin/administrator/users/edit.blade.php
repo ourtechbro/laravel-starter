@@ -24,14 +24,14 @@
                             @error('password') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                         <div class="form-group" wire:ignore>
-                            <select class="form-control input-sm" id="select2Create">
+                            <select class="form-control input-sm" id="select2Update">
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <a wire:navigate href="{{ route('users') }}" class="btn btn-secondary mt-2">{{ __('Back to list') }}</a>
-                        <button wire:click.prevent="store()" class="btn btn-primary mt-2">{{ __('Submit') }}</button>
+                        <button wire:click.prevent="update()" class="btn btn-primary mt-2">{{ __('Submit') }}</button>
                     </form>
                 </div>
             </div>
@@ -39,22 +39,27 @@
     </div> <!-- end section -->
 </div> <!-- .col-12 -->
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#select2Create').select2({
-                theme: 'bootstrap4',
-                multiple: true,
-                width: 'resolve',
-                placeholder: "{{ __('Select a role') }}",
-                allowClear: true,
-            }).on('change', function (e) {
-                @this.set('selectedRoles', $("#select2Create").val())
-            })
+<script>
+    document.addEventListener('livewire:initialized', () => {
+        $('#select2Update').select2({
+            theme: 'bootstrap4',
+            multiple: true,
+            width: 'resolve',
+            placeholder: 'Select a role',
+            allowClear: true,
+        }).on('change', function (e) {
+            @this.set('rolesChanged', $("#select2Update").val())
+        })
 
-            window.addEventListener('clearSelect', (e) => {
-                $('#select2Create').val([]);
-                $('#select2Create').trigger('change');
-            });
+        @this.on('clearSelect', (event) => {
+            $('#select2Update').val([]);
+            $('#select2Update').trigger('change');
         });
-    </script>
+
+        @this.on('show-previous-roles', (event) => {
+            $('#select2Update').val(event.detail.roles);
+            $('#select2Update').trigger('change');
+        });
+    });
+</script>
 @endpush
