@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>{{ config('app.name', 'Laravel') }} | @yield('title', '')</title>
+    <title>{{ $title ?? config('app.name') }}</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
     <!-- Fonts CSS -->
@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('css/app-light.css') }}" id="lightTheme">
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    @livewireStyles
+
+    <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
 
     @yield('styles')
 </head>

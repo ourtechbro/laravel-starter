@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
@@ -35,11 +35,12 @@ class RolesComponent extends Component
         Role::create(['name' => $this->name]);
 
         $this->resetInput();
-        $this->dispatchBrowserEvent('closeModal');
+        $this->dispatch('closeModal');
     }
+
     public function edit($id)
     {
-        $this->hydrate();
+        // $this->hydrate();
         $record = Role::findOrFail($id);
         $this->selected_id = $id;
         $this->name = $record->name;
@@ -59,8 +60,9 @@ class RolesComponent extends Component
             $this->resetInput();
         }
 
-        $this->dispatchBrowserEvent('closeModal');
+        $this->dispatch('closeModal');
     }
+
     public function destroy($id)
     {
         if ($id) {

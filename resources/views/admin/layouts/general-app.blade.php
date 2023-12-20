@@ -12,20 +12,35 @@
 
     <main role="main" class="main-content">
         <div class="container-fluid">
-            <div class="row justify-content-center">
-                {{ $slot }}
-            </div>
+            @yield('content')
         </div> <!-- .container-fluid -->
     </main> <!-- main -->
 </div> <!-- .wrapper -->
 
+@livewireScripts
+
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/simplebar.min.js') }}"></script>
 <script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
 <script src="{{ asset('js/jquery.steps.min.js') }}"></script>
-<script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/config.js') }}"></script>
+<script src="{{ asset('js/apps.js') }}"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag()
+    {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-56159088-1');
+</script>
+
 @yield('scripts')
 
 @stack('scripts')

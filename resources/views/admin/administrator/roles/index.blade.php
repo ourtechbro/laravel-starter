@@ -1,8 +1,5 @@
 <div class="col-12">
-    @include('admin.livewire.users.update')
-    @include('admin.livewire.users.create')
-
-    <h2 class="page-title">{{ __('User List') }}</h2>
+    <h2 class="page-title">{{ __('Role List') }}</h2>
     <div class="row">
 
         <!-- Bordered table -->
@@ -29,20 +26,17 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-right">
-                            <button type="button" class="btn mb-2 btn-primary" data-toggle="modal"
-                                    data-target="#createModal" data-whatever="@mdo">
+                            <a wire:navigate href="{{ route('roles.create') }}" type="button" class="btn mb-2 btn-primary">
                                 {{ __('Create new') }}
-                            </button>
+                            </a>
                         </div>
                     </div>
 
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover mb-0">
                         <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Name') }}</th>
-                            <th>{{ __('Email') }}</th>
-                            <th>{{ __('Roles') }}</th>
                             <th>{{ __('Created At') }}</th>
                             <th>{{ __('Action') }}</th>
                         </tr>
@@ -50,19 +44,11 @@
                         <tbody>
                         @foreach($list as $row)
                             <tr>
-                                <td>{{ $row->id }}</td>
+                                <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $row->name }}</td>
-                                <td>{{ $row->email }}</td>
+                                <td>{{ $row->created_at }}</td>
                                 <td>
-                                    @foreach($row->roles as $role)
-                                        <span class="badge badge-primary">{{ $role->name }}</span>
-                                    @endforeach
-                                </td>
-                                <td>{{$row->created_at}}</td>
-                                <td>
-                                    <button wire:click="edit({{$row->id}})" data-toggle="modal"
-                                            data-target="#updateModal" class="btn btn-sm btn-outline-danger py-0">{{ __('Edit') }}
-                                    </button>
+                                    <a wire:navigate href="{{ route('roles.edit', ['id' => $row->id]) }}" class="btn btn-sm btn-outline-danger py-0">{{ __('Edit') }}</a>
                                     |
                                     <button wire:click="destroy({{$row->id}})"
                                             class="btn btn-sm btn-outline-danger py-0">{{ __('Delete') }}

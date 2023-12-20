@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 
@@ -28,7 +28,7 @@ class SettingsComponent extends Component
     {
         $this->settings = setting()->all();
     }
-    
+
     public function updateSettings()
     {
         setting($this->settings)->save();
@@ -38,6 +38,6 @@ class SettingsComponent extends Component
 
     private function successMessage()
     {
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Settings updated successfully!']);
+        $this->dispatch('alert', ['type' => 'success',  'message' => 'Settings updated successfully!']);
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.general-app')
 
 @section('title')
     Language Settings

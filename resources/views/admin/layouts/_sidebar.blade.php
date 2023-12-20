@@ -17,7 +17,7 @@
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100 @if(url()->current() == route('dashboard')) active @endif">
-                <a class="nav-link" href="{{ route('dashboard') }}">
+                <a class="nav-link" wire:navigate href="{{ route('dashboard') }}">
                     <i class="fe fe-home"></i>
                     <span class="ml-3 item-text">{{ __('Dashboard') }}</span>
                 </a>
@@ -28,9 +28,9 @@
                     <span class="ml-3 item-text">{{ __('Administrator') }}</span>
                 </a>
                 <ul class="collapse {{ (request()->is('administrator/*')) ? 'show' : '' }} list-unstyled pl-4 w-100" id="administrator">
-                    <a class="nav-link pl-3" href="{{ route('users') }}"><span class="ml-1">{{ __('Users') }}</span></a>
-                    <a class="nav-link pl-3" href="{{ route('roles') }}"><span class="ml-1">{{ __('Roles') }}</span></a>
-                    <a class="nav-link pl-3" href="{{ route('permissions') }}"><span class="ml-1">{{ __('Permissions') }}</span></a>
+                    <a class="nav-link pl-3" wire:navigate href="{{ route('users') }}"><span class="ml-1">{{ __('Users') }}</span></a>
+                    <a class="nav-link pl-3" wire:navigate href="{{ route('roles') }}"><span class="ml-1">{{ __('Roles') }}</span></a>
+                    <a class="nav-link pl-3" wire:navigate href="{{ route('permissions') }}"><span class="ml-1">{{ __('Permissions') }}</span></a>
                 </ul>
             </li>
             <li class="nav-item dropdown">
