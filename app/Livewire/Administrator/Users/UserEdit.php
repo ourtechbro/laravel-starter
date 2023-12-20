@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Role;
 
 class UserEdit extends Component
 {
-    public $name, $email, $password, $selected_id;
+    public $id, $name, $email, $password;
     public $selectedRoles;
 
     public function render()
@@ -28,36 +28,36 @@ class UserEdit extends Component
         $this->name = null;
         $this->email = null;
         $this->password = null;
-        $this->selectedRoles = null;
+        $this->selectedRoles = [];
 
         $this->dispatch('clearSelect');
     }
 
     public function mount($id)
     {
+        $this->id = $id;
+
         $record = User::with('roles')->findOrFail($id);
         $this->name = $record->name;
         $this->email = $record->email;
         $this->selectedRoles = optional($record->roles)->pluck('id')->toArray();
-
-        $this->dispatch('show-previous-roles', roles: $this->selectedRoles);
     }
 
     public function update()
     {
         $this->validate([
-            'selected_id' => 'required|numeric',
             'name' => 'required|min:5',
             'email' => 'required|email'
         ]);
-        if ($this->selected_id) {
-            $record = User::find($this->selected_id);
+
+        if ($this->id) {
+            $record = User::find($this->id);
             $record->update([
                 'name' => $this->name,
                 'email' => $this->email
             ]);
 
-            $record->syncRoles($this->selectedRoles);
+            $record->syncRoles(array_unique($this->selectedRoles));
 
             $this->resetInput();
         }

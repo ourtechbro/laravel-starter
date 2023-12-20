@@ -1,5 +1,5 @@
 <div class="col-12">
-    <h2 class="page-title">{{ __('User Create') }}</h2>
+    <h2 class="page-title">{{ __('User edit') }}</h2>
     <div class="row">
 
         <!-- Bordered table -->
@@ -40,7 +40,15 @@
 </div> <!-- .col-12 -->
 @push('scripts')
 <script>
-    document.addEventListener('livewire:initialized', () => {
+    document.addEventListener('livewire:navigated', function () {
+        initSelect2();
+    });
+
+    document.addEventListener('livewire:init', function () {
+        initSelect2();
+    });
+
+    function initSelect2() {
         $('#select2Update').select2({
             theme: 'bootstrap4',
             multiple: true,
@@ -48,18 +56,10 @@
             placeholder: 'Select a role',
             allowClear: true,
         }).on('change', function (e) {
-            @this.set('rolesChanged', $("#select2Update").val())
+            @this.set('selectedRoles', $(this).val());
         })
 
-        @this.on('clearSelect', (event) => {
-            $('#select2Update').val([]);
-            $('#select2Update').trigger('change');
-        });
-
-        @this.on('show-previous-roles', (event) => {
-            $('#select2Update').val(event.detail.roles);
-            $('#select2Update').trigger('change');
-        });
-    });
+        $('#select2Update').val(@json($selectedRoles))
+    };
 </script>
 @endpush

@@ -11,14 +11,9 @@ class UserList extends Component
 {
     use WithPagination;
 
-    public $data, $name, $email, $password, $selected_id;
-    public array $selectedRoles = [];
+    public $data, $name, $email, $password;
     public $per_page = 10;
     public $query = '';
-
-    protected $listeners = [
-        'rolesChanged',
-    ];
 
     public function render()
     {
@@ -47,18 +42,8 @@ class UserList extends Component
         $this->name = null;
         $this->email = null;
         $this->password = null;
-        $this->selectedRoles = [];
 
         $this->dispatch('clearSelect');
-    }
-
-    public function rolesChanged($roles)
-    {
-        if (!$roles) {
-            return;
-        }
-
-        $this->selectedRoles = $roles;
     }
 
     public function store()
@@ -78,7 +63,7 @@ class UserList extends Component
         $user->syncRoles($this->selectedRoles);
 
         $this->resetInput();
-        $this->dispatch('closeModal');
+
         $this->dispatch('alert', ['type' => 'success',  'message' => 'User created successfully!']);
     }
 

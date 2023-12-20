@@ -3,11 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdministratorController;
+use App\Livewire\Administrator\Roles\RoleCreate;
+use App\Livewire\Administrator\Roles\RoleEdit;
+use App\Livewire\Administrator\Roles\RoleList;
 use App\Livewire\Administrator\Users\UserCreate;
 use App\Livewire\Administrator\Users\UserEdit;
 use App\Livewire\Administrator\Users\UserList;
-use App\Livewire\RolesComponent;
+use App\Livewire\Administrator\Permissions;
 use App\Livewire\Dashboard;
 
 /*
@@ -41,9 +43,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/users/create', UserCreate::class)->name('users.create');
             Route::get('/users/{id}/edit', UserEdit::class)->name('users.edit');
 
+            Route::get('/roles', RoleList::class)->name('roles');
+            Route::get('/roles/create', RoleCreate::class)->name('roles.create');
+            Route::get('/roles/{id}/edit', RoleEdit::class)->name('roles.edit');
 
-            Route::get('/roles', RolesComponent::class)->name('roles');
-            Route::get('/permissions', [AdministratorController::class, 'permissions'])->name('permissions');
+            Route::get('/permissions', Permissions::class)->name('permissions');
+
+            // Route::get('/permissions', [AdministratorController::class, 'permissions'])->name('permissions');
         }
     );
 
