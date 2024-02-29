@@ -1,5 +1,4 @@
 <div class="my-4">
-
     <ul class="nav nav-tabs mb-4" id="settingsTab" role="tablist" wire:ignore>
         <li class="nav-item">
             <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">{{ __('General') }}</a>
