@@ -23,18 +23,13 @@ use App\Livewire\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
-
-// Auth routes
-require __DIR__.'/auth.php';
-
 // All static theme pages
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+    Route::view('/profile', 'admin.profile')->name('profile');
+    Route::view('/settings', 'admin.settings')->name('settings');
 
     Route::group(
         ['prefix' => 'administrator'],
@@ -54,29 +49,15 @@ Route::middleware(['auth'])->group(function () {
     );
 
 
-    Route::group(
-        ['prefix' => 'settings'],
-        function () {
-            Route::get('/', function() {
-                return view('admin.settings.settings');
-            })->name('settings.settings');
 
-            Route::get('settings/language/',function(Request $request){
-                App::setLocale($request->lang);
-                session()->put('locale', $request->lang);
 
-                return redirect()->back();
-            })->name('changeLang');
+    Route::get('lang-change',function(Request $request){
+        App::setLocale($request->lang);
+        session()->put('locale', $request->lang);
 
-        }
-    );
-
-    Route::group(
-        ['prefix' => 'profile'],
-        function () {
-            Route::get('/update', function() {
-                return view('admin.users.profile-update');
-            })->name('profile.update');
-        }
-    );
+        return redirect()->back();
+    })->name('changeLang');
 });
+
+// Auth routes
+require __DIR__.'/auth.php';
