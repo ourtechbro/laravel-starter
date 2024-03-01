@@ -54,10 +54,3 @@ new class extends Component
         </li>
     </ul>
 </nav>
-<script type="text/javascript">
-    let url = "{{ route('changeLang') }}";
-
-    document.getElementById('changeLang').addEventListener('change',function(e){
-          window.location.href = url + "?lang="+ $(this).val();
-    })
-</script>
