@@ -39,13 +39,13 @@ new class extends Component
                 @endif
             </select>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li @click="open = !open" class="nav-item dropdown" :class="{'show': open}" >
+            <a @click="open = !open" class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="{'true': open, 'false': ! open}">
               <span class="avatar avatar-sm mt-2">
                 <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}&size=128" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <div :class="{'show': open}" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('profile') }}" wire:navigate>Profile</a>
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activities</a>
