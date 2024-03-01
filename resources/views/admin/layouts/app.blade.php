@@ -86,7 +86,7 @@
 
     <main role="main" class="main-content">
         <div class="container-fluid">
-            <div class="row justify-content-center">
+            <div class="row">
                 {{ $slot }}
             </div>
         </div> <!-- .container-fluid -->

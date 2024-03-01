@@ -38,6 +38,10 @@ class LoginForm extends Form
             ]);
         }
 
+        if(module_enabled('ActivityLog')) {
+            activity_log(\auth()->user(), 'signin', __('User Signed In'));
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 

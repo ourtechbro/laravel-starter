@@ -1,5 +1,5 @@
 {
-    "Language": false,
-    "ActivityLog": false,
-    "SocialAuth": false
+    "Language": true,
+    "ActivityLog": true,
+    "SocialAuth": true
 }

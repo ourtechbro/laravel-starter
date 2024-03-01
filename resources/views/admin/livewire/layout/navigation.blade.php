@@ -42,7 +42,7 @@ new class extends Component
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src="{{ auth()->user()->profile_photo_url }}" alt="..." class="avatar-img rounded-circle">
+                <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}&size=128" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -54,3 +54,10 @@ new class extends Component
         </li>
     </ul>
 </nav>
+<script type="text/javascript">
+    let url = "{{ route('changeLang') }}";
+
+    document.getElementById('changeLang').addEventListener('change',function(e){
+          window.location.href = url + "?lang="+ $(this).val();
+    })
+</script>

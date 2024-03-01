@@ -27,7 +27,7 @@ class Activity extends Component
     {
         ActivityModel::find($logId)->delete();
 
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => __('Log removed successfully!')]);
+        $this->dispatch('alert', ['type' => 'success',  'message' => __('Log removed successfully!')]);
     }
 
     public function paginationView()

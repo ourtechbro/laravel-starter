@@ -24,7 +24,7 @@
             @foreach($activities as $activity)
             <tr>
                 <td>
-                    <a href="{{ route('users') }}"><small> {{ $activity->causer->name }} </small></a>
+                    <a href="{{ route('users') }}"><small> {{ $activity->causer ? $activity->causer->name : '' }} </small></a>
                 </td>
                 <td>
                     @if($activity->event == 'signin')

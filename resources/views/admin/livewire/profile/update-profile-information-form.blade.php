@@ -77,7 +77,7 @@ new class extends Component
     <h2 class="page-title">{{ __('Update Profile') }}</h2>
     <div class="card shadow mb-4">
       <div class="card-header">
-        <strong class="card-title">{{ __('Form controls') }}</strong>
+        <strong class="card-title">{{ __('General') }}</strong>
       </div>
       <div class="card-body">
           <form wire:submit="updateProfileInformation">

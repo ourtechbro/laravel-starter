@@ -23,7 +23,9 @@ use App\Livewire\Dashboard;
 |
 */
 
-// All static theme pages
+Route::get('/', function() {
+    return redirect()->route('dashboard');
+});
 
 Route::middleware(['auth'])->group(function () {
 
