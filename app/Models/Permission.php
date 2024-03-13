@@ -55,8 +55,8 @@ class Permission extends Model implements PermissionContract
         return $this->belongsToMany(
             config('permission.models.role'),
             config('permission.table_names.role_has_permissions'),
-            PermissionRegistrar::$pivotPermission,
-            PermissionRegistrar::$pivotRole
+            app(PermissionRegistrar::class)->pivotPermission,
+            app(PermissionRegistrar::class)->pivotRole
         );
     }
 
@@ -66,25 +66,23 @@ class Permission extends Model implements PermissionContract
     public function users(): BelongsToMany
     {
         return $this->morphedByMany(
-            getModelForGuard($this->attributes['guard_name']),
+            getModelForGuard($this->attributes['guard_name'] ?? config('auth.defaults.guard')),
             'model',
             config('permission.table_names.model_has_permissions'),
-            PermissionRegistrar::$pivotPermission,
+            app(PermissionRegistrar::class)->pivotPermission,
             config('permission.column_names.model_morph_key')
         );
     }
 
+
     /**
      * Find a permission by its name (and optionally guardName).
      *
-     * @param string $name
-     * @param string|null $guardName
+     * @return PermissionContract|Permission
      *
-     * @throws \Spatie\Permission\Exceptions\PermissionDoesNotExist
-     *
-     * @return \Spatie\Permission\Contracts\Permission
+     * @throws PermissionDoesNotExist
      */
-    public static function findByName(string $name, $guardName = null): PermissionContract
+    public static function findByName(string $name, ?string $guardName = null): PermissionContract
     {
         $guardName = $guardName ?? Guard::getDefaultName(static::class);
         $permission = static::getPermission(['name' => $name, 'guard_name' => $guardName]);
@@ -98,17 +96,14 @@ class Permission extends Model implements PermissionContract
     /**
      * Find a permission by its id (and optionally guardName).
      *
-     * @param int $id
-     * @param string|null $guardName
+     * @return PermissionContract|Permission
      *
-     * @throws \Spatie\Permission\Exceptions\PermissionDoesNotExist
-     *
-     * @return \Spatie\Permission\Contracts\Permission
+     * @throws PermissionDoesNotExist
      */
-    public static function findById(int $id, $guardName = null): PermissionContract
+    public static function findById(int|string $id, ?string $guardName = null): PermissionContract
     {
         $guardName = $guardName ?? Guard::getDefaultName(static::class);
-        $permission = static::getPermission(['id' => $id, 'guard_name' => $guardName]);
+        $permission = static::getPermission([(new static())->getKeyName() => $id, 'guard_name' => $guardName]);
 
         if (! $permission) {
             throw PermissionDoesNotExist::withId($id, $guardName);

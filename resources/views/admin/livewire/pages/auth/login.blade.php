@@ -25,8 +25,6 @@ new #[Layout('admin.layouts.guest')] class extends Component
     }
 }; ?>
 
-
-
 <div class="wrapper vh-100">
     <div class="align-items-center h-100">
         <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" wire:submit="login" style="top: 100px">
