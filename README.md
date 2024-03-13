@@ -2,9 +2,8 @@
 
 Laravel Starter is an starter-kit 
 
-Laravel Starter is a Laravel 9.x based starter project. 
-It can be used to build all type of applications. 
-New features and functionalities are being added on a regular basis.
+Laravel Starter is a Laravel 11.x based starter project. 
+Focused on using Livewire with volt + Bootstrap
 
 Please let me know your feedback and comments.
 
@@ -39,13 +38,9 @@ Licence on theme source: https://themewagon.com/license/
 - Built with [Laravel Livewire](https://laravel-livewire.com/)
 - [Modular system livewire support](https://github.com/mhmiton/laravel-modules-livewire)
 - Each features tested with [PHPUnit](https://laravel.com/docs/9.x/testing)
-- RSS Feed
 
 #### Social Login Supports:
 - Facebook
 - Google
 - Twitter
 - GitHub
-
-#### Upcoming features:
-- CMS system add
