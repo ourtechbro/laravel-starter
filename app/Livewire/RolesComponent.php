@@ -26,6 +26,9 @@ class RolesComponent extends Component
         $this->name = null;
     }
 
+    /**
+     * Store the data after validating and creating a new Role.
+     */
     public function store()
     {
         $this->validate([

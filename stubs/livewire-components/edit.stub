@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Livewire\{{ModelName}};
+
+use Livewire\Component;
+use App\Models\{{ModelName}};
+
+class {{ModelName}}Edit extends Component
+{
+    public $id, $title;
+
+    public function render()
+    {
+        return view('livewire.{{tableName}}.edit');
+    }
+
+    public function mount($id)
+    {
+        $this->id = $id;
+
+        $record = {{ModelName}}::findOrFail($id);
+        $this->title = $record->title;
+    }
+
+    public function update()
+    {
+        $this->validate([
+            'title' => 'required'
+        ]);
+
+        if ($this->id) {
+            $record = {{ModelName}}::find($this->id);
+            $record->update([
+                'title' => $this->title
+            ]);
+        }
+
+
+        $this->dispatch('alert', ['type' => 'success',  'message' => '{{ModelName}} updated successfully!']);
+
+        return $this->redirect(route('{{tableName}}'), navigate: true);
+    }
+}

@@ -1,0 +1,20 @@
+<div class="col-12">
+    <h2 class="page-title">{{ __('{{ModelName}} edit') }}</h2>
+    <div class="row">
+        <div class="col-md-12 my-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">{{ __('Enter Title') }}</label>
+                            <input type="text" wire:model="title" class="form-control input-sm"  placeholder="{{ __('Title') }}">
+                            @error('title') <span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
+                        <a wire:navigate href="{{ route('{{tableName}}') }}" class="btn btn-secondary mt-2">{{ __('Back to list') }}</a>
+                        <button wire:click.prevent="update()" class="btn btn-primary mt-2">{{ __('Submit') }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Livewire\{{ModelName}};
+
+use Livewire\Component;
+use Livewire\WithPagination;
+use App\Models\{{ModelName}};
+
+class {{ModelName}}List extends Component
+{
+    use WithPagination;
+
+    public $data;
+    public $per_page = 10;
+    public $query = '';
+
+    public function render()
+    {
+        ${{tableName}} = {{ModelName}}::query();
+
+        if ($this->query) {
+            ${{tableName}}->where(function($query) {
+                $query->where('name','LIKE','%'. $this->query .'%');
+            });
+        }
+
+        return view('livewire.{{tableName}}.index', [
+            'list' => ${{tableName}}->latest()->paginate($this->per_page)
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        if ($id) {
+            $record = {{ModelName}}::where('id', $id);
+            $record->delete();
+        }
+
+        $this->dispatch('alert', ['type' => 'success',  'message' => '{{ModelName}} deleted successfully!']);
+    }
+
+    public function paginationView()
+    {
+        return 'admin.pagination';
+    }
+}
