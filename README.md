@@ -44,3 +44,11 @@ Licence on theme source: https://themewagon.com/license/
 - Google
 - Twitter
 - GitHub
+
+### CRUD Generator
+
+```php artisan crud:generate Post```
+
+- Undo: 
+
+```php artisan crud:undo Post```
