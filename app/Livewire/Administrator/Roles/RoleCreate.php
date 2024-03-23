@@ -2,11 +2,14 @@
 
 namespace App\Livewire\Administrator\Roles;
 
+use App\Traits\LivewireAlertPlus;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
 class RoleCreate extends Component
 {
+    use LivewireAlertPlus;
+
     public $name;
 
     public function render()
@@ -27,15 +30,13 @@ class RoleCreate extends Component
     public function store()
     {
         $this->validate([
-            'name' => 'required|min:5'
+            'name' => 'required'
         ]);
 
         Role::create([
             'name' => $this->name
         ]);
 
-        $this->dispatch('alert', ['type' => 'success',  'message' => 'Role created successfully!']);
-
-        return $this->redirect(route('roles'), navigate: true);
+        $this->flash('success', 'Role created successfully!', [], 'roles');
     }
 }

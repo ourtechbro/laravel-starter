@@ -2,26 +2,19 @@
 
 namespace App\Livewire\Administrator\Roles;
 
+use App\Traits\LivewireAlertPlus;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
 class RoleEdit extends Component
 {
+    use LivewireAlertPlus;
+
     public $id, $name;
 
     public function render()
     {
         return view('admin.administrator.roles.edit');
-    }
-
-    public function cancel()
-    {
-        $this->resetInput();
-    }
-
-    private function resetInput()
-    {
-        $this->name = null;
     }
 
     public function mount($id)
@@ -35,7 +28,7 @@ class RoleEdit extends Component
     public function update()
     {
         $this->validate([
-            'name' => 'required|min:5'
+            'name' => 'required'
         ]);
 
         if ($this->id) {
@@ -43,13 +36,8 @@ class RoleEdit extends Component
             $record->update([
                 'name' => $this->name
             ]);
-
-            $this->resetInput();
         }
 
-
-        $this->dispatch('alert', ['type' => 'success',  'message' => 'Role updated successfully!']);
-
-        return $this->redirect(route('roles'), navigate: true);
+        $this->flash('success', 'Role updated successfully!', [], 'roles');
     }
 }

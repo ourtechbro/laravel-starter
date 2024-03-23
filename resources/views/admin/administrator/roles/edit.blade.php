@@ -12,7 +12,7 @@
                             <input type="text" wire:model="name" class="form-control input-sm"  placeholder="{{ __('Name') }}">
                             @error('name') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
-                        <a wire:navigate href="{{ route('users') }}" class="btn btn-secondary mt-2">{{ __('Back to list') }}</a>
+                        <a wire:navigate href="{{ route('roles') }}" class="btn btn-secondary mt-2">{{ __('Back to list') }}</a>
                         <button wire:click.prevent="update()" class="btn btn-primary mt-2">{{ __('Submit') }}</button>
                     </form>
                 </div>

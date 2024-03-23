@@ -16,15 +16,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <!-- Icons CSS -->
         <link rel="stylesheet" href="{{ asset('css/feather.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.css') }}">
-        <!-- Date Range Picker CSS -->
-        <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
         <!-- App CSS -->
         <link rel="stylesheet" href="{{ asset('css/app-light.css') }}" id="lightTheme">
+        <link rel="stylesheet" href="{{ asset('css/app-light.css') }}" id="lightTheme">
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
+        @vite(['resources/js/app.js'])
 
         @yield('styles')
     </head>
@@ -91,6 +87,9 @@
             </div>
         </div> <!-- .container-fluid -->
     </main> <!-- main -->
+
+
+
 </div> <!-- .wrapper -->
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -98,20 +97,14 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/simplebar.min.js') }}"></script>
 <script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
-<script src="{{ asset('js/jquery.steps.min.js') }}"></script>
-<script src="{{ asset('js/select2.min.js') }}"></script>
+
 @yield('scripts')
 
 @stack('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script>
-    window.addEventListener('alert', event => {
-        toastr[event.detail.type](event.detail.message,
-            event.detail.title ?? ''), toastr.options = {
-            "closeButton": true,
-            "progressBar": true,
-        }
-    });
-</script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts />
+
 </body>
 </html>

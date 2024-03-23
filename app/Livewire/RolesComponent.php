@@ -16,68 +16,12 @@ class RolesComponent extends Component
         ]);
     }
 
-    public function cancel()
-    {
-        $this->resetInput();
-    }
-
-    private function resetInput()
-    {
-        $this->name = null;
-    }
-
-    /**
-     * Store the data after validating and creating a new Role.
-     */
-    public function store()
-    {
-        $this->validate([
-            'name' => 'required|string'
-        ]);
-
-        Role::create(['name' => $this->name]);
-
-        $this->resetInput();
-        $this->dispatch('closeModal');
-    }
-
-    public function edit($id)
-    {
-        // $this->hydrate();
-        $record = Role::findOrFail($id);
-        $this->selected_id = $id;
-        $this->name = $record->name;
-    }
-
-    public function update()
-    {
-        $this->validate([
-            'selected_id' => 'required|numeric',
-            'name' => 'required|string',
-        ]);
-        if ($this->selected_id) {
-            $record = Role::find($this->selected_id);
-            $record->update([
-                'name' => $this->name
-            ]);
-            $this->resetInput();
-        }
-
-        $this->dispatch('closeModal');
-    }
-
     public function destroy($id)
     {
         if ($id) {
             $record = Role::where('id', $id);
             $record->delete();
         }
-    }
-
-    public function hydrate()
-    {
-        $this->resetErrorBag();
-        $this->resetValidation();
     }
 
     public function paginationView()
