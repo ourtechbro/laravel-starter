@@ -20,7 +20,6 @@ class UndoCRUD extends Command
         $migrationFileName = database_path("migrations/*_create_{$tableName}_table.php");
         $seederFileName = database_path("seeders/{$modelName}Seeder.php");
         $factoryFileName = database_path("factories/{$modelName}Factory.php");
-        $livewireComponentDirectory = app_path("Livewire/{$modelName}");
         $viewDirectory = resource_path("views/livewire/{$tableName}");
 
         // Check if files exist and confirm deletion
@@ -32,11 +31,6 @@ class UndoCRUD extends Command
 
         // Add migration files
         $filesToRemove = array_merge($filesToRemove, glob($migrationFileName));
-
-        // Add Livewire component directory
-        if (File::isDirectory($livewireComponentDirectory)) {
-            $filesToRemove[] = $livewireComponentDirectory;
-        }
 
         // Add view directory
         if (File::isDirectory($viewDirectory)) {

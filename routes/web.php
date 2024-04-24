@@ -11,6 +11,7 @@ use App\Livewire\Administrator\Users\UserEdit;
 use App\Livewire\Administrator\Users\UserList;
 use App\Livewire\Administrator\Permissions;
 use App\Livewire\Dashboard;
+use Livewire\Volt\Volt;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/users/create', UserCreate::class)->name('users.create');
             Route::get('/users/{id}/edit', UserEdit::class)->name('users.edit');
 
-            Route::get('/roles', RoleList::class)->name('roles');
-            Route::get('/roles/create', RoleCreate::class)->name('roles.create');
-            Route::get('/roles/{id}/edit', RoleEdit::class)->name('roles.edit');
+            Volt::route('roles', 'administrator.roles.index')->name('roles');
+            Volt::route('roles/create', 'administrator.roles.create')->name('roles.create');
+            Volt::route('roles/{id}/edit', 'administrator.roles.edit')->name('roles.edit');
 
             Route::get('/permissions', Permissions::class)->name('permissions');
 

@@ -34,7 +34,6 @@ class GenerateCRUD extends Command
         $migrationFileName = database_path("migrations/" . date('Y_m_d_His') . "_create_{$tableName}_table.php");
         $seederFileName = database_path("seeders/{$modelName}Seeder.php");
         $factoryFileName = database_path("factories/{$modelName}Factory.php");
-        $livewireComponentDirectory = app_path("Livewire/{$modelName}");
 
         $viewDirectory = resource_path("views/livewire/{$tableName}");
         $indexBladeFileName = "{$viewDirectory}/index.blade.php";
@@ -63,18 +62,6 @@ class GenerateCRUD extends Command
         // Create Factory
         $factoryContent = str_replace(array_keys($replacements), array_values($replacements), File::get(base_path('stubs/factory.stub')));
         File::put($factoryFileName, $factoryContent);
-
-        // Create Livewire Component
-        File::ensureDirectoryExists($livewireComponentDirectory);
-        $livewireContent = str_replace(array_keys($replacements), array_values($replacements), File::get(base_path('stubs/livewire-components/list.stub')));
-        File::put("{$livewireComponentDirectory}/{$modelName}List.php", $livewireContent);
-
-        $livewireContent = str_replace(array_keys($replacements), array_values($replacements), File::get(base_path('stubs/livewire-components/create.stub')));
-        File::put("{$livewireComponentDirectory}/{$modelName}Create.php", $livewireContent);
-
-        $livewireContent = str_replace(array_keys($replacements), array_values($replacements), File::get(base_path('stubs/livewire-components/edit.stub')));
-        File::put("{$livewireComponentDirectory}/{$modelName}Edit.php", $livewireContent);
-
 
         // Create Blade View Directory and File
         File::ensureDirectoryExists($viewDirectory);

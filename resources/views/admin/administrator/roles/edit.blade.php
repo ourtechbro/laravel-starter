@@ -1,8 +1,45 @@
+<?php
+
+use Livewire\Attributes\Layout;
+use Livewire\Volt\Component;
+
+use App\Traits\LivewireAlertPlus;
+use Spatie\Permission\Models\Role;
+
+new #[Layout('admin.layouts.app')] class extends Component
+{
+    use LivewireAlertPlus;
+
+    public $id, $name;
+
+    public function mount($id)
+    {
+        $this->id = $id;
+
+        $record = Role::findOrFail($id);
+        $this->name = $record->name;
+    }
+
+    public function update()
+    {
+        $this->validate([
+            'name' => 'required'
+        ]);
+
+        if ($this->id) {
+            $record = Role::find($this->id);
+            $record->update([
+                'name' => $this->name
+            ]);
+        }
+
+        $this->flash('success', 'Role updated successfully!', [], 'roles');
+    }
+}; ?>
+
 <div class="col-12">
     <h2 class="page-title">{{ __('Role edit') }}</h2>
     <div class="row">
-
-        <!-- Bordered table -->
         <div class="col-md-12 my-4">
             <div class="card shadow">
                 <div class="card-body">
@@ -17,6 +54,6 @@
                     </form>
                 </div>
             </div>
-        </div> <!-- Bordered table -->
-    </div> <!-- end section -->
-</div> <!-- .col-12 -->
+        </div>
+    </div>
+</div>

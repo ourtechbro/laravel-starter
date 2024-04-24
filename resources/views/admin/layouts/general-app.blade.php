@@ -89,11 +89,14 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/simplebar.min.js') }}"></script>
 <script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
-<script src="{{ asset('js/jquery.steps.min.js') }}"></script>
 <script src="{{ asset('js/config.js') }}"></script>
 <script src="{{ asset('js/apps.js') }}"></script>
 @yield('scripts')
 
 @stack('scripts')
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts />
 </body>
 </html>

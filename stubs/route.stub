@@ -1,7 +1,3 @@
-use App\Livewire\{{ModelName}}\{{ModelName}}List;
-use App\Livewire\{{ModelName}}\{{ModelName}}Create;
-use App\Livewire\{{ModelName}}\{{ModelName}}Edit;
-
-Route::get('/{{tableName}}', {{ModelName}}List::class)->name('{{tableName}}');
-Route::get('/{{tableName}}/create', {{ModelName}}Create::class)->name('{{tableName}}.create');
-Route::get('/{{tableName}}/{id}/edit', {{ModelName}}Edit::class)->name('{{tableName}}.edit');
+Volt::route('{{tableName}}', '{{tableName}}.index')->name('{{tableName}}');
+Volt::route('{{tableName}}/create', '{{tableName}}.create')->name('{{tableName}}.create');
+Volt::route('{{tableName}}/{id}/edit', '{{tableName}}.edit')->name('{{tableName}}.edit');

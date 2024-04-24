@@ -1,18 +1,64 @@
+<?php
+
+use Livewire\Attributes\Layout;
+use Livewire\Volt\Component;
+
+use App\Traits\LivewireAlertPlus;
+use App\Models\{{ModelName}};
+
+new #[Layout('admin.layouts.app')] class extends Component
+{
+    use LivewireAlertPlus;
+
+    public $title;
+
+    public function cancel()
+    {
+        $this->resetInput();
+    }
+
+    private function resetInput()
+    {
+        $this->title = null;
+    }
+
+    public function store()
+    {
+        $this->validate([
+            'title' => 'required'
+        ]);
+
+        {{ModelName}}::create([
+            'title' => $this->title
+        ]);
+
+        $this->flash('success', __('{{ModelName}} created successfully!'), [], '{{tableName}}');
+    }
+}; ?>
+
 <div class="col-12">
-    <h2 class="page-title">{{ __('{{ModelName}} Create') }}</h2>
     <div class="row">
         <div class="col-md-12 my-4">
             <div class="card shadow">
+                <div class="card-header">
+                    <strong class="card-title">{{ __('Create {{ModelName}}') }}</strong>
+                </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="title">{{ __('Enter Title') }}</label>
-                            <input type="text" wire:model="title" class="form-control input-sm"  placeholder="{{ __('Title') }}">
-                            @error('title') <span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                        <a wire:navigate href="{{ route('{{tableName}}') }}" class="btn btn-secondary mt-2">{{ __('Back to list') }}</a>
-                        <button wire:click.prevent="store()" class="btn btn-primary mt-2">{{ __('Submit') }}</button>
-                    </form>
+                    <div class="form-group">
+                        <label for="title">{{ __('Enter Title') }}</label>
+                        <input type="text" wire:model="title" class="form-control input-sm"  placeholder="{{ __('Title') }}">
+                        @error('title') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a wire:navigate href="{{ route('{{tableName}}') }}" class="btn btn-secondary mt-2">
+                        <i class="fas fa-arrow-left"></i>
+                        {{ __('Back to list') }}
+                    </a>
+                    <button wire:click.prevent="store()" class="btn btn-primary mt-2">
+                        <i class="fas fa-save"></i>
+                        {{ __('Submit') }}
+                    </button>
                 </div>
             </div>
         </div>
