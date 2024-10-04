@@ -1,11 +1,11 @@
  on:
   push:
       branches:
-        - dev
-name: 🚀 Deploy on dev server
+        - main
+name: 🚀 Deploy on demo server
 jobs:
   web-deploy:
-    name: 🎉 Deploy DEV Branch
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
