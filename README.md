@@ -15,7 +15,7 @@ If you discover any security related issues, please add it to [issue tracker](ht
 # Demo
 Check the following demo project. It is just a straight installation of the project without any modification.
 
-Demo URL: https://laravel-starter-pro.herokuapp.com/
+Demo URL: http://laravel-starter.ourtechbro.com
 
 ```
 User: admin@mail.com
