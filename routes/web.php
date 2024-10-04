@@ -3,9 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Administrator\Roles\RoleCreate;
-use App\Livewire\Administrator\Roles\RoleEdit;
-use App\Livewire\Administrator\Roles\RoleList;
 use App\Livewire\Administrator\Users\UserCreate;
 use App\Livewire\Administrator\Users\UserEdit;
 use App\Livewire\Administrator\Users\UserList;
@@ -32,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
     Route::view('/profile', 'admin.profile')->name('profile');
-    Route::view('/settings', 'admin.settings')->name('settings');
+    Volt::route('/settings', 'settings.settings')->name('settings');
 
     Route::group(
         ['prefix' => 'administrator'],
@@ -46,8 +43,6 @@ Route::middleware(['auth'])->group(function () {
             Volt::route('roles/{id}/edit', 'administrator.roles.edit')->name('roles.edit');
 
             Route::get('/permissions', Permissions::class)->name('permissions');
-
-            // Route::get('/permissions', [AdministratorController::class, 'permissions'])->name('permissions');
         }
     );
 

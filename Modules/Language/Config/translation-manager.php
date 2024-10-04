@@ -11,7 +11,7 @@ return [
     |
     */
     'route'          => [
-        'prefix'     => 'settings/language',
+        'prefix'     => 'modules/translation',
         'middleware' => ['web', 'auth'],
     ],
 

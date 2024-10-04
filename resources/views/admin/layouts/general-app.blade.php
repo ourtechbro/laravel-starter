@@ -23,7 +23,7 @@
 <body class="vertical  light  ">
 <div class="wrapper">
 
-    <livewire:layout.navigation />
+    <livewire:layouts.navigation />
 
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
         <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">

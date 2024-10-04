@@ -21,7 +21,7 @@ class SettingsComponent extends Component
 
     public function render()
     {
-        return view('admin.livewire.settings.settings');
+        return view('livewire.settings.settings');
     }
 
     public function mount()

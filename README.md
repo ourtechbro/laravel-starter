@@ -47,8 +47,8 @@ Licence on theme source: https://themewagon.com/license/
 
 ### CRUD Generator
 
-```php artisan crud:generate Post```
+```php artisan ball:generate Post```
 
 - Undo: 
 
-```php artisan crud:undo Post```
+```php artisan ball:undo Post```

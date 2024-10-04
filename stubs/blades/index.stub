@@ -84,83 +84,77 @@ new #[Layout('admin.layouts.app')] class extends Component
     }
 }; ?>
 
-<div class="col-12">
-    <div class="row">
-        <div class="col-md-12 my-4">
-            <div class="card shadow">
-                <div class="card-header">
-                    <strong class="card-title">{{ __('{{ModelName}} List') }}</strong>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label for="perPage" class="col-sm-4 col-form-label">{{ __('Per Page') }}</label>
-                                <div class="col-sm-8">
-                                    <select class="custom-select" id="perPage" wire:model="per_page">
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <input type="text" placeholder="{{ __('Type to search') }}" class="form-control" wire:model.debounce.500ms="query">
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-right">
-                            <a wire:navigate href="{{ route('{{tableName}}.create') }}" type="button" class="btn mb-2 btn-primary">
-                                {{ __('Create new') }}
-                            </a>
+<div class="col-md-12">
+    <div class="card shadow">
+        <div class="card-header">
+            <strong class="card-title">{{ __('{{ModelName}} List') }}</strong>
+            <a wire:navigate href="{{ route('{{tableName}}.create') }}" type="button" class="btn btn-primary btn-sm float-right">
+                {{ __('Create new') }}
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label for="perPage" class="col-sm-4 col-form-label">{{ __('Per Page') }}</label>
+                        <div class="col-sm-8">
+                            <select class="custom-select" id="perPage" wire:model.live="per_page">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
                         </div>
                     </div>
-
-                    <table class="table table-bordered table-hover mb-0">
-                        <thead>
-                        <tr>
-                            <th wire:click="orderChange('id')" style="cursor: pointer">
-                                <span class="fe @if($orderKey == 'id') fe-arrow-up @else fe-arrow-down @endif"></span>
-                                {{ __('ID') }}
-                            </th>
-                            <th wire:click="orderChange('title')" style="cursor: pointer">
-                                <span class="fe @if($orderKey == 'title') fe-arrow-up @else fe-arrow-down @endif"></span>
-                                {{ __('Title') }}
-                            </th>
-                            <th wire:click="orderChange('created_at')" style="cursor: pointer">
-                                <span class="fe @if($orderKey == 'created_at') fe-arrow-up @else fe-arrow-down @endif"></span>
-                                {{ __('Created At') }}
-                            </th>
-                            <th>{{ __('Action') }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($list as $row)
-                            <tr>
-                                <td>{{ $row->id }}</td>
-                                <td>{{ $row->title }}</td>
-                                <td>{{ $row->created_at->diffForHumans() }}</td>
-                                <td>
-                                    <a wire:navigate href="{{ route('{{tableName}}.edit', ['id' => $row->id]) }}" class="btn btn-sm btn-outline-info py-0">
-                                        <span class="fe fe-edit"></span>
-                                        {{ __('Edit') }}
-                                    </a>
-                                    |
-                                    <button wire:click="destroy({{$row->id}})" class="btn btn-sm btn-outline-danger py-0">
-                                        <span class="fe fe-trash-2"></span>
-                                        {{ __('Delete') }}
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
-                    {{ $list->links() }}
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <input type="text" placeholder="{{ __('Type to search') }}" class="form-control" wire:model.debounce.500ms="query">
+                    </div>
                 </div>
             </div>
+
+            <table class="table table-bordered table-hover mb-0">
+                <thead>
+                <tr>
+                    <th wire:click="orderChange('id')" style="cursor: pointer">
+                        <span class="fe @if($orderKey == 'id') fe-arrow-up @else fe-arrow-down @endif"></span>
+                        {{ __('ID') }}
+                    </th>
+                    <th wire:click="orderChange('title')" style="cursor: pointer">
+                        <span class="fe @if($orderKey == 'title') fe-arrow-up @else fe-arrow-down @endif"></span>
+                        {{ __('Title') }}
+                    </th>
+                    <th wire:click="orderChange('created_at')" style="cursor: pointer">
+                        <span class="fe @if($orderKey == 'created_at') fe-arrow-up @else fe-arrow-down @endif"></span>
+                        {{ __('Created At') }}
+                    </th>
+                    <th>{{ __('Action') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($list as $row)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->title }}</td>
+                        <td>{{ $row->created_at->diffForHumans() }}</td>
+                        <td>
+                            <a wire:navigate href="{{ route('{{tableName}}.edit', ['id' => $row->id]) }}" class="btn btn-sm btn-outline-info py-0">
+                                <span class="fe fe-edit"></span>
+                                {{ __('Edit') }}
+                            </a>
+                            |
+                            <button wire:click="destroy({{$row->id}})" class="btn btn-sm btn-outline-danger py-0">
+                                <span class="fe fe-trash-2"></span>
+                                {{ __('Delete') }}
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            {{ $list->links() }}
         </div>
     </div>
 </div>
