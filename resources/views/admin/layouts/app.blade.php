@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="{{ asset('css/feather.css') }}">
         <!-- App CSS -->
         <link rel="stylesheet" href="{{ asset('css/app-light.css') }}" id="lightTheme">
-        <link rel="stylesheet" href="{{ asset('css/app-light.css') }}" id="lightTheme">
-
+        <link rel="stylesheet" href="{{ asset('css/app-dark.css') }}" id="darkTheme" disabled>
+        
         @vite(['resources/js/app.js'])
 
         @yield('styles')
@@ -97,6 +97,9 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/simplebar.min.js') }}"></script>
 <script src="{{ asset('js/jquery.stickOnScroll.js') }}"></script>
+<script src="{{ asset('js/tinycolor-min.js') }}"></script>
+<script src="{{ asset('js/config.js') }}"></script>
+<script src="{{ asset('js/tinydash.js') }}"></script>
 
 @yield('scripts')
 

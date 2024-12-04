@@ -24,7 +24,7 @@ new class extends Component
         <li class="nav-item">
             <select class="nav-link my-2 form-control" id="changeLang">
                 @php
-                $locales = get_locales();
+                $locales = config('app.locales');
                 @endphp
                 @if($locales)
                     @foreach($locales as $available_locale)
@@ -46,9 +46,7 @@ new class extends Component
               </span>
             </a>
             <div :class="{'show': open}" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="{{ route('profile') }}" wire:navigate>Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Activities</a>
+                <a class="dropdown-item" href="{{ route('profile') }}" wire:navigate>{{ __("Profile") }}</a>
                 <a class="dropdown-item" wire:click="logout">{{ __("Logout") }}</a>
             </div>
         </li>

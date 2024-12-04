@@ -7,7 +7,6 @@ use App\Livewire\Administrator\Users\UserCreate;
 use App\Livewire\Administrator\Users\UserEdit;
 use App\Livewire\Administrator\Users\UserList;
 use App\Livewire\Administrator\Permissions;
-use App\Livewire\Dashboard;
 use Livewire\Volt\Volt;
 
 /*
@@ -20,6 +19,7 @@ use Livewire\Volt\Volt;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
 
 Route::get('/', function() {
     return redirect()->route('dashboard');
@@ -46,9 +46,6 @@ Route::middleware(['auth'])->group(function () {
         }
     );
 
-
-
-
     Route::get('lang-change',function(Request $request){
         App::setLocale($request->lang);
         session()->put('locale', $request->lang);
@@ -56,6 +53,3 @@ Route::middleware(['auth'])->group(function () {
         return redirect()->back();
     })->name('changeLang');
 });
-
-// Auth routes
-require __DIR__.'/auth.php';

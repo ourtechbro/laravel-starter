@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Administrator;
 
-use App\Models\Module;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -33,10 +32,6 @@ class Permissions extends Component
         $rolePermissions = Role::findById($item)->getAllPermissions()->pluck('name')->toArray();
 
         $this->selectedPermissions = $rolePermissions;
-
-        $modules = Module::with('permissions')->get();
-
-        $this->modules = $modules;
     }
 
     public function update()

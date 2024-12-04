@@ -11,15 +11,11 @@
         "php": "^8.2",
         "akaunting/laravel-setting": "^1.2",
         "jantinnerezo/livewire-alert": "^3.0",
-        "jenssegers/agent": "^2.6",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.6",
-        "mhmiton/laravel-modules-livewire": "^1.5",
-        "nwidart/laravel-modules": "^9.0",
-        "spatie/laravel-activitylog": "^4.8",
         "spatie/laravel-permission": "^6.4"
     },
     "require-dev": {

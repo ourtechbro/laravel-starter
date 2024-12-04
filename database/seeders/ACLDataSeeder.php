@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Module;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +19,6 @@ class ACLDataSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        Module::truncate();
         Permission::truncate();
         Role::truncate();
 
@@ -65,14 +63,7 @@ class ACLDataSeeder extends Seeder
      */
     private function createAdminPermissions($moduleName = null, $permissions): void
     {
-        if ($moduleName) {
-            $module = Module::firstOrCreate(['name' => $moduleName]);
-        }
-
         foreach ($permissions as $permission) {
-            if ($module) {
-                $permission['module_id'] = $module->id;
-            }
             $permission = Permission::create($permission);
 
             $permission->assignRole($this->role);

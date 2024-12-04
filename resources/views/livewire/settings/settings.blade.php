@@ -17,13 +17,8 @@
             </div>
 
             <div class="list-group mb-5 shadow">
-                @if(module_enabled('ActivityLog'))
-                    @include('activitylog::activity-settings-switch')
-                @endif
+
             </div> <!-- .list-group -->
-            @if(module_enabled('ActivityLog'))
-                @livewire('activitylog::activity')
-            @endif
         </div>
         <div class="tab-pane fade" id="service" role="tabpanel" aria-labelledby="service-tab" wire:ignore.self>
             <div class="row">

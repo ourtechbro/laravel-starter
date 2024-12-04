@@ -1,6 +1,6 @@
 # Laravel-Starter
 
-Laravel Starter is an starter-kit 
+Laravel Starter is an boilerplate template
 
 Laravel Starter is a Laravel 11.x based starter project. 
 Focused on using Livewire with volt + Bootstrap
@@ -25,25 +25,6 @@ Pass: password
 ### [TinyDash](https://themewagon.com/themes/free-responsive-bootstrap-4-html5-admin-template-tinydash/)
 #### Tinydash – Free Responsive Bootstrap 4 HTML5 Admin Template
 Author: [colorlib](https://colorlib.com/)
-
-Licence on theme source: https://themewagon.com/license/
-## Core Features
-- User Authentication
-- User Profile with Avatar
-- Language Switcher
-- Localization enable across the project
-- Advance user access control ([ACL](https://bit.ly/3iG0F8J))
-- [Modular system](https://docs.laravelmodules.com/v9/introduction) 
-- [Activity Log](https://spatie.be/docs/laravel-activitylog/v4/introduction)
-- Built with [Laravel Livewire](https://laravel-livewire.com/)
-- [Modular system livewire support](https://github.com/mhmiton/laravel-modules-livewire)
-- Each features tested with [PHPUnit](https://laravel.com/docs/9.x/testing)
-
-#### Social Login Supports:
-- Facebook
-- Google
-- Twitter
-- GitHub
 
 ### CRUD Generator
 

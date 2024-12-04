@@ -73,10 +73,6 @@ new #[Layout('admin.layouts.guest')] class extends Component
             <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('Log in') }}</button>
             <a class="btn btn-lg btn-primary btn-block" href="{{ route('register') }}" wire:navigate="true">{{ __('Sign up') }}</a>
 
-            @if(Module::has('SocialAuth') && Module::isEnabled('SocialAuth'))
-                @include('socialauth::login-buttons')
-            @endif
-
             <p class="mt-5 mb-3 text-muted">© {{ date('Y') }}</p>
         </form>
     </div>

@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\Module;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -10,8 +9,6 @@ class PermissionsComponent extends Component
 {
     public $selectedPermissions = [];
     public $currentRoleId = null;
-
-    public $modules = [];
 
     protected $listeners = [
         'selectedRole',
@@ -38,10 +35,6 @@ class PermissionsComponent extends Component
         $rolePermissions = Role::findById($item)->getAllPermissions()->pluck('name','id')->toArray();
 
         $this->selectedPermissions = $rolePermissions;
-
-        $modules = Module::with('permissions')->get();
-
-        $this->modules = $modules;
     }
 
     public function update()
