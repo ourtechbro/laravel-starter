@@ -1,35 +1,44 @@
-# Laravel-Starter
+# Laravel Starter
 
-Laravel Starter is an boilerplate template
+Laravel Starter is a boilerplate template built with **Laravel 12.x**, designed to streamline development with **Livewire, Volt, and Bootstrap**. This starter kit provides a solid foundation for building modern web applications quickly and efficiently.
 
-Laravel Starter is a Laravel 11.x based starter project. 
-Focused on using Livewire with volt + Bootstrap
+## Features
+- **Laravel 12.x** - Latest stable Laravel framework.
+- **Livewire & Volt** - Simplified frontend interactivity.
+- **Bootstrap** - Pre-styled UI components for rapid development.
+- **CRUD Generator** - Quickly generate CRUD operations using commands.
 
-Please let me know your feedback and comments.
+## Installation
+Follow the [documentation]() for detailed installation steps.
 
-To install follow the [documentation]()
+## Demo
+Explore a live demo of Laravel Starter:
 
-## Reporting a Vulnerability
-If you discover any security related issues, please add it to [issue tracker](https://github.com/emtiazzahid/laravel-starter/issues).
+🔗 **[Live Demo](https://laravel-starter.ourtechbro.com)**
 
-# Demo
-Check the following demo project. It is just a straight installation of the project without any modification.
+User:
+```admin@mail.com``` 
+Password: ```password```
 
-Demo URL: http://laravel-starter.ourtechbro.com
+## Security & Reporting Issues
+If you discover any security vulnerabilities or issues, please report them via the [issue tracker](https://github.com/emtiazzahid/laravel-starter/issues).
 
-```
-User: admin@mail.com
-Pass: password
-```
-
-### [TinyDash](https://themewagon.com/themes/free-responsive-bootstrap-4-html5-admin-template-tinydash/)
-#### Tinydash – Free Responsive Bootstrap 4 HTML5 Admin Template
-Author: [colorlib](https://colorlib.com/)
-
-### CRUD Generator
+## CRUD Generator
+Easily generate CRUD operations with the following commands:
 
 ```php artisan ball:generate Post```
 
-- Undo: 
+To undo a generated CRUD operation:
 
 ```php artisan ball:undo Post```
+
+## UI Template
+Laravel Starter uses **TinyDash**, a free responsive Bootstrap 4 admin template.
+
+- **Theme:** [TinyDash](https://themewagon.com/themes/free-responsive-bootstrap-4-html5-admin-template-tinydash/)
+- **Author:** [Colorlib](https://colorlib.com/)
+
+## Feedback & Contributions  
+We appreciate feedback and contributions! Feel free to open an issue or submit a pull request.  
+
+Happy coding! 🚀  
